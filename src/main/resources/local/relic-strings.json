@@ -1,0 +1,10 @@
+{
+	"SpellBook": {
+		"NAME": "Spell Book",
+		"FLAVOR": "Blank",
+		"DESCRIPTIONS": [
+		"Gain a random elemental focus at the start of your turn. #bIce. #rFire.",
+		"Choose 3 cards for "
+		]
+	}
+}
