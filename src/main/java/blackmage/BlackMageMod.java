@@ -152,8 +152,9 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Firestorm());
 		BaseMod.addCard(new TemperatureShock());
 		BaseMod.addCard(new MagesSong());
+		BaseMod.addCard(new Stasis());
 		//RARE
-		//BaseMod.addCard(new SheerCold());
+		BaseMod.addCard(new SheerCold());
 	}
 	
 }
