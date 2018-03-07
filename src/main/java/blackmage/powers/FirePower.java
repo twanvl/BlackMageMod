@@ -22,13 +22,26 @@ public class FirePower extends AbstractPower {
 		this.ID = "bm_fire_power";
 		this.owner = owner;
 		this.amount = amount;
+		this.isTurnBased = true;
 		
 		if (this.amount >= 999)
 			this.amount = 999;
 		
 		updateDescription();
+		
+		if(owner.hasPower("bm_ice_power")) {
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "bm_ice_power"));
+		}
+		
 		this.type = AbstractPower.PowerType.BUFF;
 		this.img = BlackMageMod.getFirePowerTexture();
+	}
+	
+	@Override
+	public void atEndOfTurn(boolean isPlayer) {
+		if(isPlayer) {
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+		}
 	}
 	
 	public void stackPower(int stackAmount) {
@@ -68,19 +81,5 @@ public class FirePower extends AbstractPower {
 			return damage += this.amount;
 		}
 		return damage;
-	}
-	
-	
-	
-	public void atEndOfRound() {
-		AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-	}
-
-	@Override
-	public void onAfterCardPlayed(AbstractCard usedCard) {
-		System.out.println(usedCard.cardID);
-		if(usedCard.damageTypeForTurn == EnumPatch.ICE_DAMAGE) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-		}
 	}
 }

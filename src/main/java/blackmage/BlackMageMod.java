@@ -85,6 +85,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		return new Texture(Gdx.files.internal("img/powers/fire.png"));
 	}
 	
+	public static Texture getCampfireExchangeButton() {
+		return new Texture(Gdx.files.internal("img/ui/exchange_button.png"));
+	}
+	
 	public BlackMageMod() {
 		BaseMod.subscribeToPostInitialize(this);
 		BaseMod.subscribeToEditCharacters(this);
@@ -116,6 +120,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 	
 	public void receivePostInitialize() {
+		Texture badgeTexture = new Texture(Gdx.files.internal("img/mod-badge.png"));
+		BaseMod.registerModBadge(badgeTexture, MOD_NAME, AUTHOR, DESCRIPTION, null);
 		
 		String jsonString = Gdx.files.internal("local/relic-strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(RelicStrings.class, jsonString);
@@ -123,9 +129,11 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		String[] iceNames = {"ice"};
 		String[] fireNames = {"fire"};
 		String[] freezeNames = {"freeze"};
+		String[] shadowNames = {"dark"};
 		
 		BaseMod.addKeyword(iceNames, "A buff that increases the damage of the next #bIce type attack card.");
 		BaseMod.addKeyword(fireNames, "A buff that increases the damage of the next #rFire type attack card.");
+		BaseMod.addKeyword(shadowNames, "A type of damage that ignores block.");
 		BaseMod.addKeyword(freezeNames, "Target is unable to attack.");
 		
 		RelicLibrary.add(new SpellBook());
@@ -140,21 +148,23 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 	public void receiveEditCards() {
 		//BASIC
-		BaseMod.addCard(new IceStrike());
-		BaseMod.addCard(new FireStrike());
+		BaseMod.addCard(new IceStrike()); //Attack
+		BaseMod.addCard(new FireStrike()); //Attack
 		BaseMod.addCard(new Defend_BlackMage());
 		//COMMON
-		BaseMod.addCard(new SnowWall());
-		BaseMod.addCard(new FlameWall());
-		BaseMod.addCard(new Conversion());
+		BaseMod.addCard(new SnowWall()); //Skill
+		BaseMod.addCard(new FlameWall()); //Skill
+		BaseMod.addCard(new Conversion()); //Skill
 		//UNCOMMON
-		BaseMod.addCard(new Blizzard());
-		BaseMod.addCard(new Firestorm());
-		BaseMod.addCard(new TemperatureShock());
-		BaseMod.addCard(new MagesSong());
-		BaseMod.addCard(new Stasis());
+		BaseMod.addCard(new Blizzard()); //Attack
+		BaseMod.addCard(new Firestorm()); //Attack
+		BaseMod.addCard(new TemperatureShock()); //Attack
+		BaseMod.addCard(new MagesSong()); //Skill
+		BaseMod.addCard(new Stasis()); //Power
+		BaseMod.addCard(new ShadowStrike()); //Attack
+		BaseMod.addCard(new Swiftcast()); //Skill
 		//RARE
-		BaseMod.addCard(new SheerCold());
+		BaseMod.addCard(new SheerCold()); //Skill
 	}
 	
 }

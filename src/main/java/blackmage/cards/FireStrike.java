@@ -21,7 +21,6 @@ public class FireStrike extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/strike-fire.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[2];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[2];
-	
 	private static final String DESCRIPTION = "Deal !D! fire damage to all enemies. NL Apply Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
@@ -62,7 +61,10 @@ public class FireStrike extends AbstractCustomCardWithType {
 	}
 
 	@Override
-	public AbstractCustomCardWithType getOpposite() {
-		return new IceStrike();
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		AbstractCustomCardWithType opposite = new IceStrike();
+		if (isUpgraded)
+			opposite.upgrade();
+		return opposite;
 	}
 }

@@ -25,8 +25,7 @@ public class Defend_BlackMage extends CustomCard {
 	
 	public Defend_BlackMage() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
-		this.baseMagicNumber = MAGIC;
-		this.magicNumber = this.baseMagicNumber;
+		this.baseBlock = MAGIC;
 	}
 
 	@Override
@@ -38,12 +37,12 @@ public class Defend_BlackMage extends CustomCard {
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(3);
+			this.upgradeBlock(3);
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 	}
 }

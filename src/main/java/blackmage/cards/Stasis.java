@@ -19,7 +19,7 @@ public class Stasis extends CustomCard {
 	private static final String DESCRIPTION = "At the end of your turn, retain up to !M! card.";
 	private static final String UPGRADE_DESCRIPTION = "At the end of your turn, retain up to !M! cards.";
 	
-	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
+	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;

@@ -68,7 +68,10 @@ public class Firestorm extends AbstractCustomCardWithType {
 	}
 
 	@Override
-	public AbstractCustomCardWithType getOpposite() {
-		return new Blizzard();
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		AbstractCustomCardWithType opposite = new Blizzard();
+		if (isUpgraded)
+			opposite.upgrade();
+		return opposite;
 	}
 }

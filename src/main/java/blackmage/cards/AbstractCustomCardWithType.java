@@ -19,5 +19,5 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 		colorType = damageType;
 	}
 	
-	public abstract AbstractCustomCardWithType getOpposite();
+	public abstract AbstractCustomCardWithType getOpposite(boolean isUpgraded);
 }

@@ -61,7 +61,10 @@ public class IceStrike extends AbstractCustomCardWithType {
 	}
 
 	@Override
-	public AbstractCustomCardWithType getOpposite() {
-		return new FireStrike();
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		AbstractCustomCardWithType opposite = new FireStrike();
+		if (isUpgraded)
+			opposite.upgrade();
+		return opposite;
 	}
 }

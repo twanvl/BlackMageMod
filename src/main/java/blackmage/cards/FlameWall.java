@@ -57,7 +57,10 @@ public class FlameWall extends AbstractCustomCardWithType {
 	}
 
 	@Override
-	public AbstractCustomCardWithType getOpposite() {
-		return new SnowWall();
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		AbstractCustomCardWithType opposite = new SnowWall();
+		if (isUpgraded)
+			opposite.upgrade();
+		return opposite;
 	}
 }

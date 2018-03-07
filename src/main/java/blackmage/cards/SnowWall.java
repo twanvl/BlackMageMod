@@ -18,7 +18,7 @@ public class SnowWall extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/snowwall.png";
 	private static final String BG_IMG = BlackMageMod.SKILL_BG[1];
 	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[1];
-	private static final String DESCRIPTION = "Gain !D! block. NL Apply Ice.";
+	private static final String DESCRIPTION = "Gain !B! + (ice) block. NL Apply Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -31,10 +31,8 @@ public class SnowWall extends AbstractCustomCardWithType {
 	
 	public SnowWall() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
-		
-		this.baseDamage = BLOCK;
-		this.damageType = EnumPatch.ICE_DAMAGE;
-		this.damageTypeForTurn = EnumPatch.ICE_DAMAGE;
+
+		this.baseBlock = BLOCK;
 	}
 
 	@Override
@@ -46,18 +44,30 @@ public class SnowWall extends AbstractCustomCardWithType {
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			this.upgradeDamage(3);
+			this.upgradeBlock(3);
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.damage));
+		int ice_bonus = 0;
+		this.magicNumber = ice_bonus;
+		this.baseMagicNumber = ice_bonus;
+		
+		if(p.hasPower("bm_ice_power"))
+			ice_bonus = p.getPower("bm_ice_power").amount;
+		
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block + ice_bonus));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 1), 1));
 	}
 
 	@Override
-	public AbstractCustomCardWithType getOpposite() {
-		return new FlameWall();
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		AbstractCustomCardWithType opposite = new FlameWall();
+		if (isUpgraded)
+			opposite.upgrade();
+		return opposite;
 	}
+	
+	
 }
