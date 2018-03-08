@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.IcePower;

@@ -24,6 +24,7 @@ public class ShadowStrike extends CustomCardWithRender {
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+	@SuppressWarnings("unused")
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.DARK;
 
 	private static final int COST = 1;

@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
-import basemod.abstracts.CustomCardWithRender;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.IcePower;
@@ -20,7 +19,7 @@ public class Blizzard extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/blizzard.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[1];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[1];
-	private static final String DESCRIPTION = "Deal !D! damage to all enemies. Apply !M! Weak. NL Apply Ice";
+	private static final String DESCRIPTION = "Deal !D! damage to all enemies 2 times. Apply !M! Weak. NL Apply Ice";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -29,7 +28,7 @@ public class Blizzard extends AbstractCustomCardWithType {
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.ICE;
 
 	private static final int COST = 1;
-	private static final int ATK_DMG = 5;
+	private static final int ATK_DMG = 3;
 	private static final int MAGIC = 1;
 	
 	public Blizzard() {
@@ -60,7 +59,8 @@ public class Blizzard extends AbstractCustomCardWithType {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AttackEffect.SLASH_DIAGONAL));
+		for(int i = 0; i < 2; i++)
+			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AttackEffect.SLASH_DIAGONAL));
 		
 		for(AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, p, new WeakPower(mon, this.magicNumber, false), this.magicNumber));

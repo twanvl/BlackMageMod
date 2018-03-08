@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
@@ -116,6 +115,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 				ENERGY_ORB_P
 		);
 		
+		@SuppressWarnings("unused")
 		BlackMageMod blm = new BlackMageMod();
 	}
 	
@@ -155,6 +155,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new SnowWall()); //Skill
 		BaseMod.addCard(new FlameWall()); //Skill
 		BaseMod.addCard(new Conversion()); //Skill
+		BaseMod.addCard(new FireBlast()); //Attack
+		BaseMod.addCard(new IceBlast()); //Attack
 		//UNCOMMON
 		BaseMod.addCard(new Blizzard()); //Attack
 		BaseMod.addCard(new Firestorm()); //Attack

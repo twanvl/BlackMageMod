@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
@@ -21,7 +20,7 @@ public class FireStrike extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/strike-fire.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[2];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[2];
-	private static final String DESCRIPTION = "Deal !D! fire damage to all enemies. NL Apply Fire.";
+	private static final String DESCRIPTION = "Deal !D! fire damage. NL Apply Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

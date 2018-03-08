@@ -22,6 +22,7 @@ import blackmage.ui.ExchangeOption;
 
 public class CampfireExchangeEffect extends AbstractGameEffect{
 
+	@SuppressWarnings("unused")
 	private static final float DUR = 1.5f;
 	private boolean openedScreen = false;
 	private boolean selectedCard = false;
@@ -65,8 +66,6 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 			AbstractCustomCardWithType card = (AbstractCustomCardWithType)AbstractDungeon.gridSelectScreen.selectedCards.get(0);
 			
 			AbstractCustomCardWithType newCard = card.getOpposite(card.upgraded);
-			
-			//AbstractDungeon.actionManager.addToTop(new RemoveCardAction());
 			
 			AbstractDungeon.player.masterDeck.removeCard(card);
 

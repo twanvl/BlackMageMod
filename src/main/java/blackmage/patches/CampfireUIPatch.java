@@ -1,6 +1,5 @@
 package blackmage.patches;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -20,9 +19,9 @@ public class CampfireUIPatch {
 			ArrayList<AbstractCampfireOption> campfireButtons = (ArrayList<AbstractCampfireOption>) ReflectionHacks.getPrivate(campfire, CampfireUI.class, "buttons");
 			
 			ExchangeOption button = new ExchangeOption(true);
-			button.setPosition(800.0F * Settings.scale, 500.0F * Settings.scale);
 			
 			campfireButtons.add(button);
+			campfireButtons.get(campfireButtons.size() - 1).setPosition(950 * Settings.scale, 180 * Settings.scale);
 		
 		} catch (SecurityException | IllegalArgumentException e) {
 			// TODO Auto-generated catch block

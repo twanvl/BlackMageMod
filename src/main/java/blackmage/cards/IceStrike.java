@@ -9,10 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
-import blackmage.powers.FreezePower;
 import blackmage.powers.IcePower;
 
 public class IceStrike extends AbstractCustomCardWithType {
@@ -22,7 +20,7 @@ public class IceStrike extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/strike-ice.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[1];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[1];
-	private static final String DESCRIPTION = "Deal !D! ice damage to all enemies. NL Apply Ice.";
+	private static final String DESCRIPTION = "Deal !D! ice damage. NL Apply Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
