@@ -13,7 +13,7 @@ public class Defend_BlackMage extends CustomCard {
 	public static final String ID = "defend_bm";
 	private static final String NAME = "Defend";
 	private static final String IMG = "img/cards/icons/defend-normal.png";
-	private static final String DESCRIPTION = "Gain !M! block.";
+	private static final String DESCRIPTION = "Gain !B! block.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

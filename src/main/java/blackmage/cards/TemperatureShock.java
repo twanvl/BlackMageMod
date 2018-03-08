@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import basemod.abstracts.CustomPlayer;
+import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
 public class TemperatureShock extends CustomCard {
@@ -59,5 +61,7 @@ public class TemperatureShock extends CustomCard {
 		
 		AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_ice_power"));
 		AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
+		
+		BlackMageMod.resetOrbColor((CustomPlayer)AbstractDungeon.player);
 	}
 }

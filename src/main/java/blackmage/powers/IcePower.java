@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import basemod.abstracts.CustomPlayer;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
@@ -31,6 +32,8 @@ public class IcePower extends AbstractPower {
 			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "bm_fire_power"));
 		}
 		
+		BlackMageMod.setOrbColor(this, (CustomPlayer)owner);
+		
 		this.type = AbstractPower.PowerType.BUFF;
 		this.img = BlackMageMod.getIcePowerTexture();
 	}
@@ -39,6 +42,7 @@ public class IcePower extends AbstractPower {
 	public void atEndOfTurn(boolean isPlayer) {
 		if(isPlayer) {
 			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+			BlackMageMod.resetOrbColor((CustomPlayer)owner);
 		}
 	}
 

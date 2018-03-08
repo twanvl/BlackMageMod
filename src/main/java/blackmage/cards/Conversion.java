@@ -52,13 +52,13 @@ public class Conversion extends CustomCardWithRender {
 		int fireAmount = 0;
 		if(p.hasPower("bm_ice_power")) {
 			iceAmount = p.getPower("bm_ice_power").amount;
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, "bm_ice_power"));
-			AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new FirePower(p, iceAmount), iceAmount));
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_ice_power"));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, iceAmount), iceAmount));
 		}
 		if(p.hasPower("bm_fire_power")) {
 			fireAmount = p.getPower("bm_fire_power").amount;
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
-			AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new IcePower(p, fireAmount), fireAmount));
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, fireAmount), fireAmount));
 		}
 	}
 }

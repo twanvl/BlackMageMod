@@ -18,7 +18,4 @@ public class EnumPatch {
 	
 	@SpireEnum
 	public static DamageInfo.DamageType FIRE_DAMAGE;
-	
-	@SpireEnum
-	public static CardLibrary.LibraryType BLACK_MAGE_LIB;
 }

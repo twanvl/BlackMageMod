@@ -33,7 +33,7 @@ public class IceBlast extends AbstractCustomCardWithType {
 	private static final int ATTACK_DMG = 10;
 	
 	public IceBlast() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, COLOR_TYPE);
+		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.damageType = EnumPatch.ICE_DAMAGE;
 		this.damageTypeForTurn = EnumPatch.ICE_DAMAGE;
@@ -66,7 +66,7 @@ public class IceBlast extends AbstractCustomCardWithType {
 	public void use(AbstractPlayer p, AbstractMonster mon) {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 2), 1));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 2), 2));
 	}
 
 }

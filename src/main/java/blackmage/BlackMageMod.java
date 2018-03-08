@@ -1,6 +1,7 @@
 package blackmage;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -9,8 +10,12 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.CampfireUI;
 
 import basemod.BaseMod;
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomPlayer;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
@@ -76,6 +81,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final String BLACK_MAGE_SKELETON_ATLAS = "img/character/player/idle/skeleton.atlas";
 	public static final String BLACK_MAGE_SKELETON_JSON = "img/character/player/idle/skeleton.json";
 	
+	private static Texture orbBlueBG = null;
+	private static Texture orbRedBG = null;
+	private static Texture orbDefaultBG = null;
+	
 	public static Texture getIcePowerTexture() {
 		return new Texture(Gdx.files.internal("img/powers/ice.png"));
 	}
@@ -86,6 +95,24 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public static Texture getCampfireExchangeButton() {
 		return new Texture(Gdx.files.internal("img/ui/exchange_button.png"));
+	}
+	
+	public static Texture getOrbBlueBG() {
+		if(orbBlueBG == null)
+			orbBlueBG = new Texture("img/character/orb/enabled/layer1-blue.png");
+		return orbBlueBG;
+	}
+	
+	public static Texture getOrbRedBG() {
+		if(orbRedBG == null)
+			orbRedBG = new Texture("img/character/orb/enabled/layer1-red.png");
+		return orbRedBG;
+	}
+	
+	public static Texture getOrbMultiBG() {
+		if(orbDefaultBG == null)
+			orbDefaultBG = new Texture("img/character/orb/enabled/layer1.png");
+		return orbDefaultBG;
 	}
 	
 	public BlackMageMod() {
@@ -150,23 +177,50 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//BASIC
 		BaseMod.addCard(new IceStrike()); //Attack
 		BaseMod.addCard(new FireStrike()); //Attack
-		BaseMod.addCard(new Defend_BlackMage());
+		BaseMod.addCard(new Defend_BlackMage()); //Skill
 		//COMMON
 		BaseMod.addCard(new SnowWall()); //Skill
 		BaseMod.addCard(new FlameWall()); //Skill
 		BaseMod.addCard(new Conversion()); //Skill
 		BaseMod.addCard(new FireBlast()); //Attack
 		BaseMod.addCard(new IceBlast()); //Attack
+		BaseMod.addCard(new ShadowStrike()); //Attack
+			//Ice Fortress
+			//Fire Fortress
 		//UNCOMMON
 		BaseMod.addCard(new Blizzard()); //Attack
 		BaseMod.addCard(new Firestorm()); //Attack
 		BaseMod.addCard(new TemperatureShock()); //Attack
 		BaseMod.addCard(new MagesSong()); //Skill
 		BaseMod.addCard(new Stasis()); //Power
-		BaseMod.addCard(new ShadowStrike()); //Attack
+		BaseMod.addCard(new ShadowWall()); //Attack
 		BaseMod.addCard(new Swiftcast()); //Skill
+			//Skill
 		//RARE
 		BaseMod.addCard(new SheerCold()); //Skill
+			//Skill
+			//Skill
+			//Attack
+			//Attack
+			//Attack
+			//Power
 	}
 	
+	public static void setOrbColor(AbstractPower power, CustomPlayer player) {
+		@SuppressWarnings("unchecked")
+		ArrayList<Texture> energyLayers = (ArrayList<Texture>)ReflectionHacks.getPrivate(player, CustomPlayer.class, "energyLayers");
+		
+		if (power.ID == "bm_ice_power") {
+			energyLayers.set(0, getOrbBlueBG());
+		}
+		if (power.ID == "bm_fire_power") {
+			energyLayers.set(0, getOrbRedBG());
+		}
+	}
+	
+	public static void resetOrbColor(CustomPlayer player) {
+		@SuppressWarnings("unchecked")
+		ArrayList<Texture> energyLayers = (ArrayList<Texture>)ReflectionHacks.getPrivate(player, CustomPlayer.class, "energyLayers");
+		energyLayers.set(0, getOrbMultiBG());
+	}
 }
