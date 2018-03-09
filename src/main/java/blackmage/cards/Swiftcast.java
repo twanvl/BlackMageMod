@@ -62,6 +62,7 @@ public class Swiftcast extends CustomCard {
 				AbstractCard selected_card = ice_fire_cards.getRandomCard(true);
 				selected_card.setCostForTurn(0);
 				selected_card.flash();
+				ice_fire_cards.group.remove(selected_card);
 			}
 		}
 	}
