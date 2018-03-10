@@ -16,8 +16,8 @@ public class ShadowStrike extends CustomCardWithRender {
 	public static final String ID = "ShadowStrike";
 	private static final String NAME = "Shadow Strike";
 	private static final String IMG = "img/cards/icons/shadowstrike.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[0];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[0];
+	private static final String BG_IMG = BlackMageMod.ATTACK_BG[3];
+	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[3];
 	private static final String DESCRIPTION = "Deal !D! dark damage.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;

@@ -16,8 +16,8 @@ public class ShadowWall extends CustomCardWithRender{
 	public static final String ID = "ShadowBarrier";
 	private static final String NAME = "Shadow Barrier";
 	private static final String IMG = "img/cards/icons/shadowwall.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[0];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[0];
+	private static final String BG_IMG = BlackMageMod.ATTACK_BG[3];
+	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[3];
 	private static final String DESCRIPTION = "Deal !D! dark damage. Gain !B! block.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
@@ -27,7 +27,7 @@ public class ShadowWall extends CustomCardWithRender{
 	
 	private static final int COST = 2;
 	private static final int ATK_DMG = 10;
-	private static final int BLOCK = 7;
+	private static final int BLOCK = 10;
 
 	public ShadowWall() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
@@ -46,7 +46,7 @@ public class ShadowWall extends CustomCardWithRender{
 		if(!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(4);
-			this.upgradeBlock(3);
+			this.upgradeBlock(5);
 		}
 	}
 

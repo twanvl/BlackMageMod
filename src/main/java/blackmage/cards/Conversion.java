@@ -27,7 +27,7 @@ public class Conversion extends CustomCardWithRender {
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 
-	private static final int COST = 1;
+	private static final int COST = 0;
 	
 	public Conversion() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
@@ -40,10 +40,6 @@ public class Conversion extends CustomCardWithRender {
 
 	@Override
 	public void upgrade() {
-		if(!this.upgraded) {
-			this.upgradeName();
-			this.upgradeBaseCost(0);
-		}
 	}
 
 	@Override

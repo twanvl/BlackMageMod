@@ -30,9 +30,10 @@ public class FirePower extends AbstractPower {
 		
 		if(owner.hasPower("bm_ice_power")) {
 			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "bm_ice_power"));
+			BlackMageMod.setOrbColor(this, (CustomPlayer)owner, true);
 		}
 		
-		BlackMageMod.setOrbColor(this, (CustomPlayer)owner);
+		BlackMageMod.setOrbColor(this, (CustomPlayer)owner, false);
 		
 		this.type = AbstractPower.PowerType.BUFF;
 		this.img = BlackMageMod.getFirePowerTexture();
@@ -41,8 +42,12 @@ public class FirePower extends AbstractPower {
 	@Override
 	public void atEndOfTurn(boolean isPlayer) {
 		if(isPlayer) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-			BlackMageMod.resetOrbColor((CustomPlayer)owner);
+			if(!AbstractDungeon.player.hasPower("bm_unleash_power")) {
+				AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+				BlackMageMod.resetOrbColor((CustomPlayer)owner);
+			}else {
+				this.reducePower((int)Math.ceil((amount / 2.0f)));
+			}
 		}
 	}
 	

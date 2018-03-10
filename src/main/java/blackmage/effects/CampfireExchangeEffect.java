@@ -61,7 +61,7 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 		if ((!this.selectedCard) && (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) {
 			CardCrawlGame.sound.play("CARD_EXHAUST");
 			
-			AbstractDungeon.effectsQueue.add(new PurgeCardEffect(AbstractDungeon.gridSelectScreen.selectedCards.get(0), Settings.WIDTH / 2, Settings.HEIGHT / 2));
+			//AbstractDungeon.effectsQueue.add(new PurgeCardEffect(AbstractDungeon.gridSelectScreen.selectedCards.get(0), Settings.WIDTH / 2, Settings.HEIGHT / 2));
 			
 			AbstractCustomCardWithType card = (AbstractCustomCardWithType)AbstractDungeon.gridSelectScreen.selectedCards.get(0);
 			

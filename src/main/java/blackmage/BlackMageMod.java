@@ -7,11 +7,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.RefreshEnergyEffect;
 
 import basemod.BaseMod;
 import basemod.ReflectionHacks;
@@ -37,7 +40,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final String[] ATTACK_BG = {
 		"img/cards/small/attack_normal.png",
 		"img/cards/small/attack_ice.png",
-		"img/cards/small/attack_fire.png"
+		"img/cards/small/attack_fire.png",
+		"img/cards/small/attack_shadow.png"
 	};
 	public static final String[] SKILL_BG = {
 		"img/cards/small/skill_normal.png",
@@ -54,7 +58,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final String[] ATTACK_BG_P = {
 		"img/cards/portrait/attack_normal.png",
 		"img/cards/portrait/attack_ice.png",
-		"img/cards/portrait/attack_fire.png"
+		"img/cards/portrait/attack_fire.png",
+		"img/cards/small/attack_shadow.png"
 	};
 	public static final String[] SKILL_BG_P = {
 		"img/cards/portrait/skill_normal.png",
@@ -91,6 +96,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public static Texture getFirePowerTexture() {
 		return new Texture(Gdx.files.internal("img/powers/fire.png"));
+	}
+	
+	public static Texture getUnleashPowerTexture() {
+		return new Texture(Gdx.files.internal("img/powers/unleash.png"));
 	}
 	
 	public static Texture getCampfireExchangeButton() {
@@ -182,11 +191,14 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new SnowWall()); //Skill
 		BaseMod.addCard(new FlameWall()); //Skill
 		BaseMod.addCard(new Conversion()); //Skill
+		BaseMod.addCard(new Equality()); //Skill
 		BaseMod.addCard(new FireBlast()); //Attack
 		BaseMod.addCard(new IceBlast()); //Attack
 		BaseMod.addCard(new ShadowStrike()); //Attack
 			//Ice Fortress
 			//Fire Fortress
+			//Discard card
+			//More defend cards
 		//UNCOMMON
 		BaseMod.addCard(new Blizzard()); //Attack
 		BaseMod.addCard(new Firestorm()); //Attack
@@ -198,15 +210,15 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 			//Skill
 		//RARE
 		BaseMod.addCard(new SheerCold()); //Skill
+		BaseMod.addCard(new Unleash()); //Power
 			//Skill
 			//Skill
 			//Attack
 			//Attack
 			//Attack
-			//Power
 	}
 	
-	public static void setOrbColor(AbstractPower power, CustomPlayer player) {
+	public static void setOrbColor(AbstractPower power, CustomPlayer player, boolean isUpdated) {
 		@SuppressWarnings("unchecked")
 		ArrayList<Texture> energyLayers = (ArrayList<Texture>)ReflectionHacks.getPrivate(player, CustomPlayer.class, "energyLayers");
 		
@@ -216,11 +228,22 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		if (power.ID == "bm_fire_power") {
 			energyLayers.set(0, getOrbRedBG());
 		}
+		
+		if(isUpdated) {
+			AbstractDungeon.effectsQueue.add(new RefreshEnergyEffect());
+			if(EnergyPanel.totalCount > 0)
+				EnergyPanel.energyVfxTimer = 2.0f;
+		}
 	}
 	
 	public static void resetOrbColor(CustomPlayer player) {
 		@SuppressWarnings("unchecked")
 		ArrayList<Texture> energyLayers = (ArrayList<Texture>)ReflectionHacks.getPrivate(player, CustomPlayer.class, "energyLayers");
 		energyLayers.set(0, getOrbMultiBG());
+		
+		if(EnergyPanel.totalCount > 0) {
+			EnergyPanel.energyVfxTimer = 2.0f;
+			AbstractDungeon.effectsQueue.add(new RefreshEnergyEffect());
+		}
 	}
 }
