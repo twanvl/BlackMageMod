@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.RefreshEnergyEffect;
 
@@ -21,6 +20,7 @@ import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
+import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import blackmage.cards.*;
 import blackmage.character.player.BlackMageCharacter;
@@ -28,7 +28,7 @@ import blackmage.patches.EnumPatch;
 import blackmage.relics.SpellBook;
 
 @SpireInitializer
-public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscriber, EditCharactersSubscriber {
+public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber {
 	
 	private static final String MOD_NAME = "Black Mage";
 	private static final String AUTHOR = "Blank";
@@ -128,6 +128,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.subscribeToPostInitialize(this);
 		BaseMod.subscribeToEditCharacters(this);
 		BaseMod.subscribeToEditCards(this);
+		BaseMod.subscribeToEditKeywords(this);
 	}
 	
 	public static void initialize() {
@@ -161,7 +162,13 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		
 		String jsonString = Gdx.files.internal("local/relic-strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(RelicStrings.class, jsonString);
+		
+		RelicLibrary.add(new SpellBook());
+		
+		
+	}
 	
+	public void receiveEditKeywords() {
 		String[] iceNames = {"ice"};
 		String[] fireNames = {"fire"};
 		String[] freezeNames = {"freeze"};
@@ -171,8 +178,6 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addKeyword(fireNames, "A buff that increases the damage of the next #rFire type attack card.");
 		BaseMod.addKeyword(shadowNames, "A type of damage that ignores block.");
 		BaseMod.addKeyword(freezeNames, "Target is unable to attack.");
-		
-		RelicLibrary.add(new SpellBook());
 	}
 	
 	public void receiveEditCharacters() {
@@ -187,10 +192,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new IceStrike()); //Attack
 		BaseMod.addCard(new FireStrike()); //Attack
 		BaseMod.addCard(new Defend_BlackMage()); //Skill
+		BaseMod.addCard(new Conversion()); //Skill
 		//COMMON
 		BaseMod.addCard(new SnowWall()); //Skill
 		BaseMod.addCard(new FlameWall()); //Skill
-		BaseMod.addCard(new Conversion()); //Skill
 		BaseMod.addCard(new Equality()); //Skill
 		BaseMod.addCard(new FireBlast()); //Attack
 		BaseMod.addCard(new IceBlast()); //Attack
@@ -211,8 +216,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//RARE
 		BaseMod.addCard(new SheerCold()); //Skill
 		BaseMod.addCard(new Unleash()); //Power
-			//Skill
-			//Skill
+		BaseMod.addCard(new FocusFire()); //Skill
+		BaseMod.addCard(new FocusIce()); //Skill
 			//Attack
 			//Attack
 			//Attack

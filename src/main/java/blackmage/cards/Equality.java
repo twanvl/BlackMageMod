@@ -17,9 +17,9 @@ public class Equality extends CustomCard{
 	
 	public static final String ID = "Equality";
 	private static final String NAME = "Equality";
-	private static final String IMG = "img/cards/icons/conversion.png";
-	private static final String DESCRIPTION = "Gain !B! block. NL Draw !M! card. NL Remove all Fire and Ice.";
-	private static final String UPDATE_DESC = "Gain !B! block. NL Draw !M! cards. NL Remove all Fire and Ice.";
+	private static final String IMG = "img/cards/icons/equality.png";
+	private static final String DESCRIPTION = "Gain !B! block. NL Draw !M! card. NL Remove Fire and Ice.";
+	private static final String UPDATE_DESC = "Gain !B! block. NL Draw !M! cards. NL Remove Fire and Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

@@ -18,10 +18,6 @@ public class FlameWall extends AbstractCustomCardWithType {
 	private static final String BG_IMG = BlackMageMod.SKILL_BG[2];
 	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[2];
 	private static final String DESCRIPTION = "Gain !B! block. NL Apply Fire.";
-	private static final String[] UPDATE_DESC = {
-		"Gain ",
-		" block. NL Apply Fire"
-	};
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

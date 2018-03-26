@@ -27,7 +27,7 @@ public class SheerCold extends CustomCardWithRender {
 	private static final int COST = 3;
 	
 	public SheerCold() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
+		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
 	}
 
 	@Override

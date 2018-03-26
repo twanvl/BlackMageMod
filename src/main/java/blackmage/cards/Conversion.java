@@ -21,16 +21,21 @@ public class Conversion extends CustomCardWithRender {
 	private static final String BG_IMG = BlackMageMod.SKILL_BG[0];
 	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[0];
 	private static final String DESCRIPTION = "Exchange Fire and Ice.";
+	private static final String UPGRADE_DESC = DESCRIPTION + " Apply an extra Fire or Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
-	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.BASIC;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 
 	private static final int COST = 0;
+	private static final int MAGIC = 0;
 	
 	public Conversion() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		
+		this.magicNumber = MAGIC;
+		this.baseMagicNumber = MAGIC;
 	}
 
 	@Override
@@ -40,6 +45,12 @@ public class Conversion extends CustomCardWithRender {
 
 	@Override
 	public void upgrade() {
+		if(!this.upgraded) {
+			this.upgradeName();
+			this.upgradeMagicNumber(1);
+			this.rawDescription = UPGRADE_DESC;
+			this.initializeDescription();
+		}
 	}
 
 	@Override
@@ -55,6 +66,13 @@ public class Conversion extends CustomCardWithRender {
 			fireAmount = p.getPower("bm_fire_power").amount;
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, fireAmount), fireAmount));
+		}
+		
+		if(this.magicNumber > 0) {
+			if(fireAmount > 0)
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 1), 1));
+			if(iceAmount > 0)
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, 1), 1));
 		}
 	}
 }

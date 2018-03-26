@@ -47,6 +47,10 @@ public class FirePower extends AbstractPower {
 				BlackMageMod.resetOrbColor((CustomPlayer)owner);
 			}else {
 				this.reducePower((int)Math.ceil((amount / 2.0f)));
+				if(this.amount == 0) {
+					AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+					BlackMageMod.resetOrbColor((CustomPlayer)owner);
+				}
 			}
 		}
 	}

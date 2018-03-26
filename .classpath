@@ -10,7 +10,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Steam/steamapps/common/SlayTheSpire/mods/BaseMod-GraysonnG.jar"/>
 	<classpathentry kind="lib" path="D:/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar"/>
 	<classpathentry kind="lib" path="D:/Steam/steamapps/common/SlayTheSpire/ModTheSpire.jar"/>
 	<classpathentry kind="src" path="src/main/java">
@@ -24,5 +23,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Steam/steamapps/common/SlayTheSpire/mods/BaseMod.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
