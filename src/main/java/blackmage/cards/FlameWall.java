@@ -17,7 +17,7 @@ public class FlameWall extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/flamewall.png";
 	private static final String BG_IMG = BlackMageMod.SKILL_BG[2];
 	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[2];
-	private static final String DESCRIPTION = "Gain !B! block. NL Apply Fire.";
+	private static final String DESCRIPTION = "Gain !B! block. For each Fire gain 1 Block. NL Apply Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -27,7 +27,6 @@ public class FlameWall extends AbstractCustomCardWithType {
 
 	private static final int COST = 1;
 	private static int BLOCK = 5;
-	private int blockFromBuff = 0;
 	
 	public FlameWall() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
@@ -44,24 +43,13 @@ public class FlameWall extends AbstractCustomCardWithType {
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			BLOCK += 3;
-		}
-	}
-
-	@Override
-	public void applyPowers() {
-		super.applyPowers();
-		
-		if(AbstractDungeon.player.hasPower("bm_fire_power")) {
-			this.block += AbstractDungeon.player.getPower("bm_fire_power").amount;
-			this.blockFromBuff = AbstractDungeon.player.getPower("bm_fire_power").amount;
-			this.isBlockModified = true;
+			this.upgradeBlock(3);
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block + blockFromBuff));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, 1), 1));
 	}
 

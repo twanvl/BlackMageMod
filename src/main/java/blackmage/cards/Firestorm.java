@@ -18,7 +18,7 @@ public class Firestorm extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/firestorm.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[2];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[2];
-	private static final String DESCRIPTION = "Deal !D! damage to all enemies. Apply !M! Vulnerable. NL Apply Fire";
+	private static final String DESCRIPTION = "Deal !D! fire damage to all enemies. Apply !M! Vulnerable. NL Apply Fire";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -37,8 +37,6 @@ public class Firestorm extends AbstractCustomCardWithType {
 		this.magicNumber = this.baseMagicNumber;
 		
 		this.baseDamage = ATK_DMG;
-		this.damageType = EnumPatch.FIRE_DAMAGE;
-		this.damageTypeForTurn = this.damageType;
 		this.isMultiDamage = true;
 	}
 

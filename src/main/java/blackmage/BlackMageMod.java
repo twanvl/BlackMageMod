@@ -173,11 +173,13 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		String[] fireNames = {"fire"};
 		String[] freezeNames = {"freeze"};
 		String[] shadowNames = {"dark"};
+		String[] unleashNames = {"unleash"};
 		
 		BaseMod.addKeyword(iceNames, "A buff that increases the damage of the next #bIce type attack card.");
 		BaseMod.addKeyword(fireNames, "A buff that increases the damage of the next #rFire type attack card.");
 		BaseMod.addKeyword(shadowNames, "A type of damage that ignores block.");
 		BaseMod.addKeyword(freezeNames, "Target is unable to attack.");
+		BaseMod.addKeyword(unleashNames, "Only lose half of your Ice and Fire at the end of your turn.");
 	}
 	
 	public void receiveEditCharacters() {
@@ -193,17 +195,20 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new FireStrike()); //Attack
 		BaseMod.addCard(new Defend_BlackMage()); //Skill
 		BaseMod.addCard(new Conversion()); //Skill
+		
 		//COMMON
 		BaseMod.addCard(new SnowWall()); //Skill
 		BaseMod.addCard(new FlameWall()); //Skill
 		BaseMod.addCard(new Equality()); //Skill
 		BaseMod.addCard(new FireBlast()); //Attack
 		BaseMod.addCard(new IceBlast()); //Attack
-		BaseMod.addCard(new ShadowStrike()); //Attack
-			//Ice Fortress
-			//Fire Fortress
+		BaseMod.addCard(new Snowflake());//Skill
+		BaseMod.addCard(new Ember());//Skill
+			//Ashes (0) Gain Block based on Fire
+			//Frost (0) Gain Block based on Ice
 			//Discard card
 			//More defend cards
+		
 		//UNCOMMON
 		BaseMod.addCard(new Blizzard()); //Attack
 		BaseMod.addCard(new Firestorm()); //Attack
@@ -212,12 +217,28 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Stasis()); //Power
 		BaseMod.addCard(new ShadowWall()); //Attack
 		BaseMod.addCard(new Swiftcast()); //Skill
+		BaseMod.addCard(new EnchantedRobes());
+		BaseMod.addCard(new CoolingWind());//Attack
+		BaseMod.addCard(new WarmingFlame());
+			//DoubleCast Power (1) next two cards are played for free
+			//More defend cards
 			//Skill
+		
+		//SHADOW PACK
+		BaseMod.addCard(new ShadowStrike()); //Attack
+		BaseMod.addCard(new ShadowWall()); //Attack
+		
+		
+		//THUNDER PACK
+			//
+		
+		
 		//RARE
 		BaseMod.addCard(new SheerCold()); //Skill
 		BaseMod.addCard(new Unleash()); //Power
 		BaseMod.addCard(new FocusFire()); //Skill
 		BaseMod.addCard(new FocusIce()); //Skill
+		
 			//Attack
 			//Attack
 			//Attack

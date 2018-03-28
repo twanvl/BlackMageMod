@@ -22,7 +22,7 @@ public class Unleash extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 	
-	private static final int COST = 3;
+	private static final int COST = 2;
 
 	public Unleash() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
@@ -37,7 +37,7 @@ public class Unleash extends CustomCard {
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			this.upgradeBaseCost(2);
+			this.upgradeBaseCost(1);
 			//this.isInnate = true;
 		}
 	}

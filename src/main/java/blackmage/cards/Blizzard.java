@@ -19,7 +19,7 @@ public class Blizzard extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/blizzard.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[1];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[1];
-	private static final String DESCRIPTION = "Deal !D! damage to all enemies 2 times. Apply !M! Weak. NL Apply Ice";
+	private static final String DESCRIPTION = "Deal !D! ice damage to all enemies 2 times. Apply !M! Weak. NL Apply Ice";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -38,8 +38,6 @@ public class Blizzard extends AbstractCustomCardWithType {
 		this.magicNumber = this.baseMagicNumber;
 		
 		this.baseDamage = ATK_DMG;
-		this.damageType = EnumPatch.ICE_DAMAGE;
-		this.damageTypeForTurn = this.damageType;
 		this.isMultiDamage = true;
 	}
 

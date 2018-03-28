@@ -35,9 +35,6 @@ public class FireBlast extends AbstractCustomCardWithType {
 	public FireBlast() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
-		this.damageType = EnumPatch.FIRE_DAMAGE;
-		this.damageTypeForTurn = EnumPatch.FIRE_DAMAGE;
-		
 		this.baseDamage = ATTACK_DMG;
 	}
 
@@ -64,7 +61,7 @@ public class FireBlast extends AbstractCustomCardWithType {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		AbstractDungeon.actionManager.addToBottom(new DiscardToHandAction(p));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, 2), 2));
 	}

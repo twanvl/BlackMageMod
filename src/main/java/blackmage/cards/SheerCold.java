@@ -38,6 +38,7 @@ public class SheerCold extends CustomCardWithRender {
 	@Override
 	public void upgrade() {
 		if(!this.upgraded) {
+			this.upgradeName();
 			this.upgradeBaseCost(2);
 		}
 	}

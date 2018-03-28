@@ -24,7 +24,7 @@ public class Equality extends CustomCard{
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
-	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 	
 	private static final int COST = 1;
 	private static final int DEFEND = 8;

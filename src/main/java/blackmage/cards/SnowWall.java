@@ -17,7 +17,7 @@ public class SnowWall extends AbstractCustomCardWithType {
 	private static final String IMG = "img/cards/icons/snowwall.png";
 	private static final String BG_IMG = BlackMageMod.SKILL_BG[1];
 	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[1];
-	private static final String DESCRIPTION = "Gain !B! block. NL Apply Ice.";
+	private static final String DESCRIPTION = "Gain !B! block. For each Ice gain 1 Block. NL Apply Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -27,7 +27,6 @@ public class SnowWall extends AbstractCustomCardWithType {
 
 	private static final int COST = 1;
 	private static final int BLOCK = 5;
-	private int blockFromBuff = 0;
 	
 	public SnowWall() {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
@@ -47,22 +46,10 @@ public class SnowWall extends AbstractCustomCardWithType {
 			this.upgradeBlock(3);
 		}
 	}
-	
-	@Override
-	public void applyPowers() {
-		super.applyPowers();
-		
-		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
-			this.block += AbstractDungeon.player.getPower("bm_ice_power").amount;
-			this.blockFromBuff = AbstractDungeon.player.getPower("bm_ice_power").amount;
-			this.isBlockModified = true;
-		}
-	}
-
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block + blockFromBuff));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 1), 1));
 	}
 

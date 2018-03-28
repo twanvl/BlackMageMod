@@ -40,7 +40,7 @@ public class FocusIce extends AbstractCustomCardWithType {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new FocusFire();
+		return new FocusIce();
 	}
 
 	@Override

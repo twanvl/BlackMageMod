@@ -35,8 +35,6 @@ public class IceStrike extends AbstractCustomCardWithType {
 		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, COLOR_TYPE);
 		
 		this.baseDamage = ATTACK_DMG;
-		this.damageType = EnumPatch.ICE_DAMAGE;
-		this.damageTypeForTurn = EnumPatch.ICE_DAMAGE;
 	}
 
 	@Override
@@ -54,7 +52,7 @@ public class IceStrike extends AbstractCustomCardWithType {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 1), 1));
 	}
 
