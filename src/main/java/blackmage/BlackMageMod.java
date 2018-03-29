@@ -102,6 +102,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		return new Texture(Gdx.files.internal("img/powers/unleash.png"));
 	}
 	
+	public static Texture getInvigoratePowerTexture() {
+		return new Texture(Gdx.files.internal("img/powers/invigorate.png"));
+	}
+	
 	public static Texture getCampfireExchangeButton() {
 		return new Texture(Gdx.files.internal("img/ui/exchange_button.png"));
 	}
@@ -238,6 +242,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Unleash()); //Power
 		BaseMod.addCard(new FocusFire()); //Skill
 		BaseMod.addCard(new FocusIce()); //Skill
+		BaseMod.addCard(new Doublecast());
 		
 			//Attack
 			//Attack
