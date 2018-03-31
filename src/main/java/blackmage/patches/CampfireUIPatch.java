@@ -20,11 +20,17 @@ public class CampfireUIPatch {
 			@SuppressWarnings("unchecked")
 			ArrayList<AbstractCampfireOption> campfireButtons = (ArrayList<AbstractCampfireOption>) ReflectionHacks.getPrivate(campfire, CampfireUI.class, "buttons");
 			
+			int height = 450;
+			if(campfireButtons.size() > 2) {
+				height = 180;
+			}
+			
 			ExchangeOption button = new ExchangeOption(true);
 			
 			if(AbstractDungeon.player instanceof BlackMageCharacter) {
 				campfireButtons.add(button);
-				campfireButtons.get(campfireButtons.size() - 1).setPosition(950 * Settings.scale, 180 * Settings.scale);
+				
+				campfireButtons.get(campfireButtons.size() - 1).setPosition(950 * Settings.scale, height * Settings.scale);
 			}
 		
 		} catch (SecurityException | IllegalArgumentException e) {
