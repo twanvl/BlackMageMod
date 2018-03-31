@@ -41,7 +41,7 @@ public class BlackMageCharacter extends CustomPlayer {
 		
 		
 		
-		super(name, setClass, orbTextures, orbVfx, null, null);
+		super(name, setClass, orbTextures, orbVfx, (String)null, (String)null);
 		
 		System.out.println("blackmage ctor : start");
 		
@@ -65,10 +65,6 @@ public class BlackMageCharacter extends CustomPlayer {
 		e.setTime(e.getEndTime() * MathUtils.random());
 		
 		System.out.println("blackmage ctor : finish");
-		
-		//ImageMaster.DECK_ICON = new Texture("img/ui/deck_icon.png");
-		//ImageMaster.DECK_BTN_BASE = new Texture("img/ui/deck_icon_p.png");
-		//this.deckTexture = new Texture("img/ui/deck_icon_p.png");
 	}
 	
 	

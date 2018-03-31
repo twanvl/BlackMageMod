@@ -18,7 +18,7 @@ public class CoolingWind extends AbstractCustomCardWithType {
 	
 	public static final String ID = "CoolingWind";
 	private static final String NAME = "Cooling Wind";
-	private static final String IMG = "img/cards/icons/blizzard.png";
+	private static final String IMG = "img/cards/icons/coolingwind.png";
 	private static final String BG_IMG = BlackMageMod.ATTACK_BG[1];
 	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[1];
 	private static final String DESCRIPTION = "Deal !D! ice damage. NL If you have Fire NL draw !M! card next turn. NL Apply Ice.";

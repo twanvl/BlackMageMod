@@ -79,7 +79,7 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 				break;
 			}
 			
-			if(modifier != 0) this.isDamageModified = true;
+			if(modifier != 0) this.isBlockModified = true;
 			
 			this.block += modifier;
 		}
@@ -136,7 +136,7 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 				break;
 			}
 			
-			if(modifier != 0) this.isDamageModified = true;
+			if(modifier != 0) this.isBlockModified = true;
 			
 			this.block += modifier;
 		}

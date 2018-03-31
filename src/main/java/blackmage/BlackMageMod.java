@@ -106,6 +106,14 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		return new Texture(Gdx.files.internal("img/powers/invigorate.png"));
 	}
 	
+	public static Texture getCardDrawPowerTexture() {
+		return new Texture(Gdx.files.internal("img/powers/carddraw.png"));
+	}
+	
+	public static Texture getLuckyPowerTexture() {
+		return new Texture(Gdx.files.internal("img/powers/lucky.png"));
+	}
+	
 	public static Texture getCampfireExchangeButton() {
 		return new Texture(Gdx.files.internal("img/ui/exchange_button.png"));
 	}
@@ -128,6 +136,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		return orbDefaultBG;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public BlackMageMod() {
 		BaseMod.subscribeToPostInitialize(this);
 		BaseMod.subscribeToEditCharacters(this);
@@ -178,12 +187,20 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		String[] freezeNames = {"freeze"};
 		String[] shadowNames = {"dark"};
 		String[] unleashNames = {"unleash"};
+		String[] metallicizeNames = {"metallicize"};
+		String[] vitalityNames = {"vitality"};
+		String[] invigorateNames = {"invigorate"};
+		String[] luckyNames = {"lucky"};
 		
 		BaseMod.addKeyword(iceNames, "A buff that increases the damage of the next #bIce type attack card.");
 		BaseMod.addKeyword(fireNames, "A buff that increases the damage of the next #rFire type attack card.");
 		BaseMod.addKeyword(shadowNames, "A type of damage that ignores block.");
 		BaseMod.addKeyword(freezeNames, "Target is unable to attack.");
 		BaseMod.addKeyword(unleashNames, "Only lose half of your Ice and Fire at the end of your turn.");
+		BaseMod.addKeyword(metallicizeNames, "Gain block at the end of your turn.");
+		BaseMod.addKeyword(vitalityNames, "Draw 1 card at the beginning of your turn.");
+		BaseMod.addKeyword(invigorateNames, "Gain 1 energy at the beginning or your turn.");
+		BaseMod.addKeyword(luckyNames, "After you use an attack, the next attack has a 25% chance of dealing 3x damage.");
 	}
 	
 	public void receiveEditCharacters() {
