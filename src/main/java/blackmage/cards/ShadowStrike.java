@@ -7,11 +7,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
-public class ShadowStrike extends CustomCardWithRender {
+public class ShadowStrike extends AbstractCustomCardWithType {
 	
 	public static final String ID = "ShadowStrike";
 	private static final String NAME = "Shadow Strike";
@@ -24,14 +23,13 @@ public class ShadowStrike extends CustomCardWithRender {
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
-	@SuppressWarnings("unused")
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.DARK;
 
 	private static final int COST = 1;
 	private static final int ATK_DMG = 7;
 	
 	public ShadowStrike() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		this.baseDamage = ATK_DMG;
 	}
 
@@ -53,4 +51,9 @@ public class ShadowStrike extends CustomCardWithRender {
 		AbstractDungeon.actionManager.addToBottom(new LoseHPAction(m, p, this.damage, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 	}
 
+	@Override
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		
+		return null;
+	}
 }

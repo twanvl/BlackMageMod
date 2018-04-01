@@ -89,11 +89,8 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 		    	}
 		    }
 		      
-		    AbstractDungeon.gridSelectScreen.open(
-		    		fire_ice_cards,
-		    		1, 
-		    		ExchangeOption.LABEL, 
-		    		false);
+		    AbstractDungeon.gridSelectScreen.open(fire_ice_cards, 1, ExchangeOption.LABEL, false, false, true, true);
+		    //AbstractDungeon.overlayMenu.cancelButton.show("Cancel");
 	    }
 		if (this.duration < 0.0F)
 	    {

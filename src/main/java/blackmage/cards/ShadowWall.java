@@ -8,11 +8,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
-public class ShadowWall extends CustomCardWithRender{
+public class ShadowWall extends AbstractCustomCardWithType{
 	public static final String ID = "ShadowBarrier";
 	private static final String NAME = "Shadow Barrier";
 	private static final String IMG = "img/cards/icons/shadowwall.png";
@@ -24,13 +23,14 @@ public class ShadowWall extends CustomCardWithRender{
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.DARK;
 	
 	private static final int COST = 2;
 	private static final int ATK_DMG = 10;
 	private static final int BLOCK = 10;
 
 	public ShadowWall() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseDamage = ATK_DMG;
 		this.baseBlock = BLOCK;
@@ -54,5 +54,10 @@ public class ShadowWall extends CustomCardWithRender{
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new LoseHPAction(m, p, this.damage, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+	}
+
+	@Override
+	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
+		return null;
 	}
 }

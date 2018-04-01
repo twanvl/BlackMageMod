@@ -1,5 +1,6 @@
 package blackmage.cards;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -22,6 +23,7 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 		super(id, name, img, bgTexture, bgTexture_p, cost, rawDescription, type, color, rarity, target, cardPool);
 		colorType = damageType;
 		this.willApplyPowers = true;
+		assignOrbTexture();
 	}
 	
 	public AbstractCustomCardWithType(String id, String name, String img, String bgTexture, String bgTexture_p,
@@ -30,6 +32,21 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 		super(id, name, img, bgTexture, bgTexture_p, cost, rawDescription, type, color, rarity, target, cardPool);
 		colorType = damageType;
 		this.willApplyPowers = willApplyPowers;
+		assignOrbTexture();
+	}
+	
+	private void assignOrbTexture() {
+		switch(colorType) {
+		case ICE:
+			this.setOrbTexture("img/cards/small/orb-ice.png", "img/cards/portrait/orb-ice.png");
+			break;
+		case FIRE:
+			this.setOrbTexture("img/cards/small/orb-fire.png", "img/cards/portrait/orb-fire.png");
+			break;
+		case DARK:
+			this.setOrbTexture("img/cards/small/orb-dark.png", "img/cards/portrait/orb-dark.png");
+			break;
+		}
 	}
 
 	@Override
@@ -140,6 +157,10 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 			
 			this.block += modifier;
 		}
+	}
+	
+	public void renderEnergy(SpriteBatch sb, float drawX, float drawY) {
+		
 	}
 	
 	public abstract AbstractCustomCardWithType getOpposite(boolean isUpgraded);

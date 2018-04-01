@@ -34,7 +34,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	private static final String AUTHOR = "Blank";
 	private static final String DESCRIPTION = "v0.0.1 NL Adds a new character based around the idea of a mage.";
 	
-	private static final Color MULTI = CardHelper.getColor(255f, 255f, 255f);
+	public static final Color MULTI = CardHelper.getColor(255f, 255f, 255f);
 	
 	//card base images
 	public static final String[] ATTACK_BG = {
@@ -46,12 +46,11 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final String[] SKILL_BG = {
 		"img/cards/small/skill_normal.png",
 		"img/cards/small/skill_ice.png",		
-		"img/cards/small/skill_fire.png"
+		"img/cards/small/skill_fire.png",
+		"img/cards/small/skill_shadow.png"
 	};
 	public static final String[] POWER_BG = {
-		"img/cards/small/power_normal.png",
-		"img/cards/small/power_ice.png",
-		"img/cards/small/power_fire.png",
+		"img/cards/small/power_normal.png"
 	};
 	
 	//card base portrait images
@@ -59,17 +58,16 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/portrait/attack_normal.png",
 		"img/cards/portrait/attack_ice.png",
 		"img/cards/portrait/attack_fire.png",
-		"img/cards/small/attack_shadow.png"
+		"img/cards/portrait/attack_shadow.png"
 	};
 	public static final String[] SKILL_BG_P = {
 		"img/cards/portrait/skill_normal.png",
 		"img/cards/portrait/skill_ice.png",		
-		"img/cards/portrait/skill_fire.png"
+		"img/cards/portrait/skill_fire.png",
+		"img/cards/portrait/skill_shadow.png"
 	};
 	public static final String[] POWER_BG_P = {
-		"img/cards/portrait/power_normal.png",
-		"img/cards/portrait/power_ice.png",
-		"img/cards/portrait/power_fire.png",
+		"img/cards/portrait/power_normal.png"
 	};
 	
 	//energy orb images
@@ -225,14 +223,14 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new IceBlast()); //Attack
 		BaseMod.addCard(new Snowflake());//Skill
 		BaseMod.addCard(new Ember());//Skill
+		BaseMod.addCard(new Blizzard()); //Attack
+		BaseMod.addCard(new Firestorm()); //Attack
 			//Ashes (0) Gain Block based on Fire
 			//Frost (0) Gain Block based on Ice
 			//Discard card
 			//More defend cards
 		
 		//UNCOMMON
-		BaseMod.addCard(new Blizzard()); //Attack
-		BaseMod.addCard(new Firestorm()); //Attack
 		BaseMod.addCard(new TemperatureShock()); //Attack
 		BaseMod.addCard(new MagesSong()); //Skill
 		BaseMod.addCard(new Stasis()); //Power
