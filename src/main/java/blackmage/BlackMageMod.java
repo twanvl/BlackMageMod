@@ -214,6 +214,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new FireStrike()); //Attack
 		BaseMod.addCard(new Defend_BlackMage()); //Skill
 		BaseMod.addCard(new Conversion()); //Skill
+		BaseMod.addCard(new Ash());
 		
 		//COMMON
 		BaseMod.addCard(new SnowWall()); //Skill
@@ -225,6 +226,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Ember());//Skill
 		BaseMod.addCard(new Blizzard()); //Attack
 		BaseMod.addCard(new Firestorm()); //Attack
+		BaseMod.addCard(new HotCoals());
 			//Ashes (0) Gain Block based on Fire
 			//Frost (0) Gain Block based on Ice
 			//Discard card
@@ -239,6 +241,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new EnchantedRobes());
 		BaseMod.addCard(new CoolingWind());//Attack
 		BaseMod.addCard(new WarmingFlame());
+		BaseMod.addCard(new TabletOfKnowledge());
 			//DoubleCast Power (1) next two cards are played for free
 			//More defend cards
 			//Skill
@@ -246,8 +249,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//SHADOW PACK
 		BaseMod.addCard(new ShadowStrike()); //Attack
 		BaseMod.addCard(new ShadowWall()); //Attack
-		
-		
+		BaseMod.addCard(new CursedIce());
+		BaseMod.addCard(new BlackFire());
 		//THUNDER PACK
 			//
 		
@@ -258,7 +261,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new FocusFire()); //Skill
 		BaseMod.addCard(new FocusIce()); //Skill
 		BaseMod.addCard(new Doublecast());
-		
+		BaseMod.addCard(new Incinerate());
 			//Attack
 			//Attack
 			//Attack

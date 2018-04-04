@@ -57,6 +57,7 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 			this.duration -= Gdx.graphics.getDeltaTime();
 			updateBlackScreenColor();
 		}
+		
 		if ((!this.selectedCard) && (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) {
 			CardCrawlGame.sound.play("CARD_EXHAUST");
 			
@@ -84,7 +85,8 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 		    	if (card instanceof AbstractCustomCardWithType) {
 		    		AbstractCustomCardWithType typeCard = (AbstractCustomCardWithType)card;
 		    		if (typeCard.colorType == AbstractCustomCardWithType.CardColorType.ICE || typeCard.colorType == AbstractCustomCardWithType.CardColorType.FIRE) {
-		    			fire_ice_cards.group.add(card);
+		    			if(typeCard.getOpposite(false) != null)
+		    				fire_ice_cards.group.add(card);
 		    		}
 		    	}
 		    }

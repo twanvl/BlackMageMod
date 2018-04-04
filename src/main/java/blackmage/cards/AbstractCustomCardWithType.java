@@ -4,9 +4,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
+import basemod.abstracts.CustomCard;
+import blackmage.BlackMageMod;
 
-public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
+public abstract class AbstractCustomCardWithType extends CustomCard{
 
 	public enum CardColorType
 	{
@@ -17,22 +18,26 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 	public CardColorType colorType;
 	private boolean willApplyPowers;
 	
-	public AbstractCustomCardWithType(String id, String name, String img, String bgTexture, String bgTexture_p,
+	public AbstractCustomCardWithType(String id, String name, String img, 
 			int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target,
 			int cardPool, CardColorType damageType) {
-		super(id, name, img, bgTexture, bgTexture_p, cost, rawDescription, type, color, rarity, target, cardPool);
+		super(id, name, img, cost, rawDescription, type, color, rarity, target, cardPool);
 		colorType = damageType;
 		this.willApplyPowers = true;
 		assignOrbTexture();
+		assignBGTexture();
 	}
 	
-	public AbstractCustomCardWithType(String id, String name, String img, String bgTexture, String bgTexture_p,
+	
+
+	public AbstractCustomCardWithType(String id, String name, String img,
 			int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target,
 			int cardPool, CardColorType damageType, boolean willApplyPowers) {
-		super(id, name, img, bgTexture, bgTexture_p, cost, rawDescription, type, color, rarity, target, cardPool);
+		super(id, name, img, cost, rawDescription, type, color, rarity, target, cardPool);
 		colorType = damageType;
 		this.willApplyPowers = willApplyPowers;
 		assignOrbTexture();
+		assignBGTexture();
 	}
 	
 	private void assignOrbTexture() {
@@ -47,6 +52,42 @@ public abstract class AbstractCustomCardWithType extends CustomCardWithRender{
 			this.setOrbTexture("img/cards/small/orb-dark.png", "img/cards/portrait/orb-dark.png");
 			break;
 		}
+	}
+	
+	private void assignBGTexture() {
+		String[] textureListPointer;
+		String[] portraitListPointer;
+		int indexPointer = 0;
+		
+		switch(type) {
+		case ATTACK:
+			textureListPointer = BlackMageMod.ATTACK_BG;
+			portraitListPointer = BlackMageMod.ATTACK_BG_P;
+			break;
+		default:
+		case SKILL:
+			textureListPointer = BlackMageMod.SKILL_BG;
+			portraitListPointer = BlackMageMod.SKILL_BG_P;
+			break;
+		case POWER:
+			textureListPointer = BlackMageMod.POWER_BG;
+			portraitListPointer = BlackMageMod.POWER_BG_P;
+			break;
+		}
+		
+		switch(colorType) {
+		case ICE:
+			indexPointer = 1;
+			break;
+		case FIRE:
+			indexPointer = 2;
+			break;
+		case DARK:
+			indexPointer = 3;
+			break;
+		}
+		
+		this.setBackgroundTexture(textureListPointer[indexPointer], portraitListPointer[indexPointer]);
 	}
 
 	@Override

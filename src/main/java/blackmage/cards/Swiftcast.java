@@ -52,8 +52,9 @@ public class Swiftcast extends CustomCard {
 		CardGroup ice_fire_cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 		for(AbstractCard card : hand.group) {
 			if(card instanceof AbstractCustomCardWithType) {
-				if(card.costForTurn != 0)
-					ice_fire_cards.group.add(card);
+				if(((AbstractCustomCardWithType)card).colorType == AbstractCustomCardWithType.CardColorType.ICE || ((AbstractCustomCardWithType)card).colorType == AbstractCustomCardWithType.CardColorType.FIRE)
+					if(card.costForTurn != 0)
+						ice_fire_cards.group.add(card);
 			}
 		}
 		

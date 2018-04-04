@@ -5,18 +5,16 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import basemod.abstracts.CustomCardWithRender;
-import blackmage.BlackMageMod;
+
+import basemod.abstracts.CustomCard;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.LuckyPower;
 
-public class LuckyChoice extends CustomCardWithRender {
+public class LuckyChoice extends CustomCard {
 	
 	public static final String ID = "LuckyChoice";
 	private static final String NAME = "Lucky";
 	private static final String IMG = "img/cards/icons/lucky.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[0];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[0];
 	private static final String DESCRIPTION = "Gain Luck.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
@@ -27,7 +25,7 @@ public class LuckyChoice extends CustomCardWithRender {
 	private static final int COST = -2;
 	
 	public LuckyChoice() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
 		dontTriggerOnUseCard = true;
 	    purgeOnUse = true;
 	}

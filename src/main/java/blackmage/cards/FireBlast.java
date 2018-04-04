@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import blackmage.BlackMageMod;
 import blackmage.actions.DiscardToHandAction;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
@@ -18,9 +17,7 @@ public class FireBlast extends AbstractCustomCardWithType {
 	
 	public static final String ID = "FireBlast";
 	private static final String NAME = "Fire Blast";
-	private static final String IMG = "img/cards/icons/strike-fire.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[2];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[2];
+	private static final String IMG = "img/cards/icons/fireblast.png";
 	private static final String DESCRIPTION = "Deal !D! fire damage. Pick 1 card from your discard pile and add it to your hand. NL Apply 2 Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
@@ -33,7 +30,7 @@ public class FireBlast extends AbstractCustomCardWithType {
 	private static final int ATTACK_DMG = 10;
 	
 	public FireBlast() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseDamage = ATTACK_DMG;
 	}

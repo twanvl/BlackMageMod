@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
 public class FocusFire extends AbstractCustomCardWithType {
@@ -14,8 +13,6 @@ public class FocusFire extends AbstractCustomCardWithType {
 	public static final String ID = "FocusFire";
 	private static final String NAME = "Focus: Fire";
 	private static final String IMG = "img/cards/icons/conversion.png";
-	private static final String BG_IMG = BlackMageMod.SKILL_BG[2];
-	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[2];
 	private static final String DESCRIPTION = "Exhaust all Ice cards. NL Exhaust.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
@@ -27,7 +24,7 @@ public class FocusFire extends AbstractCustomCardWithType {
 	private static final int COST = 2;
 	
 	public FocusFire() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		this.exhaust = true;
 	}
 

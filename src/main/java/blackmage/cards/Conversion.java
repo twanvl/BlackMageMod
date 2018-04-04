@@ -7,19 +7,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCardWithRender;
-import blackmage.BlackMageMod;
+import basemod.abstracts.CustomCard;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
 import blackmage.powers.IcePower;
 
-public class Conversion extends CustomCardWithRender {
+public class Conversion extends CustomCard {
 	
 	public static final String ID = "Conversion";
 	private static final String NAME = "Conversion";
 	private static final String IMG = "img/cards/icons/conversion.png";
-	private static final String BG_IMG = BlackMageMod.SKILL_BG[0];
-	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[0];
 	private static final String DESCRIPTION = "Exchange Fire and Ice.";
 	private static final String UPGRADE_DESC = DESCRIPTION + " Apply an extra Fire or Ice.";
 	
@@ -32,7 +29,7 @@ public class Conversion extends CustomCardWithRender {
 	private static final int MAGIC = 0;
 	
 	public Conversion() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

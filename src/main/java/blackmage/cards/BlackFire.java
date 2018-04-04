@@ -2,23 +2,22 @@ package blackmage.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
 
-public class WarmingFlame extends AbstractCustomCardWithType {
+public class BlackFire extends AbstractCustomCardWithType {
 	
-	public static final String ID = "WarmingFlame";
-	private static final String NAME = "Warming Flame";
-	private static final String IMG = "img/cards/icons/warmingflame.png";
-	private static final String DESCRIPTION = "Deal !D! fire damage. NL If you have Ice NL heal !M! HP. NL Apply Fire.";
+	public static final String ID = "BlackFire";
+	private static final String NAME = "Black Fire";
+	private static final String IMG = "img/cards/icons/strike-fire.png";
+	private static final String DESCRIPTION = "Deal !D! Dark Fire damage. Apply Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -27,20 +26,18 @@ public class WarmingFlame extends AbstractCustomCardWithType {
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.FIRE;
 
 	private static final int COST = 1;
-	private static final int ATK_DMG = 8;
-	private static final int MAGIC = 3;
-	
-	public WarmingFlame() {
+	private static final int ATK_DMG = 9;
+
+	public BlackFire() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseDamage = ATK_DMG;
-		this.magicNumber = MAGIC;
-		this.baseMagicNumber = MAGIC;
+		this.setBackgroundTexture(BlackMageMod.ATTACK_BG[3], BlackMageMod.ATTACK_BG_P[3]);
 	}
 	
 	@Override
 	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
-		AbstractCustomCardWithType opposite = new CoolingWind();
+		AbstractCustomCardWithType opposite = new CursedIce();
 		if (isUpgraded)
 			opposite.upgrade();
 		return opposite;
@@ -48,25 +45,20 @@ public class WarmingFlame extends AbstractCustomCardWithType {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new WarmingFlame();
+		return new BlackFire();	
 	}
 
 	@Override
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(1);
+			this.upgradeDamage(3);
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-		
-		if(p.hasPower("bm_ice_power")) {
-			AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, magicNumber));
-		}
-		
+		AbstractDungeon.actionManager.addToBottom(new LoseHPAction(m, p, this.damage, AbstractGameAction.AttackEffect.SLASH_HEAVY));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, 1), 1));
 	}
 

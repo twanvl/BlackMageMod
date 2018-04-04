@@ -9,55 +9,55 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
 
-public class FireStrike extends AbstractCustomCardWithType {
-
-	public static final String ID = "strike_fire";
-	private static final String NAME = "Fire Strike";
-	private static final String IMG = "img/cards/icons/strike-fire.png";
-	private static final String DESCRIPTION = "Deal !D! fire damage. NL Apply Fire.";
+public class Ash extends AbstractCustomCardWithType {
+	
+	public static final String ID = "bm_Ash";
+	private static final String NAME = "Ashes";
+	private static final String IMG = "img/cards/icons/ash.png";
+	private static final String DESCRIPTION = "Deal !D! damage. NL Apply Fire. NL Exhaust.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
-	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.BASIC;
+	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
-	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.FIRE;
+
+	private static final int COST = 0;
+	private static final int ATK_DMG = 3;
 	
-	private static final int COST = 1;
-	private static final int ATTACK_DMG = 6;
-	
-	public FireStrike() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, COLOR_TYPE);
+	public Ash() {
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, AbstractCustomCardWithType.CardColorType.FIRE);
 		
-		this.baseDamage = ATTACK_DMG;
+		this.baseDamage = ATK_DMG;
+		this.exhaust = true;
+		this.setBackgroundTexture(BlackMageMod.ATTACK_BG[0], BlackMageMod.ATTACK_BG_P[0]);
 	}
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new FireStrike();
+		return new Ash();
 	}
 
 	@Override
 	public void upgrade() {
-		if(!this.upgraded) {
+		if(!upgraded) {
 			this.upgradeName();
-			this.upgradeDamage(3);
+			this.upgradeDamage(2);
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, 1), 1));
 	}
 
 	@Override
 	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
-		AbstractCustomCardWithType opposite = new IceStrike();
-		if (isUpgraded)
-			opposite.upgrade();
-		return opposite;
+		return null;
 	}
+
 }

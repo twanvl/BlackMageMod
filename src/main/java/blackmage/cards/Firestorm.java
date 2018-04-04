@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import blackmage.BlackMageMod;
+
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
 
@@ -16,8 +16,6 @@ public class Firestorm extends AbstractCustomCardWithType {
 	public static final String ID = "Firestorm";
 	private static final String NAME = "Firestorm";
 	private static final String IMG = "img/cards/icons/firestorm.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[2];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[2];
 	private static final String DESCRIPTION = "Deal !D! fire damage to all enemies. Apply !M! Vulnerable. NL Apply Fire";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
@@ -31,7 +29,7 @@ public class Firestorm extends AbstractCustomCardWithType {
 	private static final int MAGIC = 1;
 	
 	public Firestorm() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;

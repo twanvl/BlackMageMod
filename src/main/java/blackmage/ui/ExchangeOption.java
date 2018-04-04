@@ -9,7 +9,7 @@ import blackmage.effects.CampfireExchangeEffect;
 public class ExchangeOption extends AbstractCampfireOption {
 
 	public static final String LABEL = "Exchange";
-	public static final String DESCRIPTION = "Exchange your Ice and Fire cards versa.";
+	public static final String DESCRIPTION = "Exchange your Ice and Fire cards.";
 	
 	public ExchangeOption(boolean active) {
 		this.label = "Exchange";

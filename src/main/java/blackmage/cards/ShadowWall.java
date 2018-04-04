@@ -8,15 +8,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
 public class ShadowWall extends AbstractCustomCardWithType{
 	public static final String ID = "ShadowBarrier";
 	private static final String NAME = "Shadow Barrier";
 	private static final String IMG = "img/cards/icons/shadowwall.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[3];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[3];
 	private static final String DESCRIPTION = "Deal !D! dark damage. Gain !B! block.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
@@ -30,7 +27,7 @@ public class ShadowWall extends AbstractCustomCardWithType{
 	private static final int BLOCK = 10;
 
 	public ShadowWall() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseDamage = ATK_DMG;
 		this.baseBlock = BLOCK;

@@ -2,23 +2,22 @@ package blackmage.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
+import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.IcePower;
 
-public class CoolingWind extends AbstractCustomCardWithType {
+public class CursedIce extends AbstractCustomCardWithType {
 	
-	public static final String ID = "CoolingWind";
-	private static final String NAME = "Cooling Wind";
-	private static final String IMG = "img/cards/icons/coolingwind.png";
-	private static final String DESCRIPTION = "Deal !D! ice damage. NL If you have Fire NL draw !M! card next turn. NL Apply Ice.";
+	public static final String ID = "CursedIce";
+	private static final String NAME = "Cursed Ice";
+	private static final String IMG = "img/cards/icons/strike-ice.png";
+	private static final String DESCRIPTION = "Deal !D! Dark Ice damage. Apply Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -27,20 +26,18 @@ public class CoolingWind extends AbstractCustomCardWithType {
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.ICE;
 
 	private static final int COST = 1;
-	private static final int ATK_DMG = 8;
-	private static final int MAGIC = 1;
-	
-	public CoolingWind() {
+	private static final int ATK_DMG = 9;
+
+	public CursedIce() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseDamage = ATK_DMG;
-		this.magicNumber = MAGIC;
-		this.baseMagicNumber = MAGIC;
+		this.setBackgroundTexture(BlackMageMod.ATTACK_BG[3], BlackMageMod.ATTACK_BG_P[3]);
 	}
 	
 	@Override
 	public AbstractCustomCardWithType getOpposite(boolean isUpgraded) {
-		AbstractCustomCardWithType opposite = new WarmingFlame();
+		AbstractCustomCardWithType opposite = new BlackFire();
 		if (isUpgraded)
 			opposite.upgrade();
 		return opposite;
@@ -48,27 +45,20 @@ public class CoolingWind extends AbstractCustomCardWithType {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new CoolingWind();
+		return new CursedIce();
 	}
 
 	@Override
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(1);
-			this.rawDescription = "Deal !D! ice damage. NL If you have Fire NL draw !M! cards next turn. NL Apply Ice.";
-			initializeDescription();
+			this.upgradeDamage(3);
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-		
-		if(p.hasPower("bm_fire_power")) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DrawCardNextTurnPower(p, magicNumber), magicNumber));
-		}
-		
+		AbstractDungeon.actionManager.addToBottom(new LoseHPAction(m, p, this.damage, AbstractGameAction.AttackEffect.SLASH_HEAVY));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IcePower(p, 1), 1));
 	}
 

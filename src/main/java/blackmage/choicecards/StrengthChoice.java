@@ -7,17 +7,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-import basemod.abstracts.CustomCardWithRender;
-import blackmage.BlackMageMod;
+import basemod.abstracts.CustomCard;
 import blackmage.patches.EnumPatch;
 
-public class StrengthChoice extends CustomCardWithRender {
+public class StrengthChoice extends CustomCard {
 
 	public static final String ID = "StrengthChoise";
 	private static final String NAME = "Empowering";
 	private static final String IMG = "img/cards/icons/strength.png";
-	private static final String BG_IMG = BlackMageMod.ATTACK_BG[0];
-	private static final String BG_IMG_P = BlackMageMod.ATTACK_BG_P[0];
 	private static final String DESCRIPTION = "Gain 5 Strength.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
@@ -28,7 +25,7 @@ public class StrengthChoice extends CustomCardWithRender {
 	private static final int COST = -2;
 	
 	public StrengthChoice() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
 		dontTriggerOnUseCard = true;
 	    purgeOnUse = true;
 	}

@@ -8,12 +8,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.ModalChoice;
-import basemod.helpers.ModalChoice.Callback;
 import basemod.helpers.ModalChoiceBuilder;
 import blackmage.choicecards.*;
 import blackmage.patches.EnumPatch;
 
-public class EnchantedRobes extends CustomCard implements Callback{
+public class EnchantedRobes extends CustomCard {
 	
 	public static final String ID = "EnchantedRobes";
 	private static final String NAME = "Enchanted Robes";
@@ -41,7 +40,10 @@ public class EnchantedRobes extends CustomCard implements Callback{
 
 	@Override
 	public void upgrade() {
-		
+		if(!this.upgraded) {
+			this.upgradeName();
+			this.upgradeBaseCost(0);
+		}
 	}
 
 	@Override
@@ -57,7 +59,6 @@ public class EnchantedRobes extends CustomCard implements Callback{
 		//Spiked
 		
 		ModalChoiceBuilder m = new ModalChoiceBuilder();
-		m.setCallback(this);
 		m.setTitle("Pick an Enchantment");
 		int iter = 0;
 		for(int i = choices.size() - 1; i >= 0; i--) {
@@ -68,25 +69,9 @@ public class EnchantedRobes extends CustomCard implements Callback{
 			iter++;
 			if(iter > 2)
 				break;
-		}
-		
-		//Invigorate
-		//Increased Card Draw
-		//Metallicize
-		//Strength
-		//Dexterity
-		//Burst effect for this class
-		
-		//pick 3 at random
-		
-		
+		}		
 		
 		ModalChoice choice = m.create();
 		choice.open();
-	}
-
-	@Override
-	public void optionSelected(int optionNum) {
-		//NOP
 	}
 }

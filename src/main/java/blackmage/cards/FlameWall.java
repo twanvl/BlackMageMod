@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
 
@@ -15,8 +14,6 @@ public class FlameWall extends AbstractCustomCardWithType {
 	public static final String ID = "FlameWall";
 	private static final String NAME = "Flame Wall";
 	private static final String IMG = "img/cards/icons/flamewall.png";
-	private static final String BG_IMG = BlackMageMod.SKILL_BG[2];
-	private static final String BG_IMG_P = BlackMageMod.SKILL_BG_P[2];
 	private static final String DESCRIPTION = "Gain !B! block. For each Fire gain 1 Block. NL Apply Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
@@ -29,7 +26,7 @@ public class FlameWall extends AbstractCustomCardWithType {
 	private static int BLOCK = 5;
 	
 	public FlameWall() {
-		super(ID, NAME, IMG, BG_IMG, BG_IMG_P, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 	
 		this.baseBlock = BLOCK;
 	}
