@@ -16,7 +16,7 @@ public class Firestorm extends AbstractCustomCardWithType {
 	public static final String ID = "Firestorm";
 	private static final String NAME = "Firestorm";
 	private static final String IMG = "img/cards/icons/firestorm.png";
-	private static final String DESCRIPTION = "Deal !D! fire damage to all enemies. Apply !M! Vulnerable. NL Apply Fire";
+	private static final String DESCRIPTION = "Deal !D! fire damage to all enemies. Apply !M! Vulnerable. NL Gain 1 Fire";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

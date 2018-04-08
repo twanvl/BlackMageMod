@@ -20,7 +20,7 @@ public class Invigorate extends AbstractPower{
 		updateDescription();
 		
 		this.type = PowerType.BUFF;
-		this.img = BlackMageMod.getInvigoratePowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/invigorate.png");
 	}
 	
 	@Override

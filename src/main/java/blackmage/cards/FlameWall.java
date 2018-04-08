@@ -14,7 +14,7 @@ public class FlameWall extends AbstractCustomCardWithType {
 	public static final String ID = "FlameWall";
 	private static final String NAME = "Flame Wall";
 	private static final String IMG = "img/cards/icons/flamewall.png";
-	private static final String DESCRIPTION = "Gain !B! block. For each Fire gain 1 Block. NL Apply Fire.";
+	private static final String DESCRIPTION = "Gain !B! block. For each Fire gain 1 Block. NL Gain 1 Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

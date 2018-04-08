@@ -18,7 +18,7 @@ public class CoolingWind extends AbstractCustomCardWithType {
 	public static final String ID = "CoolingWind";
 	private static final String NAME = "Cooling Wind";
 	private static final String IMG = "img/cards/icons/coolingwind.png";
-	private static final String DESCRIPTION = "Deal !D! ice damage. NL If you have Fire NL draw !M! card next turn. NL Apply Ice.";
+	private static final String DESCRIPTION = "Deal !D! ice damage. NL If you have Fire NL draw !M! card next turn. NL Gain 1 Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

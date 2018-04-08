@@ -20,8 +20,8 @@ public class TabletOfKnowledge extends CustomCard {
 	
 	public static final String ID = "RuneOfKnowledge";
 	private static final String NAME = "Rune of Knowledge";
-	private static final String IMG = "img/cards/icons/unleash.png";
-	private static final String DESCRIPTION = "Gain 8 block. Gain and extra effect.";
+	private static final String IMG = "img/cards/icons/rune.png";
+	private static final String DESCRIPTION = "Gain 8 block. Gain an extra effect.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -41,7 +41,7 @@ public class TabletOfKnowledge extends CustomCard {
 		
 		tips.add(new TooltipInfo("Ice", "If you have Ice, shuffle a card into your draw pile."));
 		tips.add(new TooltipInfo("Fire", "If you have Fire, discard a card."));
-		tips.add(new TooltipInfo("Niether", "If you have Neither, gain 5 more block."));
+		tips.add(new TooltipInfo("Neither", "If you have Neither, gain 5 more block."));
 		
 		this.baseBlock = BLOCK;
 	}
@@ -53,22 +53,7 @@ public class TabletOfKnowledge extends CustomCard {
 
 	@Override
 	public void upgrade() {
-		// TODO Auto-generated method stub
-
-	}
-	
-	@Override
-	public void triggerWhenDrawn() {
-		isInHand = true;
-	}
-
-	@Override
-	public void triggerOnEndOfPlayerTurn() {
-		isInHand = false;
 		
-		if(AbstractDungeon.player.hand.group.contains(this)) {
-			isInHand = true;
-		}
 	}
 
 	@Override
@@ -82,6 +67,7 @@ public class TabletOfKnowledge extends CustomCard {
 
 	@Override
 	public void applyPowers() {
+		super.applyPowers();
 		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
 			this.setOrbTexture("img/cards/small/orb-ice.png", "img/cards/portrait/orb-ice.png");
 			this.rawDescription = "Gain 8 block. Shuffle a card into your draw pile.";
@@ -98,6 +84,7 @@ public class TabletOfKnowledge extends CustomCard {
 
 	@Override
 	public void calculateCardDamage(AbstractMonster m) {
+		super.calculateCardDamage(m);
 		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
 			this.setOrbTexture("img/cards/small/orb-ice.png", "img/cards/portrait/orb-ice.png");
 			this.rawDescription = "Gain 8 block. Shuffle a card into your draw pile.";

@@ -17,7 +17,7 @@ public class IceStrike extends AbstractCustomCardWithType {
 	public static final String ID = "strike_ice";
 	private static final String NAME = "Ice Strike";
 	private static final String IMG = "img/cards/icons/strike-ice.png";
-	private static final String DESCRIPTION = "Deal !D! ice damage. NL Apply Ice.";
+	private static final String DESCRIPTION = "Deal !D! ice damage. NL Gain 1 Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

@@ -18,7 +18,7 @@ public class WarmingFlame extends AbstractCustomCardWithType {
 	public static final String ID = "WarmingFlame";
 	private static final String NAME = "Warming Flame";
 	private static final String IMG = "img/cards/icons/warmingflame.png";
-	private static final String DESCRIPTION = "Deal !D! fire damage. NL If you have Ice NL heal !M! HP. NL Apply Fire.";
+	private static final String DESCRIPTION = "Deal !D! fire damage. NL If you have Ice NL heal !M! HP. NL Gain 1 Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

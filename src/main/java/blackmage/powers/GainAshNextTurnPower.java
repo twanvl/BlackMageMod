@@ -22,7 +22,7 @@ public class GainAshNextTurnPower extends AbstractPower {
 		updateDescription();
 		
 		this.type = AbstractPower.PowerType.BUFF;
-		this.img = BlackMageMod.getCardDrawPowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/carddraw.png");
 		this.isTurnBased = true;
 	}
 	

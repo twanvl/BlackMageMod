@@ -2,6 +2,7 @@ package blackmage;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -35,6 +36,12 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	private static final String DESCRIPTION = "v0.0.1 NL Adds a new character based around the idea of a mage.";
 	
 	public static final Color MULTI = CardHelper.getColor(255f, 255f, 255f);
+	
+	public static HashMap<String, Texture> imgMap;
+	
+	static {
+		imgMap = new HashMap<>();
+	}
 	
 	//card base images
 	public static final String[] ATTACK_BG = {
@@ -88,34 +95,6 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	private static Texture orbRedBG = null;
 	private static Texture orbDefaultBG = null;
 	
-	public static Texture getIcePowerTexture() {
-		return new Texture(Gdx.files.internal("img/powers/ice.png"));
-	}
-	
-	public static Texture getFirePowerTexture() {
-		return new Texture(Gdx.files.internal("img/powers/fire.png"));
-	}
-	
-	public static Texture getUnleashPowerTexture() {
-		return new Texture(Gdx.files.internal("img/powers/unleash.png"));
-	}
-	
-	public static Texture getInvigoratePowerTexture() {
-		return new Texture(Gdx.files.internal("img/powers/invigorate.png"));
-	}
-	
-	public static Texture getCardDrawPowerTexture() {
-		return new Texture(Gdx.files.internal("img/powers/carddraw.png"));
-	}
-	
-	public static Texture getLuckyPowerTexture() {
-		return new Texture(Gdx.files.internal("img/powers/lucky.png"));
-	}
-	
-	public static Texture getCampfireExchangeButton() {
-		return new Texture(Gdx.files.internal("img/ui/exchange_button.png"));
-	}
-	
 	public static Texture getOrbBlueBG() {
 		if(orbBlueBG == null)
 			orbBlueBG = new Texture("img/character/orb/enabled/layer1-blue.png");
@@ -133,6 +112,20 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 			orbDefaultBG = new Texture("img/character/orb/enabled/layer1.png");
 		return orbDefaultBG;
 	}
+	
+	public static Texture getTexture(String textureString) {
+		if(imgMap.get(textureString) == null) {
+			loadTexture(textureString);
+		}
+		
+		return imgMap.get(textureString);
+	}
+
+	private static void loadTexture(String textureString) {
+		System.out.println("Loading Texture: " + textureString);
+		imgMap.put(textureString, new Texture(textureString));
+	}
+	
 	
 	@SuppressWarnings("deprecation")
 	public BlackMageMod() {

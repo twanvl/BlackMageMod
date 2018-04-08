@@ -2,6 +2,7 @@ package blackmage.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +15,7 @@ public class Incinerate extends AbstractCustomCardWithType {
 	private static final String ID = "Incinerate";
 	private static final String NAME = "Incinerate";
 	private static final String IMG = "img/cards/icons/incinerate.png";
-	private static final String DESCRIPTION = "Deal !D! Fire damage to all enemies for each stack of Fire. NL Exhaust.";
+	private static final String DESCRIPTION = "Deal !D! Fire damage to all enemies for each stack of Fire. Lose all Fire. NL Exhaust.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -86,6 +87,8 @@ public class Incinerate extends AbstractCustomCardWithType {
 		for(int i = 0; i < magicNumber; i++) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AttackEffect.FIRE));
 		}
+		if(p.hasPower("bm_fire_power"))
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
 	}
 
 }

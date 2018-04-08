@@ -17,7 +17,7 @@ public class FireStrike extends AbstractCustomCardWithType {
 	public static final String ID = "strike_fire";
 	private static final String NAME = "Fire Strike";
 	private static final String IMG = "img/cards/icons/strike-fire.png";
-	private static final String DESCRIPTION = "Deal !D! fire damage. NL Apply Fire.";
+	private static final String DESCRIPTION = "Deal !D! fire damage. NL Gain 1 Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

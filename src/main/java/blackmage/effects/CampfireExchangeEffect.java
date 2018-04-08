@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 import blackmage.cards.AbstractCustomCardWithType;
+import blackmage.patches.GridSelectScreenPatch;
 import blackmage.ui.ExchangeOption;
 
 public class CampfireExchangeEffect extends AbstractGameEffect{
@@ -91,7 +92,8 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 		    	}
 		    }
 		      
-		    AbstractDungeon.gridSelectScreen.open(fire_ice_cards, 1, ExchangeOption.LABEL, false, false, true, true);
+		    AbstractDungeon.gridSelectScreen.open(fire_ice_cards, 1, ExchangeOption.LABEL, true);
+		    GridSelectScreenPatch.renderAsExchange = true;
 		    //AbstractDungeon.overlayMenu.cancelButton.show("Cancel");
 	    }
 		if (this.duration < 0.0F)
@@ -101,6 +103,7 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 			{
 				com.megacrit.cardcrawl.rooms.AbstractRoom.waitTimer = 0.0F;
 				AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+				GridSelectScreenPatch.renderAsExchange = false;
 				((RestRoom)AbstractDungeon.getCurrRoom()).cutFireSound();
 			}
 	    }
