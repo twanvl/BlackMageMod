@@ -18,7 +18,7 @@ public class IceBlast extends AbstractCustomCardWithType {
 	public static final String ID = "IceBlast";
 	private static final String NAME = "Ice Blast";
 	private static final String IMG = "img/cards/icons/iceblast.png";
-	private static final String DESCRIPTION = "Deal !D! ice damage. NL Pick a card from your Draw pile. NL Gain 2 Ice.";
+	private static final String DESCRIPTION = "Deal !D! ice damage. NL Pick 1 card from your Draw pile and add it to your hand. NL Gain 2 Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

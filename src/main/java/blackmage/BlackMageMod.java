@@ -57,7 +57,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/small/skill_shadow.png"
 	};
 	public static final String[] POWER_BG = {
-		"img/cards/small/power_normal.png"
+		"img/cards/small/power_normal.png",
+		"img/cards/small/power_shadow.png",
+		"img/cards/small/power_shadow.png",
+		"img/cards/small/power_shadow.png"
 	};
 	
 	//card base portrait images
@@ -74,7 +77,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/portrait/skill_shadow.png"
 	};
 	public static final String[] POWER_BG_P = {
-		"img/cards/portrait/power_normal.png"
+		"img/cards/portrait/power_normal.png",
+		"img/cards/portrait/power_shadow.png",
+		"img/cards/portrait/power_shadow.png",
+		"img/cards/portrait/power_shadow.png"
 	};
 	
 	//energy orb images
@@ -91,26 +97,16 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final String BLACK_MAGE_SKELETON_ATLAS = "img/character/player/idle/skeleton.atlas";
 	public static final String BLACK_MAGE_SKELETON_JSON = "img/character/player/idle/skeleton.json";
 	
-	private static Texture orbBlueBG = null;
-	private static Texture orbRedBG = null;
-	private static Texture orbDefaultBG = null;
-	
 	public static Texture getOrbBlueBG() {
-		if(orbBlueBG == null)
-			orbBlueBG = new Texture("img/character/orb/enabled/layer1-blue.png");
-		return orbBlueBG;
+		return getTexture("img/character/orb/enabled/layer1-blue.png");
 	}
 	
 	public static Texture getOrbRedBG() {
-		if(orbRedBG == null)
-			orbRedBG = new Texture("img/character/orb/enabled/layer1-red.png");
-		return orbRedBG;
+		return getTexture("img/character/orb/enabled/layer1-red.png");
 	}
 	
 	public static Texture getOrbMultiBG() {
-		if(orbDefaultBG == null)
-			orbDefaultBG = new Texture("img/character/orb/enabled/layer1.png");
-		return orbDefaultBG;
+		return getTexture("img/character/orb/enabled/layer1.png");
 	}
 	
 	public static Texture getTexture(String textureString) {
@@ -244,6 +240,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new ShadowWall()); //Attack
 		BaseMod.addCard(new CursedIce());
 		BaseMod.addCard(new BlackFire());
+		BaseMod.addCard(new DarkArmor());
 		//THUNDER PACK
 			//
 		

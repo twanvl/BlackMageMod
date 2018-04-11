@@ -32,21 +32,14 @@ public class Invigorate extends AbstractPower{
 		}
 	}
 	
-	public void atEndOfTurn(boolean isPlayer) {
-		if(isPlayer) {
-			this.amount -= 1;
-			if(this.amount <= 0) {
-				AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-			}
-		}
-	}
-	
-	
-	
 	@Override
-	public void atStartOfTurnPostDraw() {
-		this.flash();
+	public void atStartOfTurn() {
 		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+		this.flash();
+		this.amount -= 1;
+		if(this.amount <= 0) {
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.name));
+		}
 	}
 
 	public void stackPower(int stackAmount) {
