@@ -12,7 +12,7 @@ import blackmage.BlackMageMod;
 public class FreezePower extends AbstractPower{
 	
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Target is frozen for 1 turn."
+			"Target is frozen till the next turn."
 		};
 	
 	private byte moveByte;
@@ -27,7 +27,7 @@ public class FreezePower extends AbstractPower{
 		this.updateDescription();
 	 
 		this.type = AbstractPower.PowerType.DEBUFF;
-		this.img = BlackMageMod.getIcePowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/ice.png");
 		
 		moveByte = 1;
 		moveIntent = AbstractMonster.Intent.UNKNOWN;

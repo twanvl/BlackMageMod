@@ -14,7 +14,7 @@ public class Snowflake extends AbstractCustomCardWithType {
 	public static final String ID = "Snowflake";
 	private static final String NAME = "Snowflake";
 	private static final String IMG = "img/cards/icons/snowflake.png";
-	private static final String DESCRIPTION = "Apply !M! Ice.";
+	private static final String DESCRIPTION = "Gain !M! Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

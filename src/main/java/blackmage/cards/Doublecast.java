@@ -15,7 +15,7 @@ public class Doublecast extends CustomCard {
 	public static final String ID = "Doublecast";
 	private static final String NAME = "Doublecast";
 	private static final String IMG = "img/cards/icons/doublecast.png";
-	private static final String DESCRIPTION = "Gives you Invigorate for !M! turns. NL Exhaust.";
+	private static final String DESCRIPTION = "Gives you Invigorate for !M! turns.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

@@ -22,7 +22,7 @@ public class EnchantedRobes extends CustomCard {
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
-	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
+	private static final AbstractCard.CardRarity RARITY = EnumPatch.MEGA_RARE;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 	
 	private static final int COST = 1;
@@ -31,6 +31,7 @@ public class EnchantedRobes extends CustomCard {
 	public EnchantedRobes() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, POOL);
 		this.isInnate = true;
+		this.setBannerTexture("img/cards/small/banner_megarare.png", "img/cards/portrait/banner_megarare.png");
 	}
 
 	@Override

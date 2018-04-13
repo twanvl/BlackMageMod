@@ -11,17 +11,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCard;
 import basemod.helpers.TooltipInfo;
 
 import blackmage.patches.EnumPatch;
 
-public class TabletOfKnowledge extends CustomCard {
+public class TabletOfKnowledge extends AbstractMulitTypeCard {
 	
 	public static final String ID = "RuneOfKnowledge";
 	private static final String NAME = "Rune of Knowledge";
-	private static final String IMG = "img/cards/icons/unleash.png";
-	private static final String DESCRIPTION = "Gain 8 block. Gain and extra effect.";
+	private static final String IMG = "img/cards/icons/rune.png";
+	private static final String DESCRIPTION = "Gain 8 block. Gain an extra effect.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -41,9 +40,14 @@ public class TabletOfKnowledge extends CustomCard {
 		
 		tips.add(new TooltipInfo("Ice", "If you have Ice, shuffle a card into your draw pile."));
 		tips.add(new TooltipInfo("Fire", "If you have Fire, discard a card."));
-		tips.add(new TooltipInfo("Niether", "If you have Neither, gain 5 more block."));
+		tips.add(new TooltipInfo("Neither", "If you have Neither, gain 5 more block."));
 		
 		this.baseBlock = BLOCK;
+	}
+	
+	@Override
+	public boolean canUpgrade() {
+		return false;
 	}
 
 	@Override
@@ -53,22 +57,7 @@ public class TabletOfKnowledge extends CustomCard {
 
 	@Override
 	public void upgrade() {
-		// TODO Auto-generated method stub
-
-	}
-	
-	@Override
-	public void triggerWhenDrawn() {
-		isInHand = true;
-	}
-
-	@Override
-	public void triggerOnEndOfPlayerTurn() {
-		isInHand = false;
-		
-		if(AbstractDungeon.player.hand.group.contains(this)) {
-			isInHand = true;
-		}
+		//NOP
 	}
 
 	@Override
@@ -78,38 +67,6 @@ public class TabletOfKnowledge extends CustomCard {
 		}
 		
 		return tips;
-	}
-
-	@Override
-	public void applyPowers() {
-		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
-			this.setOrbTexture("img/cards/small/orb-ice.png", "img/cards/portrait/orb-ice.png");
-			this.rawDescription = "Gain 8 block. Shuffle a card into your draw pile.";
-			
-		} else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
-			this.setOrbTexture("img/cards/small/orb-fire.png", "img/cards/portrait/orb-fire.png");
-			this.rawDescription = "Gain 8 block. Discard a card.";
-		} else {
-			this.setOrbTexture("img/cards/small/orb.png", "img/cards/portrait/orb.png");
-			this.rawDescription = "Gain 8 block. Gain 5 more block.";
-		}
-		initializeDescription();
-	}
-
-	@Override
-	public void calculateCardDamage(AbstractMonster m) {
-		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
-			this.setOrbTexture("img/cards/small/orb-ice.png", "img/cards/portrait/orb-ice.png");
-			this.rawDescription = "Gain 8 block. Shuffle a card into your draw pile.";
-			
-		} else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
-			this.setOrbTexture("img/cards/small/orb-fire.png", "img/cards/portrait/orb-fire.png");
-			this.rawDescription = "Gain 8 block. Discard a card.";
-		} else {
-			this.setOrbTexture("img/cards/small/orb.png", "img/cards/portrait/orb.png");
-			this.rawDescription = "Gain 8 block. Gain 5 more block.";
-		}
-		initializeDescription();
 	}
 	
 	@Override
@@ -124,6 +81,27 @@ public class TabletOfKnowledge extends CustomCard {
 		} else {
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
 		}
+	}
+
+	@Override
+	public void optionIce() {
+		this.setOrbTexture("img/cards/small/orb-ice.png", "img/cards/portrait/orb-ice.png");
+		this.rawDescription = "Gain 8 block. Shuffle a card into your draw pile.";
+		this.initializeDescription();
+	}
+
+	@Override
+	public void optionFire() {
+		this.setOrbTexture("img/cards/small/orb-fire.png", "img/cards/portrait/orb-fire.png");
+		this.rawDescription = "Gain 8 block. Discard a card.";
+		this.initializeDescription();
+	}
+
+	@Override
+	public void optionNeutral() {
+		this.setOrbTexture("img/cards/small/orb.png", "img/cards/portrait/orb.png");
+		this.rawDescription = "Gain 8 block. Gain 5 more block.";
+		this.initializeDescription();
 	}
 
 }

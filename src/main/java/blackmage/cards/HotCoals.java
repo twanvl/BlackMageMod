@@ -14,7 +14,7 @@ public class HotCoals extends AbstractCustomCardWithType {
 	public static final String ID = "HotCoals";
 	private static final String NAME = "Hot Coals";
 	private static final String IMG = "img/cards/icons/coals.png";
-	private static final String DESCRIPTION = "If you have Fire, gain 1 Ash per Fire next turn.";
+	private static final String DESCRIPTION = "If you have Fire, next turn gain 1 Ash per stack of Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

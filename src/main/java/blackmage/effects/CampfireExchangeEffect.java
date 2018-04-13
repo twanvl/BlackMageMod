@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 import blackmage.cards.AbstractCustomCardWithType;
+import blackmage.patches.GridSelectScreenPatch;
 import blackmage.ui.ExchangeOption;
 
 public class CampfireExchangeEffect extends AbstractGameEffect{
@@ -61,18 +62,16 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 		if ((!this.selectedCard) && (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) {
 			CardCrawlGame.sound.play("CARD_EXHAUST");
 			
-			//AbstractDungeon.effectsQueue.add(new PurgeCardEffect(AbstractDungeon.gridSelectScreen.selectedCards.get(0), Settings.WIDTH / 2, Settings.HEIGHT / 2));
-			
 			AbstractCustomCardWithType card = (AbstractCustomCardWithType)AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-			
 			AbstractCustomCardWithType newCard = card.getOpposite(card.upgraded);
 			
 			AbstractDungeon.player.masterDeck.removeCard(card);
-
 			AbstractDungeon.effectsQueue.add(new ShowCardAndObtainEffect(newCard, Settings.WIDTH / 2, Settings.HEIGHT / 2));
-			
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
+			GridSelectScreenPatch.renderAsExchange = false;
+			
 			this.selectedCard = true;
+			
 			((RestRoom)AbstractDungeon.getCurrRoom()).fadeIn();
 		}
 		if ((this.duration < 1.0F) && (!this.openedScreen))
@@ -91,12 +90,15 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 		    	}
 		    }
 		      
-		    AbstractDungeon.gridSelectScreen.open(fire_ice_cards, 1, ExchangeOption.LABEL, false, false, true, true);
+		    AbstractDungeon.gridSelectScreen.open(fire_ice_cards, 1, ExchangeOption.LABEL, true);
+		    GridSelectScreenPatch.renderAsExchange = true;
 		    //AbstractDungeon.overlayMenu.cancelButton.show("Cancel");
 	    }
 		if (this.duration < 0.0F)
 	    {
 			this.isDone = true;
+			GridSelectScreenPatch.renderAsExchange = false;
+			
 			if (CampfireUI.hidden)
 			{
 				com.megacrit.cardcrawl.rooms.AbstractRoom.waitTimer = 0.0F;
@@ -105,5 +107,6 @@ public class CampfireExchangeEffect extends AbstractGameEffect{
 			}
 	    }
 	}
+	
 
 }

@@ -16,10 +16,10 @@ public class ExchangeOption extends AbstractCampfireOption {
 		this.useable = active;
 		if (active) {
 			this.description = DESCRIPTION;
-			this.img = BlackMageMod.getCampfireExchangeButton();
+			this.img = BlackMageMod.getTexture("img/ui/exchange_button.png");
 		}else {
 			this.description = DESCRIPTION;
-			this.img = BlackMageMod.getCampfireExchangeButton();
+			this.img = BlackMageMod.getTexture("img/ui/exchange_button.png");
 		}
 	}
 	

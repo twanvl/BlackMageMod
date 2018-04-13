@@ -14,7 +14,7 @@ public class Ember extends AbstractCustomCardWithType {
 	public static final String ID = "Ember";
 	private static final String NAME = "Ember";
 	private static final String IMG = "img/cards/icons/ember.png";
-	private static final String DESCRIPTION = "Apply !M! Fire.";
+	private static final String DESCRIPTION = "Gain !M! Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

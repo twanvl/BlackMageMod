@@ -20,7 +20,7 @@ public class Invigorate extends AbstractPower{
 		updateDescription();
 		
 		this.type = PowerType.BUFF;
-		this.img = BlackMageMod.getInvigoratePowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/invigorate.png");
 	}
 	
 	@Override
@@ -32,28 +32,21 @@ public class Invigorate extends AbstractPower{
 		}
 	}
 	
-	public void atEndOfTurn(boolean isPlayer) {
-		if(isPlayer) {
-			this.amount -= 1;
-			if(this.amount <= 0) {
-				AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-			}
-		}
-	}
-	
-	
-	
 	@Override
-	public void atStartOfTurnPostDraw() {
-		this.flash();
+	public void atStartOfTurn() {
 		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+		this.flash();
+		this.amount--;
+		if(this.amount <= 0) {
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+		}
 	}
 
 	public void stackPower(int stackAmount) {
 		this.fontScale = 8.0f;
 		this.amount += stackAmount;
 		if(this.amount == 0) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.name));
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
 		}
 		
 		if (this.amount >= 999) {
@@ -65,7 +58,7 @@ public class Invigorate extends AbstractPower{
 		this.fontScale = 8.0f;
 		this.amount -= reduceAmount;
 		if(this.amount == 0) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.name));
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
 		}
 		
 		if (this.amount >= 999) {

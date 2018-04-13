@@ -26,7 +26,7 @@ public class LuckyPower extends AbstractPower{
 		updateDescription();
 		
 		this.type = AbstractPower.PowerType.BUFF;
-		this.img = BlackMageMod.getLuckyPowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/lucky.png");
 	}
 	
 	public void updateDescription() {

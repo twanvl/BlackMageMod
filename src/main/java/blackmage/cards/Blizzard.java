@@ -16,7 +16,7 @@ public class Blizzard extends AbstractCustomCardWithType {
 	public static final String ID = "Blizzard";
 	private static final String NAME = "Blizzard";
 	private static final String IMG = "img/cards/icons/blizzard.png";
-	private static final String DESCRIPTION = "Deal !D! ice damage to all enemies 2 times. Apply !M! Weak. NL Apply Ice";
+	private static final String DESCRIPTION = "Deal !D! ice damage to all enemies 2 times. Apply !M! Weak. NL Gain 1 Ice";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

@@ -1,14 +1,12 @@
 package blackmage.powers;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomPlayer;
 import blackmage.BlackMageMod;
-import blackmage.patches.EnumPatch;
 
 public class FirePower extends AbstractPower {
 	
@@ -36,7 +34,7 @@ public class FirePower extends AbstractPower {
 		BlackMageMod.setOrbColor(this, (CustomPlayer)owner, false);
 		
 		this.type = AbstractPower.PowerType.BUFF;
-		this.img = BlackMageMod.getFirePowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/fire.png");
 	}
 	
 	@Override
@@ -84,13 +82,5 @@ public class FirePower extends AbstractPower {
 		if(this.amount > 0) {
 			this.description = (DESCRIPTIONS[0] + this.amount + " more damage this turn.");
 		}
-	}
-
-	@Override
-	public float atDamageGive(float damage, DamageType type) {
-		if(type == EnumPatch.FIRE_DAMAGE) {
-			return damage += this.amount;
-		}
-		return damage;
 	}
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -53,21 +53,31 @@ public class BlackMageCharacter extends CustomPlayer {
 		this.dialogX = (this.drawX + 0.0F * Settings.scale);
 		this.dialogY = (this.drawY + 170.0F * Settings.scale);
 		
+		this.atlas = new TextureAtlas();
+		
 		initializeClass(null, BlackMageMod.BLACK_MAGE_SHOULDER_2, 
 				BlackMageMod.BLACK_MAGE_SHOULDER_1, BlackMageMod.BLACK_MAGE_CORPSE, 
 				getLoadout(), 0.0f, -20f, 240.0f, 240.0f, new EnergyManager(ENERGY_PER_TURN));
 		
-		loadAnimation(BlackMageMod.BLACK_MAGE_SKELETON_ATLAS, 
-				BlackMageMod.BLACK_MAGE_SKELETON_JSON, 1.0f);
-		
-		AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);
-	
-		e.setTime(e.getEndTime() * MathUtils.random());
-		
 		System.out.println("blackmage ctor : finish");
 	}
 	
-	
+	@SuppressWarnings("unused")
+	public void renderPlayerImage(SpriteBatch sb) {
+		if(!(AbstractDungeon.player instanceof BlackMageCharacter))
+			return;
+		
+		sb.setColor(1, 1, 1, 1);
+		
+		int x = Gdx.input.getX();
+		int y = Gdx.input.getY();
+		
+		//Render Particle line Back 30%
+		
+		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), 380, 325, 0, 0, 538f, 800f, 0.3f, 0.3f, 0.0f, 0, 0, 538, 800, false, false);
+		
+		//Render Particle line Front 60%
+	}
 	
 	public static CharSelectInfo getLoadout() {
 		CharSelectInfo selectInfo = new CharSelectInfo(

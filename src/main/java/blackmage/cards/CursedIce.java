@@ -17,7 +17,7 @@ public class CursedIce extends AbstractCustomCardWithType {
 	public static final String ID = "CursedIce";
 	private static final String NAME = "Cursed Ice";
 	private static final String IMG = "img/cards/icons/strike-ice.png";
-	private static final String DESCRIPTION = "Deal !D! Dark Ice damage. Apply Ice.";
+	private static final String DESCRIPTION = "Deal !D! Dark Ice damage. Gain 1 Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

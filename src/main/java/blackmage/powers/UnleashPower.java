@@ -20,7 +20,7 @@ public class UnleashPower extends AbstractPower {
 		updateDescription();
 		
 		this.type = AbstractPower.PowerType.BUFF;
-		this.img = BlackMageMod.getUnleashPowerTexture();
+		this.img = BlackMageMod.getTexture("img/powers/unleash.png");
 	}
 	
 	public void updateDescription() {

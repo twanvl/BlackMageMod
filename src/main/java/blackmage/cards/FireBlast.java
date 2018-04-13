@@ -18,7 +18,7 @@ public class FireBlast extends AbstractCustomCardWithType {
 	public static final String ID = "FireBlast";
 	private static final String NAME = "Fire Blast";
 	private static final String IMG = "img/cards/icons/fireblast.png";
-	private static final String DESCRIPTION = "Deal !D! fire damage. Pick 1 card from your discard pile and add it to your hand. NL Apply 2 Fire.";
+	private static final String DESCRIPTION = "Deal !D! fire damage. Pick 1 card from your Discard pile and add it to your hand. NL Gain 2 Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

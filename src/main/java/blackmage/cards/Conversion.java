@@ -18,7 +18,7 @@ public class Conversion extends CustomCard {
 	private static final String NAME = "Conversion";
 	private static final String IMG = "img/cards/icons/conversion.png";
 	private static final String DESCRIPTION = "Exchange Fire and Ice.";
-	private static final String UPGRADE_DESC = DESCRIPTION + " Apply an extra Fire or Ice.";
+	private static final String UPGRADE_DESC = DESCRIPTION + " Gain an extra Fire or Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

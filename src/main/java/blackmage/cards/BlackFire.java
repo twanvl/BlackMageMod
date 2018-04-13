@@ -17,7 +17,7 @@ public class BlackFire extends AbstractCustomCardWithType {
 	public static final String ID = "BlackFire";
 	private static final String NAME = "Black Fire";
 	private static final String IMG = "img/cards/icons/strike-fire.png";
-	private static final String DESCRIPTION = "Deal !D! Dark Fire damage. Apply Fire.";
+	private static final String DESCRIPTION = "Deal !D! Dark Fire damage. Gain 1 Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
