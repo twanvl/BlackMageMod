@@ -74,7 +74,7 @@ public class BlackMageCharacter extends CustomPlayer {
 		
 		//Render Particle line Back 30%
 		
-		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), 380, 325, 0, 0, 538f, 800f, 0.4f, 0.4f, 0.0f, 0, 0, 538, 800, false, false);
+		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), 380, 325, 0, 0, 538f, 800f, 0.3f, 0.3f, 0.0f, 0, 0, 538, 800, false, false);
 		
 		//Render Particle line Front 60%
 	}

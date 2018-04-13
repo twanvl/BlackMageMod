@@ -36,9 +36,9 @@ public class Invigorate extends AbstractPower{
 	public void atStartOfTurn() {
 		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
 		this.flash();
-		this.amount -= 1;
+		this.amount--;
 		if(this.amount <= 0) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.name));
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
 		}
 	}
 
@@ -46,7 +46,7 @@ public class Invigorate extends AbstractPower{
 		this.fontScale = 8.0f;
 		this.amount += stackAmount;
 		if(this.amount == 0) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.name));
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
 		}
 		
 		if (this.amount >= 999) {
@@ -58,7 +58,7 @@ public class Invigorate extends AbstractPower{
 		this.fontScale = 8.0f;
 		this.amount -= reduceAmount;
 		if(this.amount == 0) {
-			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.name));
+			AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
 		}
 		
 		if (this.amount >= 999) {

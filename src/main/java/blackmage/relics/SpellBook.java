@@ -1,16 +1,11 @@
 package blackmage.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
-import blackmage.powers.FirePower;
-import blackmage.powers.IcePower;
+import blackmage.BlackMageMod;
 
 public class SpellBook extends CustomRelic {
 
@@ -35,28 +30,8 @@ public class SpellBook extends CustomRelic {
 
 	@Override
 	public void atTurnStart() {
-		AbstractPlayer p = AbstractDungeon.player;
-		AbstractPower power = null;
-		Random rand = new Random();
-		int r = rand.random(1);
-		if(!p.hasPower("bm_unleash_power")) {
-			flash();
-			if(r == 0) {
-				power = new IcePower(p, 1);
-			}else {
-				power = new FirePower(p, 1);
-			}
-		} else {
-			if(r == 0 && p.hasPower("bm_ice_power")) {
-				power = new IcePower(p, 1);
-			}else if(r == 1 && p.hasPower("bm_fire_power")) {
-				power = new FirePower(p, 1);
-			}
-			flash();
-		}
-		
-		if(power != null)
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, power, 1));
+		BlackMageMod.applyRandomIceFirePower(1, AbstractDungeon.player.hasPower("bm_unleash_power"));
+		flash();
 	}
 	
 	
