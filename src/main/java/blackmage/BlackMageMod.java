@@ -11,7 +11,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -39,13 +38,44 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	private static final String MOD_NAME = "Black Mage";
 	private static final String AUTHOR = "Blank";
 	private static final String DESCRIPTION = "v0.0.1 NL Adds a new character based around the idea of a mage.";
-	
-	public static final Color MULTI = CardHelper.getColor(255f, 255f, 255f);
+
+	public static Color MULTI = new Color(255f, 0f, 0f, 255f);
+	public static Color RED = new Color(1f, 100f / 255f, 0f, 1f);
+	public static Color BLUE = new Color(0f, 180f / 255f, 1f, 1f);
 	
 	public static HashMap<String, Texture> imgMap;
 	
 	static {
-		imgMap = new HashMap<>();
+		imgMap = new HashMap<String, Texture>();
+	}
+	
+	public static int countDir = 1;
+	
+	
+	public static void updateColor() {
+		float r = MULTI.r;
+		float g = MULTI.g;
+		float b = MULTI.b;
+		
+		float[] hsbColor = java.awt.Color.RGBtoHSB((int)(r * 255f), (int)(g * 255f), (int)(b * 255f), null);
+		float angle = hsbColor[0] * 360f;
+	
+		if(angle > 35.0f && angle < 40.0f) {
+			countDir = -1;
+		}
+		
+		if(angle <= 200.0f && angle > 40.0f) {
+			countDir = 1;
+		}
+		
+		angle += countDir;
+	
+		hsbColor[0] = angle / 360f;
+		java.awt.Color newColor = java.awt.Color.getHSBColor(hsbColor[0], 0.75f, 0.8f);
+		
+		MULTI.r = newColor.getRed() / 255f;
+		MULTI.g = newColor.getGreen() / 255f;
+		MULTI.b = newColor.getBlue() / 255f;
 	}
 	
 	public static void applyRandomIceFirePower(int amount, boolean dontLoseBuff) {

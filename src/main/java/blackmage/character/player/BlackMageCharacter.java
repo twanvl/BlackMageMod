@@ -6,6 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,6 +17,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomPlayer;
 import blackmage.BlackMageMod;
+import blackmage.particles.ParticleEffect;
 import blackmage.patches.EnumPatch;
 
 public class BlackMageCharacter extends CustomPlayer {
@@ -36,6 +39,22 @@ public class BlackMageCharacter extends CustomPlayer {
 	};
 	
 	public static final String orbVfx = "img/character/orb/vfx.png";
+	
+	private ParticleEffect effectFront = new ParticleEffect(
+			new Rectangle(370, 310, 200, 5), 
+			0.8f, 
+			4, 
+			40, 
+			new Vector2(-0.002f, 0.135f), 
+			BlackMageMod.MULTI);
+	private ParticleEffect effectHand = new ParticleEffect(
+			new Rectangle(425, 430, 5, 5),
+			0.75f,
+			4,
+			50,
+			new Vector2(0.0f, 0.05f),
+			BlackMageMod.MULTI
+			);
 
 	public BlackMageCharacter(String name, PlayerClass setClass) {
 		
@@ -67,16 +86,33 @@ public class BlackMageCharacter extends CustomPlayer {
 		if(!(AbstractDungeon.player instanceof BlackMageCharacter))
 			return;
 		
+		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
+			effectFront.setParticleColor(BlackMageMod.BLUE);
+			effectHand.setParticleColor(BlackMageMod.BLUE);
+		}else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
+			effectFront.setParticleColor(BlackMageMod.RED);
+			effectHand.setParticleColor(BlackMageMod.RED);
+		}else {
+			effectFront.setParticleColor(BlackMageMod.MULTI);
+			effectHand.setParticleColor(BlackMageMod.MULTI);
+		}
+		
+		
 		sb.setColor(1, 1, 1, 1);
 		
-		int x = Gdx.input.getX();
-		int y = Gdx.input.getY();
+		int mouseX = Gdx.input.getX();
+		int mouseY = Gdx.input.getY();
 		
-		//Render Particle line Back 30%
+		int x = Math.round(410 * Settings.scale);
+		int y = Math.round(320 * Settings.scale);
 		
-		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), 380, 325, 0, 0, 538f, 800f, 0.3f, 0.3f, 0.0f, 0, 0, 538, 800, false, false);
+		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), x, y, 0, 0, 538f, 800f, 0.3f * Settings.scale, 0.3f * Settings.scale, 0.0f, 0, 0, 538, 800, false, false);
 		
-		//Render Particle line Front 60%
+		effectFront.update();
+		effectFront.render(sb);
+		
+		effectHand.update();
+		effectHand.render(sb);
 	}
 	
 	public static CharSelectInfo getLoadout() {
