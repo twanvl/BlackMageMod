@@ -27,6 +27,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import blackmage.cards.*;
 import blackmage.character.player.BlackMageCharacter;
+import blackmage.effects.ColorFadeEffect;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.FirePower;
 import blackmage.powers.IcePower;
@@ -39,9 +40,14 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	private static final String AUTHOR = "Blank";
 	private static final String DESCRIPTION = "v0.0.1 NL Adds a new character based around the idea of a mage.";
 
-	public static Color MULTI = new Color(255f, 0f, 0f, 255f);
-	public static Color RED = new Color(1f, 100f / 255f, 0f, 1f);
-	public static Color BLUE = new Color(0f, 180f / 255f, 1f, 1f);
+	public static Color MULTI = new Color(1f, 0f, 0f, 1f);
+	public static Color ORANGE = new Color(1f, 100f / 255f, 0f, 1f);
+	public static Color LIGHTBLUE = new Color(0f, 180f / 255f, 1f, 1f);
+	public static Color DARKCYAN = new Color(0f, 120f / 255f, 1f, 1f);
+	
+	private static ColorFadeEffect multiEffect = new ColorFadeEffect(ORANGE, LIGHTBLUE, MULTI);
+	public static ColorFadeEffect fireEffect = new ColorFadeEffect(Color.RED, Color.YELLOW, Color.ORANGE);
+	public static ColorFadeEffect iceEffect = new ColorFadeEffect(Color.CYAN, Color.BLUE, DARKCYAN);
 	
 	public static HashMap<String, Texture> imgMap;
 	
@@ -49,33 +55,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		imgMap = new HashMap<String, Texture>();
 	}
 	
-	public static int countDir = 1;
-	
-	
 	public static void updateColor() {
-		float r = MULTI.r;
-		float g = MULTI.g;
-		float b = MULTI.b;
-		
-		float[] hsbColor = java.awt.Color.RGBtoHSB((int)(r * 255f), (int)(g * 255f), (int)(b * 255f), null);
-		float angle = hsbColor[0] * 360f;
-	
-		if(angle > 35.0f && angle < 40.0f) {
-			countDir = -1;
-		}
-		
-		if(angle <= 200.0f && angle > 40.0f) {
-			countDir = 1;
-		}
-		
-		angle += countDir;
-	
-		hsbColor[0] = angle / 360f;
-		java.awt.Color newColor = java.awt.Color.getHSBColor(hsbColor[0], 0.75f, 0.8f);
-		
-		MULTI.r = newColor.getRed() / 255f;
-		MULTI.g = newColor.getGreen() / 255f;
-		MULTI.b = newColor.getBlue() / 255f;
+		MULTI.set(multiEffect.getColor());
 	}
 	
 	public static void applyRandomIceFirePower(int amount, boolean dontLoseBuff) {
@@ -180,7 +161,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 
 	private static void loadTexture(String textureString) {
-		System.out.println("Loading Texture: " + textureString);
+		System.out.println("BlackMageMod | Loading Texture: " + textureString);
 		imgMap.put(textureString, new Texture(textureString));
 	}
 	

@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomPlayer;
 import blackmage.BlackMageMod;
+import blackmage.particles.Particle;
 import blackmage.particles.ParticleEffect;
 import blackmage.patches.EnumPatch;
 
@@ -43,17 +44,16 @@ public class BlackMageCharacter extends CustomPlayer {
 	private ParticleEffect effectFront = new ParticleEffect(
 			new Rectangle(370, 310, 200, 5),
 			0.8f, 
-			4, 
-			40, 
+			4,
 			new Vector2(-0.002f, 0.135f), 
-			BlackMageMod.MULTI);
+			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
+			);
 	private ParticleEffect effectHand = new ParticleEffect(
 			new Rectangle(425, 430, 5, 5),
 			0.75f,
 			4,
-			50,
 			new Vector2(0.0f, 0.05f),
-			BlackMageMod.MULTI
+			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
 			);
 
 	public BlackMageCharacter(String name, PlayerClass setClass) {
@@ -87,11 +87,11 @@ public class BlackMageCharacter extends CustomPlayer {
 			return;
 		
 		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
-			effectFront.setParticleColor(BlackMageMod.BLUE);
-			effectHand.setParticleColor(BlackMageMod.BLUE);
+			effectFront.setParticleColor(BlackMageMod.iceEffect.getColor());
+			effectHand.setParticleColor(BlackMageMod.iceEffect.getColor());
 		}else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
-			effectFront.setParticleColor(BlackMageMod.RED);
-			effectHand.setParticleColor(BlackMageMod.RED);
+			effectFront.setParticleColor(BlackMageMod.fireEffect.getColor());
+			effectHand.setParticleColor(BlackMageMod.fireEffect.getColor());
 		}else {
 			effectFront.setParticleColor(BlackMageMod.MULTI);
 			effectHand.setParticleColor(BlackMageMod.MULTI);

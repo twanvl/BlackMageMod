@@ -13,19 +13,18 @@ public class ParticleEffect {
 	private Rectangle spawnRegion;
 	private float spawnRate;
 	private int spawnAmount;
-	private int particleLifeSpan;
-	private Color particleColor;
-	private Vector2 particleAcc;
+	private Vector2 initAcc;
+	private Particle baseParticle;
+	
 	private ArrayList<Particle> particles = new ArrayList<Particle>();
 
-	public ParticleEffect(Rectangle spawnRegion, float spawnRate, int spawnAmount, int particleLifeSpan,
-			Vector2 particleAcc, Color particleColor) {
+	public ParticleEffect(Rectangle spawnRegion, float spawnRate, int spawnAmount, Vector2 particleAcc, Particle baseParticle) {
 		this.spawnRegion = spawnRegion;
 		this.spawnRate = spawnRate;
-		this.particleColor = particleColor;
 		this.spawnAmount = spawnAmount;
-		this.particleAcc = particleAcc;
-		this.particleLifeSpan = particleLifeSpan;
+		this.initAcc = particleAcc;
+		this.baseParticle = baseParticle;
+		
 	}
 
 	public void update() {
@@ -53,9 +52,9 @@ public class ParticleEffect {
 		Vector2 startPos = new Vector2(startX, startY);
 		Vector2 startVel = new Vector2((rand.nextFloat() - 0.5f) * 2.0f, (rand.nextFloat() - 0.5f) * 2.0f);
 
-		Particle particle = new Particle(startPos, startVel, particleLifeSpan, particleColor);
+		Particle particle = baseParticle.getCopy(startPos, startVel);
 
-		particle.setAcc(this.particleAcc);
+		particle.setAcc(this.initAcc);
 
 		particles.add(particle);
 	}
@@ -87,29 +86,8 @@ public class ParticleEffect {
 	public void setSpawnAmount(int spawnAmount) {
 		this.spawnAmount = spawnAmount;
 	}
-
-	public int getParticleLifeSpan() {
-		return particleLifeSpan;
+	
+	public void setParticleColor(Color c) {
+		this.baseParticle.setColor(c);
 	}
-
-	public void setParticleLifeSpan(int particleLifeSpan) {
-		this.particleLifeSpan = particleLifeSpan;
-	}
-
-	public Color getParticleColor() {
-		return particleColor;
-	}
-
-	public void setParticleColor(Color particleColor) {
-		this.particleColor = particleColor;
-	}
-
-	public Vector2 getParticleAcc() {
-		return particleAcc;
-	}
-
-	public void setParticleAcc(Vector2 particleAcc) {
-		this.particleAcc = particleAcc;
-	}
-
 }
