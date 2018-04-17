@@ -41,7 +41,7 @@ public class BlackMageCharacter extends CustomPlayer {
 	public static final String orbVfx = "img/character/orb/vfx.png";
 	
 	private ParticleEffect effectFront = new ParticleEffect(
-			new Rectangle(370, 310, 200, 5), 
+			new Rectangle(370, 310, 200, 5),
 			0.8f, 
 			4, 
 			40, 
