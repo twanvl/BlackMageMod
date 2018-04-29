@@ -13,7 +13,7 @@ public class SheerCold extends AbstractCustomCardWithType {
 	public static final String ID = "SheerCold";
 	private static final String NAME = "Sheer Cold";
 	private static final String IMG = "img/cards/icons/sheercold.png";
-	private static final String DESCRIPTION = "Freeze all enemies for 1 turn.";
+	private static final String DESCRIPTION = "Stun all enemies for 1 turn.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

@@ -29,6 +29,7 @@ import blackmage.cards.*;
 import blackmage.character.player.BlackMageCharacter;
 import blackmage.effects.ColorFadeEffect;
 import blackmage.patches.EnumPatch;
+import blackmage.powers.DeathstrokePower;
 import blackmage.powers.FirePower;
 import blackmage.powers.IcePower;
 import blackmage.relics.SpellBook;
@@ -56,31 +57,25 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 	
 	public static void updateColor() {
-		MULTI.set(multiEffect.getColor());
+		MULTI.set(multiEffect.getColor(true));
 	}
 	
-	public static void applyRandomIceFirePower(int amount, boolean dontLoseBuff) {
+	public static void applyRandomIceFirePower(int amount) {
 		AbstractPlayer p = AbstractDungeon.player;
 		AbstractPower power = null;
 		Random rand = new Random();
 		int r = rand.random(1);
-		if(dontLoseBuff) {
-			if(p.hasPower("bm_ice_power"))
-				power = new IcePower(p, amount);
-			else if(p.hasPower("bm_fire_power"))
-				power = new FirePower(p, amount);
-			else {
-				if(r == 0)
-					power = new IcePower(p, amount);
-				else
-					power = new FirePower(p, amount);
-			}		
+		
+		if(p.hasPower("bm_ice_power")) {
+			power = new IcePower(p, amount);
+		} else if(p.hasPower("bm_fire_power")) {
+			power = new FirePower(p, amount);
 		} else {
 			if(r == 0)
 				power = new IcePower(p, amount);
 			else
 				power = new FirePower(p, amount);
-		}
+		}		
 		
 		if(power != null)
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, power, amount));
@@ -91,7 +86,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/small/attack_normal.png",
 		"img/cards/small/attack_ice.png",
 		"img/cards/small/attack_fire.png",
-		"img/cards/small/attack_shadow.png"
+		"img/cards/small/attack_dark.png"
 	};
 	public static final String[] SKILL_BG = {
 		"img/cards/small/skill_normal.png",
@@ -101,9 +96,9 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	};
 	public static final String[] POWER_BG = {
 		"img/cards/small/power_normal.png",
-		"img/cards/small/power_shadow.png",
-		"img/cards/small/power_shadow.png",
-		"img/cards/small/power_shadow.png"
+		"img/cards/small/power_dark.png",
+		"img/cards/small/power_dark.png",
+		"img/cards/small/power_dark.png"
 	};
 	
 	//card base portrait images
@@ -111,19 +106,19 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/portrait/attack_normal.png",
 		"img/cards/portrait/attack_ice.png",
 		"img/cards/portrait/attack_fire.png",
-		"img/cards/portrait/attack_shadow.png"
+		"img/cards/portrait/attack_dark.png"
 	};
 	public static final String[] SKILL_BG_P = {
 		"img/cards/portrait/skill_normal.png",
 		"img/cards/portrait/skill_ice.png",		
 		"img/cards/portrait/skill_fire.png",
-		"img/cards/portrait/skill_shadow.png"
+		"img/cards/portrait/skill_dark.png"
 	};
 	public static final String[] POWER_BG_P = {
 		"img/cards/portrait/power_normal.png",
-		"img/cards/portrait/power_shadow.png",
-		"img/cards/portrait/power_shadow.png",
-		"img/cards/portrait/power_shadow.png"
+		"img/cards/portrait/power_dark.png",
+		"img/cards/portrait/power_dark.png",
+		"img/cards/portrait/power_dark.png"
 	};
 	
 	//energy orb images
@@ -208,7 +203,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		
 		RelicLibrary.add(new SpellBook());
 		
-		
+		BaseMod.addPower(DeathstrokePower.class, "bm_deathstroke_power");
 	}
 	
 	public void receiveEditKeywords() {
@@ -221,18 +216,16 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		String[] vitalityNames = {"vitality"};
 		String[] invigorateNames = {"invigorate"};
 		String[] luckyNames = {"lucky"};
-		String[] darkArmorNames = {"dark armor"};
 		
 		BaseMod.addKeyword(iceNames, "A buff that increases the damage of the next #bIce type attack card.");
 		BaseMod.addKeyword(fireNames, "A buff that increases the damage of the next #rFire type attack card.");
 		BaseMod.addKeyword(shadowNames, "A type of damage that ignores block.");
-		BaseMod.addKeyword(freezeNames, "Target is unable to attack.");
-		BaseMod.addKeyword(unleashNames, "Only lose half of your Ice and Fire at the end of your turn.");
+		BaseMod.addKeyword(freezeNames, "Buffs a card based on what type it is.");
+		BaseMod.addKeyword(unleashNames, "No longer loose Ice or Fire stacks.");
 		BaseMod.addKeyword(metallicizeNames, "Gain block at the end of your turn.");
 		BaseMod.addKeyword(vitalityNames, "Draw 1 card at the beginning of your turn.");
 		BaseMod.addKeyword(invigorateNames, "Gain 1 energy at the beginning or your turn.");
 		BaseMod.addKeyword(luckyNames, "After you use an attack, the next attack has a 25% chance of dealing 3x damage.");
-		BaseMod.addKeyword(darkArmorNames, "Take 50% less damage when attacked.");
 	}
 	
 	public void receiveEditCharacters() {
@@ -258,9 +251,11 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new IceBlast()); //Attack
 		BaseMod.addCard(new Snowflake());//Skill
 		BaseMod.addCard(new Ember()); //Skill
-		BaseMod.addCard(new Blizzard()); //Attack
+		BaseMod.addCard(new SnowStorm()); //Attack
 		BaseMod.addCard(new Firestorm()); //Attack
-		BaseMod.addCard(new HotCoals());//Skill
+		BaseMod.addCard(new Frostbite()); //Skill
+		BaseMod.addCard(new WyldFire()); //Skill
+		BaseMod.addCard(new Distract());
 		
 		//UNCOMMON
 		BaseMod.addCard(new TemperatureShock()); //Attack
@@ -273,6 +268,10 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new WarmingFlame());//Attack
 		BaseMod.addCard(new TabletOfKnowledge());//Skill
 		BaseMod.addCard(new AncientScroll());//Skill
+		BaseMod.addCard(new HotCoals()); //Skill
+		BaseMod.addCard(new SnowFortress()); //Skill
+		BaseMod.addCard(new Cauterize()); //Skill
+		BaseMod.addCard(new PrismStrike()); //Attack
 		
 		//SHADOW PACK
 		BaseMod.addCard(new ShadowStrike()); //Attack
@@ -283,14 +282,12 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//THUNDER PACK
 			//
 		
-		
 		//RARE
 		BaseMod.addCard(new SheerCold()); //Skill
 		BaseMod.addCard(new Unleash()); //Power
-		BaseMod.addCard(new FocusFire()); //Skill
-		BaseMod.addCard(new FocusIce()); //Skill
 		BaseMod.addCard(new Doublecast()); //Skill
 		BaseMod.addCard(new Incinerate()); //Attack
+		BaseMod.addCard(new Destiny());
 	}
 	
 	public static void setOrbColor(AbstractPower power, CustomPlayer player, boolean isUpdated) {

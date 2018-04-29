@@ -20,7 +20,7 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 	public static final String ID = "RuneOfKnowledge";
 	private static final String NAME = "Rune of Knowledge";
 	private static final String IMG = "img/cards/icons/rune.png";
-	private static final String DESCRIPTION = "Gain 8 block. Gain an extra effect.";
+	private static final String DESCRIPTION = "Gain 8 block. NL Hover to show conditional effects.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -28,7 +28,6 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 	
 	private List<TooltipInfo> tips;
-	private boolean isInHand = false;
 	
 	private static final int COST = 1;
 	private static final int BLOCK = 8;
@@ -38,9 +37,7 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 		
 		tips = new ArrayList<TooltipInfo>();
 		
-		tips.add(new TooltipInfo("Ice", "If you have Ice, shuffle a card into your draw pile."));
-		tips.add(new TooltipInfo("Fire", "If you have Fire, discard a card."));
-		tips.add(new TooltipInfo("Neither", "If you have Neither, gain 5 more block."));
+		tips.add(new TooltipInfo("Effects", "#bIce: NL Shuffle a card into your draw pile. NL NL #rFire: NL Discard a card. NL NL #yNeither: NL Gain 5 more block."));
 		
 		this.baseBlock = BLOCK;
 	}
@@ -62,10 +59,6 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 
 	@Override
 	public List<TooltipInfo> getCustomTooltips() {
-		if(isInHand) {
-			return null;
-		}
-		
 		return tips;
 	}
 	

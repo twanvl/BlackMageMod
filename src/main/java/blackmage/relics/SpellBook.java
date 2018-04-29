@@ -1,7 +1,6 @@
 package blackmage.relics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
@@ -30,7 +29,7 @@ public class SpellBook extends CustomRelic {
 
 	@Override
 	public void atTurnStart() {
-		BlackMageMod.applyRandomIceFirePower(1, AbstractDungeon.player.hasPower("bm_unleash_power"));
+		BlackMageMod.applyRandomIceFirePower(1);
 		flash();
 	}
 	

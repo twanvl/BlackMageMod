@@ -19,8 +19,8 @@ public class TemperatureShock extends CustomCard {
 	public static final String ID = "ClimateShock";
 	private static final String NAME = "Climate Shock";
 	private static final String IMG = "img/cards/icons/tempshock.png";
-	private static final String DESCRIPTION = "Deal !D! damage. If you have Fire or Ice, NL gain [R]. NL Remove Fire and Ice.";
-	private static final String UPGRADE_DESC = "Deal !D! damage. If you have Fire or Ice, NL gain [R] [R]. NL Remove Fire and Ice.";
+	private static final String DESCRIPTION = "Deal !D! damage. If you have Fire or Ice, NL gain [B]. NL Remove Fire and Ice.";
+	private static final String UPGRADE_DESC = "Deal !D! damage. If you have Fire or Ice, NL gain [B] [B]. NL Remove Fire and Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

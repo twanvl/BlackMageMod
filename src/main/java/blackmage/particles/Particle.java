@@ -16,6 +16,7 @@ public class Particle {
 	private Vector2 acceleration = new Vector2(0f, 0f);
 	private Texture texture;
 	private Color color;
+	private float rotation;
 
 	public Particle(Vector2 pos, Vector2 vel, int lifeSpan, Color particleColor, Texture texture) {
 		this.pos = pos;
@@ -45,9 +46,16 @@ public class Particle {
 		float scale = 2.0f * (1.0f * ((float) lifeSpan / (float) maxLifeSpan)) * Settings.scale;
 		float x = pos.x * Settings.scale;
 		float y = pos.y * Settings.scale;
+		
+		Vector2 angleVect = new Vector2(velocity);
+		angleVect.x *= -1;
+		angleVect.y *= -1;
+		angleVect.rotate(90.0f);
+		
+		rotation = angleVect.angle();
 
 		sb.setColor(color.r, color.g, color.b, 1);
-		sb.draw(texture, x, y, 0, 0, 15f, 15f, scale, scale, 0.0f, 0, 0, 15, 15, false, false);
+		sb.draw(texture, x, y, 15.0f / 2.0f, 15.0f / 2.0f, 15f, 15f, scale, scale, rotation, 0, 0, 15, 15, false, false);
 	}
 
 	public void setAcc(Vector2 newAcc) {

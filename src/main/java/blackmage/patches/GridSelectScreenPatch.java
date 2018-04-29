@@ -17,7 +17,7 @@ public class GridSelectScreenPatch {
 	public static boolean renderAsExchange = false;
 	
 	@SpireInsertPatch(
-		loc=116,
+		loc=133,
 		localvars= {}
 	)
 	public static void Insert(GridCardSelectScreen meObj) {

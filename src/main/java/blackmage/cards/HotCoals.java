@@ -1,6 +1,7 @@
 package blackmage.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +15,7 @@ public class HotCoals extends AbstractCustomCardWithType {
 	public static final String ID = "HotCoals";
 	private static final String NAME = "Hot Coals";
 	private static final String IMG = "img/cards/icons/coals.png";
-	private static final String DESCRIPTION = "If you have Fire, next turn gain 1 Ash per stack of Fire.";
+	private static final String DESCRIPTION = "If you have Fire, next turn gain 1 Ash per stack of Fire. NL Lose Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -55,6 +56,7 @@ public class HotCoals extends AbstractCustomCardWithType {
 		if(p.hasPower("bm_fire_power")) {
 			int amt = p.getPower("bm_fire_power").amount;
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new GainAshNextTurnPower(p, amt), amt));
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
 		}
 	}
 }

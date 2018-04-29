@@ -1,6 +1,7 @@
 package blackmage.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -13,8 +14,8 @@ public class SnowFortress extends AbstractCustomCardWithType {
 	
 	public static final String ID = "SnowFortress";
 	private static final String NAME = "Snow Fortress";
-	private static final String IMG = "img/cards/icons/coals.png";
-	private static final String DESCRIPTION = "If you have Fire, next turn gain 1 Ash per stack of Fire.";
+	private static final String IMG = "img/cards/icons/fortress.png";
+	private static final String DESCRIPTION = "If you have Ice, next turn gain !M! Block per stack of Ice. NL Lose Ice.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -23,7 +24,7 @@ public class SnowFortress extends AbstractCustomCardWithType {
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.ICE;
 	
 	private static final int COST = 1;
-	private static final int MAGIC = 1;
+	private static final int MAGIC = 4;
 	
 	public SnowFortress() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
@@ -47,16 +48,19 @@ public class SnowFortress extends AbstractCustomCardWithType {
 
 	@Override
 	public void upgrade() {
-		// TODO Auto-generated method stub
-
+		if(!this.upgraded) {
+			this.upgradeName();
+			this.upgradeMagicNumber(1);
+		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
 		if(p.hasPower("bm_ice_power")) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NextTurnBlockPower(p, p.getPower("bm_ice_power").amount), p.getPower("bm_ice_power").amount));
+			for(int i = 0; i < p.getPower("bm_ice_power").amount; i++)
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NextTurnBlockPower(p, magicNumber), magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_ice_power"));
 		}
-
 	}
 
 }

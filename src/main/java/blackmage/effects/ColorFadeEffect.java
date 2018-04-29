@@ -38,8 +38,9 @@ public class ColorFadeEffect {
 		outputColor.b = newColor.getBlue() / 255f;
 	}
 	
-	public Color getColor() {
-		update();
+	public Color getColor(boolean doUpdate) {
+		if(doUpdate)
+			update();
 		return outputColor.cpy();
 	}
 	

@@ -41,11 +41,17 @@ public class BlackMageCharacter extends CustomPlayer {
 	
 	public static final String orbVfx = "img/character/orb/vfx.png";
 	
+	// 410  320    410  320
+	// 370  310    425  430
+	// 040  010   -015 -110
+	
+	private double counter = 0.0f;
+	
 	private ParticleEffect effectFront = new ParticleEffect(
-			new Rectangle(370, 310, 200, 5),
-			0.8f, 
-			4,
-			new Vector2(-0.002f, 0.135f), 
+			new Rectangle(370, 310, 200, 5), 
+			0.8f,                            
+			4,                              
+			new Vector2(-0.002f, 0.135f),    
 			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
 			);
 	private ParticleEffect effectHand = new ParticleEffect(
@@ -81,32 +87,26 @@ public class BlackMageCharacter extends CustomPlayer {
 		System.out.println("blackmage ctor : finish");
 	}
 	
-	@SuppressWarnings("unused")
-	public void renderPlayerImage(SpriteBatch sb) {
-		if(!(AbstractDungeon.player instanceof BlackMageCharacter))
-			return;
-		
+	private void doParticleEffects(SpriteBatch sb, int x, int y) {
 		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
-			effectFront.setParticleColor(BlackMageMod.iceEffect.getColor());
-			effectHand.setParticleColor(BlackMageMod.iceEffect.getColor());
+			effectFront.setParticleColor(BlackMageMod.iceEffect.getColor(true));
+			effectHand.setParticleColor(BlackMageMod.iceEffect.getColor(true));
+			effectFront.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-snow.png"));
+			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-snow.png"));
 		}else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
-			effectFront.setParticleColor(BlackMageMod.fireEffect.getColor());
-			effectHand.setParticleColor(BlackMageMod.fireEffect.getColor());
+			effectFront.setParticleColor(BlackMageMod.fireEffect.getColor(true));
+			effectHand.setParticleColor(BlackMageMod.fireEffect.getColor(true));
+			effectFront.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-fire.png"));
+			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-fire.png"));
 		}else {
 			effectFront.setParticleColor(BlackMageMod.MULTI);
 			effectHand.setParticleColor(BlackMageMod.MULTI);
+			effectFront.setParticleTexture(BlackMageMod.getTexture("img/particles/particle.png"));
+			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle.png"));
 		}
 		
-		
-		sb.setColor(1, 1, 1, 1);
-		
-		int mouseX = Gdx.input.getX();
-		int mouseY = Gdx.input.getY();
-		
-		int x = Math.round(410 * Settings.scale);
-		int y = Math.round(320 * Settings.scale);
-		
-		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), x, y, 0, 0, 538f, 800f, 0.3f * Settings.scale, 0.3f * Settings.scale, 0.0f, 0, 0, 538, 800, false, false);
+		effectFront.moveSpawnRegion(x - 40, y - 10);
+		effectHand.moveSpawnRegion(x + 15, y + 110);
 		
 		effectFront.update();
 		effectFront.render(sb);
@@ -115,14 +115,39 @@ public class BlackMageCharacter extends CustomPlayer {
 		effectHand.render(sb);
 	}
 	
+	@SuppressWarnings("unused")
+	public void renderPlayerImage(SpriteBatch sb) {
+		if(!(AbstractDungeon.player instanceof BlackMageCharacter))
+			return;
+		
+		sb.setColor(1, 1, 1, 1);
+		
+		int mouseX = Gdx.input.getX();
+		int mouseY = Gdx.input.getY();
+		
+		counter += Gdx.graphics.getDeltaTime();
+		
+		if(counter > 100.0 && Math.sin(counter) > 0.9999) {
+			counter = Math.PI / 2;
+		}
+		
+		int x = (int) (Math.round(410 * Settings.scale));
+		int y = (int) (Math.round(330 * Settings.scale) + (12 * Math.sin(counter)));
+		
+		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), x, y, 0, 0, 538f, 800f, 0.3f * Settings.scale, 0.3f * Settings.scale, 0.0f, 0, 0, 538, 800, false, false);
+		
+		doParticleEffects(sb, x, y);
+	}
+	
 	public static CharSelectInfo getLoadout() {
 		CharSelectInfo selectInfo = new CharSelectInfo(
 				"Black Mage",
 				"Use the power of fire and ice to clear the tower.",
 				START_HP,
 				START_HP,
+				1, //Possibly have 1 orb to represent type
 				99,
-				5,
+				5, 
 				EnumPatch.BLACK_MAGE_CLASS,
 				getStartingRelics(),
 				getStartingDeck(),

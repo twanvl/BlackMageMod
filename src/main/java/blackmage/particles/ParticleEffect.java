@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -66,9 +67,9 @@ public class ParticleEffect {
 		sb.setColor(1, 1, 1, 1);
 	}
 
-	public void moveSpawnRegion(int newX, int newY) {
-		this.spawnRegion.x = newX;
-		this.spawnRegion.y = newY;
+	public void moveSpawnRegion(float f, float g) {
+		this.spawnRegion.x = f;
+		this.spawnRegion.y = g;
 	}
 
 	public float getSpawnRate() {
@@ -89,5 +90,9 @@ public class ParticleEffect {
 	
 	public void setParticleColor(Color c) {
 		this.baseParticle.setColor(c);
+	}
+	
+	public void setParticleTexture(Texture t) {
+		this.baseParticle.setTexture(t);
 	}
 }
