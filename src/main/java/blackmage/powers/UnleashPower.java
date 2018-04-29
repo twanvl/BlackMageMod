@@ -8,7 +8,7 @@ import blackmage.BlackMageMod;
 public class UnleashPower extends AbstractPower {
 	
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Only Lose half of your Ice or Fire at the end of your turn."
+			"Only 1/2 of your Ice or Fire at the end of your turn."
 		};
 	
 	public UnleashPower(AbstractCreature owner) {

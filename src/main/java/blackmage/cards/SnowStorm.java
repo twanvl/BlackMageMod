@@ -12,9 +12,9 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.IcePower;
 
-public class Blizzard extends AbstractCustomCardWithType {
-	public static final String ID = "Blizzard";
-	private static final String NAME = "Blizzard";
+public class SnowStorm extends AbstractCustomCardWithType {
+	public static final String ID = "SnowStorm";
+	private static final String NAME = "Snow Storm";
 	private static final String IMG = "img/cards/icons/blizzard.png";
 	private static final String DESCRIPTION = "Deal !D! ice damage to all enemies 2 times. Apply !M! Weak. NL Gain 1 Ice";
 	
@@ -28,7 +28,7 @@ public class Blizzard extends AbstractCustomCardWithType {
 	private static final int ATK_DMG = 3;
 	private static final int MAGIC = 1;
 	
-	public Blizzard() {
+	public SnowStorm() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseMagicNumber = MAGIC;
@@ -40,7 +40,7 @@ public class Blizzard extends AbstractCustomCardWithType {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new Blizzard();
+		return new SnowStorm();
 	}
 
 	@Override

@@ -1,0 +1,13 @@
+
+tiny-orb.png
+size: 24,24
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+orb
+  rotate:false
+  xy: 0,0
+  size: 24,24
+  orig: 24,24
+  offset: 0,0
+  index: -1

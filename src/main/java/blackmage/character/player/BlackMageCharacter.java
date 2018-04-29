@@ -6,6 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,6 +17,8 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomPlayer;
 import blackmage.BlackMageMod;
+import blackmage.particles.Particle;
+import blackmage.particles.ParticleEffect;
 import blackmage.patches.EnumPatch;
 
 public class BlackMageCharacter extends CustomPlayer {
@@ -36,6 +40,27 @@ public class BlackMageCharacter extends CustomPlayer {
 	};
 	
 	public static final String orbVfx = "img/character/orb/vfx.png";
+	
+	// 410  320    410  320
+	// 370  310    425  430
+	// 040  010   -015 -110
+	
+	private double counter = 0.0f;
+	
+	private ParticleEffect effectFront = new ParticleEffect(
+			new Rectangle(370, 310, 200, 5), 
+			0.8f,                            
+			4,                              
+			new Vector2(-0.002f, 0.135f),    
+			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
+			);
+	private ParticleEffect effectHand = new ParticleEffect(
+			new Rectangle(425, 430, 5, 5),
+			0.75f,
+			4,
+			new Vector2(0.0f, 0.05f),
+			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
+			);
 
 	public BlackMageCharacter(String name, PlayerClass setClass) {
 		
@@ -62,6 +87,34 @@ public class BlackMageCharacter extends CustomPlayer {
 		System.out.println("blackmage ctor : finish");
 	}
 	
+	private void doParticleEffects(SpriteBatch sb, int x, int y) {
+		if(AbstractDungeon.player.hasPower("bm_ice_power")) {
+			effectFront.setParticleColor(BlackMageMod.iceEffect.getColor(true));
+			effectHand.setParticleColor(BlackMageMod.iceEffect.getColor(true));
+			effectFront.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-snow.png"));
+			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-snow.png"));
+		}else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
+			effectFront.setParticleColor(BlackMageMod.fireEffect.getColor(true));
+			effectHand.setParticleColor(BlackMageMod.fireEffect.getColor(true));
+			effectFront.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-fire.png"));
+			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle-fire.png"));
+		}else {
+			effectFront.setParticleColor(BlackMageMod.MULTI);
+			effectHand.setParticleColor(BlackMageMod.MULTI);
+			effectFront.setParticleTexture(BlackMageMod.getTexture("img/particles/particle.png"));
+			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle.png"));
+		}
+		
+		effectFront.moveSpawnRegion(x - 40, y - 10);
+		effectHand.moveSpawnRegion(x + 15, y + 110);
+		
+		effectFront.update();
+		effectFront.render(sb);
+		
+		effectHand.update();
+		effectHand.render(sb);
+	}
+	
 	@SuppressWarnings("unused")
 	public void renderPlayerImage(SpriteBatch sb) {
 		if(!(AbstractDungeon.player instanceof BlackMageCharacter))
@@ -69,14 +122,21 @@ public class BlackMageCharacter extends CustomPlayer {
 		
 		sb.setColor(1, 1, 1, 1);
 		
-		int x = Gdx.input.getX();
-		int y = Gdx.input.getY();
+		int mouseX = Gdx.input.getX();
+		int mouseY = Gdx.input.getY();
 		
-		//Render Particle line Back 30%
+		counter += Gdx.graphics.getDeltaTime();
 		
-		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), 380, 325, 0, 0, 538f, 800f, 0.3f, 0.3f, 0.0f, 0, 0, 538, 800, false, false);
+		if(counter > 100.0 && Math.sin(counter) > 0.9999) {
+			counter = Math.PI / 2;
+		}
 		
-		//Render Particle line Front 60%
+		int x = (int) (Math.round(410 * Settings.scale));
+		int y = (int) (Math.round(330 * Settings.scale) + (12 * Math.sin(counter)));
+		
+		sb.draw(BlackMageMod.getTexture("img/character/player/temp.png"), x, y, 0, 0, 538f, 800f, 0.3f * Settings.scale, 0.3f * Settings.scale, 0.0f, 0, 0, 538, 800, false, false);
+		
+		doParticleEffects(sb, x, y);
 	}
 	
 	public static CharSelectInfo getLoadout() {
@@ -85,8 +145,9 @@ public class BlackMageCharacter extends CustomPlayer {
 				"Use the power of fire and ice to clear the tower.",
 				START_HP,
 				START_HP,
+				1, //Possibly have 1 orb to represent type
 				99,
-				5,
+				5, 
 				EnumPatch.BLACK_MAGE_CLASS,
 				getStartingRelics(),
 				getStartingDeck(),

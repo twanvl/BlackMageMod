@@ -24,7 +24,7 @@ public class MagesSong extends CustomCard {
 	
 	public MagesSong() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
-		this.isExhausted = true;
+		//this.isExhausted = true;
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class MagesSong extends CustomCard {
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
 		if(p.hasPower("bm_ice_power")) {
 			AbstractPower power = p.getPower("bm_ice_power");
-			power.amount *= 2;
+			power.stackPower(power.amount);
 			power.flash();
 		}
 		if(p.hasPower("bm_fire_power")) {
 			AbstractPower power = p.getPower("bm_fire_power");
-			power.amount *= 2;
+			power.stackPower(power.amount);
 			power.flash();
 		}
 	}

@@ -1,6 +1,7 @@
 package blackmage.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +15,7 @@ public class Ember extends AbstractCustomCardWithType {
 	public static final String ID = "Ember";
 	private static final String NAME = "Ember";
 	private static final String IMG = "img/cards/icons/ember.png";
-	private static final String DESCRIPTION = "Gain !M! Fire.";
+	private static final String DESCRIPTION = "Gain !B! block. NL Gain !M! Fire.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -24,10 +25,12 @@ public class Ember extends AbstractCustomCardWithType {
 
 	private static final int COST = 0;
 	private static final int MAGIC = 1;
+	private static final int BLOCK = 4;
 
 	public Ember() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE, false);
 		
+		this.baseBlock = BLOCK;
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;
 	}
@@ -55,6 +58,7 @@ public class Ember extends AbstractCustomCardWithType {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster arg1) {
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FirePower(p, this.magicNumber), this.magicNumber));
 	}
 

@@ -1,9 +1,13 @@
 package blackmage.cards;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.helpers.TooltipInfo;
 import blackmage.BlackMageMod;
 import blackmage.patches.EnumPatch;
 
@@ -16,17 +20,24 @@ public class AncientScroll extends AbstractMulitTypeCard {
 			"Gain either !M! Ice or !M! Fire.", 
 			"Increase Ice by !M!.",
 			"Increase Fire by !M!."};
+	private static final String DESCRIPTION = "Increase Fire or Ice. NL Hover to show conditional effects.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
-	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
+	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 
-	private static final int COST = 2;
+	private List<TooltipInfo> tips;
+	
+	private static final int COST = 1;
 	private static final int MAGIC = 3;
 
 	public AncientScroll() {
-		super(ID, NAME, IMG, COST, DESCRIPTIONS[0], TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		
+		tips = new ArrayList<TooltipInfo>();
+		
+		tips.add(new TooltipInfo("Effects", "#bIce: NL Increase Ice. NL NL #rFire: NL Increase Fire. NL NL #yNeither: NL Gain Ice or Fire."));
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;
@@ -42,13 +53,18 @@ public class AncientScroll extends AbstractMulitTypeCard {
 	public void upgrade() {
 		if(!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(2);
+			this.upgradeBaseCost(0);
 		}
+	}
+	
+	@Override
+	public List<TooltipInfo> getCustomTooltips() {
+		return tips;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		BlackMageMod.applyRandomIceFirePower(magicNumber, true);
+		BlackMageMod.applyRandomIceFirePower(magicNumber);
 	}
 
 	@Override

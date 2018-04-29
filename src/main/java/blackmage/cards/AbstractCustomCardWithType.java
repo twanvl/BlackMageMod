@@ -1,9 +1,7 @@
 package blackmage.cards;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import basemod.abstracts.CustomCard;
 import blackmage.BlackMageMod;
 
@@ -148,9 +146,12 @@ public abstract class AbstractCustomCardWithType extends CustomCard{
 	public void calculateCardDamage(AbstractMonster arg0) {
 		super.calculateCardDamage(arg0);
 		
+		int modifier = 0;
+		
+		if(!this.willApplyPowers)
+			return;
+		
 		if(this.damage != 0) {
-			
-			int modifier = 0;
 			
 			switch(colorType) {
 			case ICE:
@@ -178,7 +179,6 @@ public abstract class AbstractCustomCardWithType extends CustomCard{
 			}
 		}
 		if(this.block != 0) {
-			int modifier = 0;
 			
 			switch(colorType) {
 			case ICE:
@@ -199,10 +199,6 @@ public abstract class AbstractCustomCardWithType extends CustomCard{
 			
 			this.block += modifier;
 		}
-	}
-	
-	public void renderEnergy(SpriteBatch sb, float drawX, float drawY) {
-		
 	}
 	
 	public abstract AbstractCustomCardWithType getOpposite(boolean isUpgraded);
