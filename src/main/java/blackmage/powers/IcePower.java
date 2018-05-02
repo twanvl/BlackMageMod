@@ -15,6 +15,8 @@ public class IcePower extends AbstractPower {
 		"#bIce type attacks deal #y"
 	};
 	
+	private static int cap = 5;
+	
 	public IcePower(AbstractCreature owner, int amount) {
 		this.name = "Ice";
 		this.ID = "bm_ice_power";
@@ -54,10 +56,11 @@ public class IcePower extends AbstractPower {
 
 	public void stackPower(int stackAmount) {
 		this.amount += stackAmount;
-		if(this.amount >= 5) {
+		if(this.amount >= cap) {
 			this.flash();
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner, owner, 5));
 			this.amount = 1;
+			//cap++;
 		}
 	}
 	
@@ -68,7 +71,13 @@ public class IcePower extends AbstractPower {
 	@Override
 	public void updateDescription() {
 		if(this.amount > 0) {
-			this.description = ("#yPassive #yEffect: NL " + DESCRIPTIONS[0] + this.amount + " more damage this turn. NL NL #rActive #rEffect: NL At 5 or more stacks gain #y5 block and reset stacks to #y1.");
+			this.description = (
+				"#yPassive #yEffect: NL " + 
+				DESCRIPTIONS[0] + 
+				this.amount + 
+				" more damage this turn. NL NL #rActive #rEffect: NL At " + 
+				cap + 
+				" or more stacks gain #y5 block and reset stacks to #y1 and increase Ice cap by 1.");
 		}
 	}
 }

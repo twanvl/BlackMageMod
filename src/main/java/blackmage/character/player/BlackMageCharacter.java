@@ -145,7 +145,7 @@ public class BlackMageCharacter extends CustomPlayer {
 				"Use the power of fire and ice to clear the tower.",
 				START_HP,
 				START_HP,
-				1, //Possibly have 1 orb to represent type
+				2, //Possibly have 1 orb to represent type
 				99,
 				5, 
 				EnumPatch.BLACK_MAGE_CLASS,

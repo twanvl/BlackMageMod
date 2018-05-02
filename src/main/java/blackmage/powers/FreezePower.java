@@ -20,19 +20,19 @@ public class FreezePower extends AbstractPower{
 	
 	
 	public FreezePower(AbstractCreature owner) {
-		this.name = "Freeze";
+		this.name = "Stunned";
 		this.ID = "bm_Freeze";
 		this.owner = owner;
 		this.amount = -1;
 		this.updateDescription();
 	 
 		this.type = AbstractPower.PowerType.DEBUFF;
-		this.img = BlackMageMod.getTexture("img/powers/ice.png");
+		this.img = BlackMageMod.getTexture("img/powers/stun.png");
 		
 		moveByte = 1;
 		moveIntent = AbstractMonster.Intent.UNKNOWN;
 		
-		if (owner instanceof AbstractMonster) {
+		if (owner instanceof AbstractMonster && !owner.hasPower("Artifact")) {
 			AbstractMonster m = (AbstractMonster)owner;
 			
 			moveByte = Byte.valueOf(m.nextMove);
