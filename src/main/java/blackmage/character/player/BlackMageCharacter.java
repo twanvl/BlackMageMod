@@ -48,14 +48,14 @@ public class BlackMageCharacter extends CustomPlayer {
 	private double counter = 0.0f;
 	
 	private ParticleEffect effectFront = new ParticleEffect(
-			new Rectangle(370, 310, 200, 5), 
+			new Rectangle(370, 310, 200f * Settings.scale, 5 * Settings.scale), 
 			0.8f,                            
 			4,                              
 			new Vector2(-0.002f, 0.135f),    
 			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
 			);
 	private ParticleEffect effectHand = new ParticleEffect(
-			new Rectangle(425, 430, 5, 5),
+			new Rectangle(425, 430, 5 * Settings.scale, 5 * Settings.scale),
 			0.75f,
 			4,
 			new Vector2(0.0f, 0.05f),
@@ -105,8 +105,8 @@ public class BlackMageCharacter extends CustomPlayer {
 			effectHand.setParticleTexture(BlackMageMod.getTexture("img/particles/particle.png"));
 		}
 		
-		effectFront.moveSpawnRegion(x - 40, y - 10);
-		effectHand.moveSpawnRegion(x + 15, y + 110);
+		effectFront.moveSpawnRegion(x - (40f * Settings.scale), y - (10f * Settings.scale));
+		effectHand.moveSpawnRegion(x + (15f * Settings.scale), y + (110f * Settings.scale));
 		
 		effectFront.update();
 		effectFront.render(sb);
