@@ -36,7 +36,6 @@ public class Cauterize extends AbstractMulitTypeCard {
 	
 	public Cauterize() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, POOL);
-		this.isInnate = true;
 		
 		tips = new ArrayList<TooltipInfo>();
 		
@@ -53,7 +52,8 @@ public class Cauterize extends AbstractMulitTypeCard {
 		if(!this.upgraded) {
 			this.upgradeName();
 			this.exhaust = false;
-			this.EXHAUST_TEXT = "";
+			this.rawDescription = "Gain a conditional effect based on type. NL Hover to show conditional effects.";
+			this.initializeDescription();
 		}
 	}
 	

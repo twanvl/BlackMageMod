@@ -49,7 +49,7 @@ public class Distract extends CustomCard{
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new DiscardAction(p, p, 1, false));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, m, new WeakPower(m, magicNumber, false), magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
 	}
 
 }

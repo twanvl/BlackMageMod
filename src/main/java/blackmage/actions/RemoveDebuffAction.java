@@ -22,7 +22,7 @@ public class RemoveDebuffAction extends AbstractGameAction {
 			}
 			
 			if(!debuffs.isEmpty()) {
-				AbstractPower randDebuff = debuffs.get((new Random()).random(debuffs.size()));
+				AbstractPower randDebuff = debuffs.get((new Random()).random(debuffs.size() - 1));
 				randDebuff.flash();
 				AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, randDebuff.ID));
 			}

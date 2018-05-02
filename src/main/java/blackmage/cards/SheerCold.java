@@ -25,6 +25,7 @@ public class SheerCold extends AbstractCustomCardWithType {
 	
 	public SheerCold() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		this.exhaust = true;
 	}
 
 	@Override

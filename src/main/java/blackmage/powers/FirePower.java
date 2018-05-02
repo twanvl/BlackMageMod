@@ -17,6 +17,8 @@ public class FirePower extends AbstractPower {
 			"#rFire type attacks deal #y"
 		};
 	
+	private static int cap = 5;
+	
 	public FirePower(AbstractCreature owner, int amount) {
 		this.name = "Fire";
 		this.ID = "bm_fire_power";
@@ -56,12 +58,11 @@ public class FirePower extends AbstractPower {
 
 	public void stackPower(int stackAmount) {
 		this.amount += stackAmount;
-		if(this.amount >= 5) {
+		if(this.amount >= cap) {
 			this.flash();
-			AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(
-					new DamageInfo(owner, 5, DamageInfo.DamageType.THORNS), 
-					AttackEffect.FIRE));
+			AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(owner, 5, DamageInfo.DamageType.THORNS), AttackEffect.FIRE));
 			this.amount = 1;
+			//cap++;
 		}
 	}
 	
@@ -72,7 +73,13 @@ public class FirePower extends AbstractPower {
 	@Override
 	public void updateDescription() {
 		if(this.amount > 0) {
-			this.description = ("#yPassive #yEffect: NL " + DESCRIPTIONS[0] + this.amount + " more damage this turn. NL NL #bActive #bEffect: NL At #y5 or more stacks deal #y5 damage to a random enemy and reset stacks to #y1.");
+			this.description = (
+				"#yPassive #yEffect: NL " + 
+				DESCRIPTIONS[0] + 
+				this.amount + 
+				" more damage this turn. NL NL #bActive #bEffect: NL At #y" + 
+				cap + 
+				" or more stacks deal #y5 damage to a random enemy and reset stacks to #y1 and increase Fire cap by 1.");		
 		}
 	}
 }

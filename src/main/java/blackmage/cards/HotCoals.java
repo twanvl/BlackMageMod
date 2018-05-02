@@ -26,11 +26,14 @@ public class HotCoals extends AbstractCustomCardWithType {
 	private static final int COST = 1;
 	private static final int MAGIC = 1;
 	
+	private int bonus = 0;
+	
 	public HotCoals() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
 		
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = MAGIC;
+		this.bonus = 0;
 	}
 	
 	@Override
@@ -47,14 +50,14 @@ public class HotCoals extends AbstractCustomCardWithType {
 	public void upgrade() {
 		if(!upgraded) {
 			this.upgradeName();
-			this.upgradeBaseCost(0);
+			bonus = 1;
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if(p.hasPower("bm_fire_power")) {
-			int amt = p.getPower("bm_fire_power").amount;
+			int amt = p.getPower("bm_fire_power").amount + bonus;
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new GainAshNextTurnPower(p, amt), amt));
 			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "bm_fire_power"));
 		}
