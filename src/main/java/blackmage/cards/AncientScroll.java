@@ -15,7 +15,7 @@ public class AncientScroll extends AbstractMulitTypeCard {
 	
 	public static final String ID = "AncientScroll";
 	private static final String NAME = "Ancient Scroll";
-	private static final String IMG = "img/cards/icons/magesong.png";
+	private static final String IMG = "img/cards/icons/scroll.png";
 	private static final String[] DESCRIPTIONS = {
 			"Gain either !M! Ice or !M! Fire.", 
 			"Increase Ice by !M!.",

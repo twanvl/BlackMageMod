@@ -16,7 +16,7 @@ public class Destiny extends CustomCard {
 	
 	public static final String ID = "Destiny";
 	private static final String NAME = "Destiny";
-	private static final String IMG = "img/cards/icons/defend-normal.png";
+	private static final String IMG = "img/cards/icons/destiny.png";
 	private static final String DESCRIPTION = "Gain [B] [B] . Remove Ice and Fire. Exhaust.";
 	private static final String DESCRIPTION2 = "Gain [B] [B] . Remove Ice and Fire.";
 	

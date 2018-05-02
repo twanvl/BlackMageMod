@@ -23,7 +23,7 @@ public class FlameWall extends AbstractCustomCardWithType {
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.FIRE;
 
 	private static final int COST = 1;
-	private static int BLOCK = 5;
+	private static int BLOCK = 7;
 	
 	public FlameWall() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);

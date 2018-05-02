@@ -92,7 +92,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/small/skill_normal.png",
 		"img/cards/small/skill_ice.png",		
 		"img/cards/small/skill_fire.png",
-		"img/cards/small/skill_shadow.png"
+		"img/cards/small/skill_dark.png"
 	};
 	public static final String[] POWER_BG = {
 		"img/cards/small/power_normal.png",
@@ -279,6 +279,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new CursedIce()); //Attack
 		BaseMod.addCard(new BlackFire()); //Attack
 		BaseMod.addCard(new DarkArmor()); //Power
+		BaseMod.addCard(new BookOfShadows()); //Skill
 		//THUNDER PACK
 			//
 		

@@ -19,7 +19,7 @@ public class Cauterize extends AbstractMulitTypeCard {
 	
 	public static final String ID = "Cauterize";
 	private static final String NAME = "Cauterize";
-	private static final String IMG = "img/cards/icons/robes.png";
+	private static final String IMG = "img/cards/icons/cauterize.png";
 	
 	private String EXHAUST_TEXT = " NL Exhaust.";
 	private static final String DESCRIPTION = "Gain a conditional effect based on type. NL Exhaust. NL Hover to show conditional effects.";

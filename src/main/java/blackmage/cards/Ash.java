@@ -18,7 +18,7 @@ public class Ash extends AbstractCustomCardWithType {
 	public static final String ID = "bm_Ash";
 	private static final String NAME = "Ashes";
 	private static final String IMG = "img/cards/icons/ash.png";
-	private static final String DESCRIPTION = "Deal !D! damage. NL Gain 1 Fire. NL Exhaust.";
+	private static final String DESCRIPTION = "Deal !D! fire damage. NL Gain 1 Fire. NL Exhaust.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;

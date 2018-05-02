@@ -15,7 +15,7 @@ public class Distract extends CustomCard{
 	
 	public static final String ID = "Distract";
 	private static final String NAME = "Distract";
-	private static final String IMG = "img/cards/icons/defend-normal.png";
+	private static final String IMG = "img/cards/icons/distract.png";
 	private static final String DESCRIPTION = "Discard a card. Apply !M! Weak.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
