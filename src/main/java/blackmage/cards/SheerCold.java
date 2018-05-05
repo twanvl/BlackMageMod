@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import blackmage.patches.EnumPatch;
-import blackmage.powers.FreezePower;
+import blackmage.powers.StunPower;
 
 public class SheerCold extends AbstractCustomCardWithType {
 	public static final String ID = "SheerCold";
@@ -44,7 +44,7 @@ public class SheerCold extends AbstractCustomCardWithType {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		for(AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, p, new FreezePower(mon), 1));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, p, new StunPower(mon), 1));
 		}
 	}
 

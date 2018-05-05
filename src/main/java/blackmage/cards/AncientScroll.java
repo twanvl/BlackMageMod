@@ -37,7 +37,7 @@ public class AncientScroll extends AbstractMulitTypeCard {
 		
 		tips = new ArrayList<TooltipInfo>();
 		
-		tips.add(new TooltipInfo("Effects", "#bIce: NL Increase Ice. NL NL #rFire: NL Increase Fire. NL NL #yNeither: NL Gain Ice or Fire."));
+		tips.add(new TooltipInfo("Effects", "#bIce: NL Increase Ice by 3. NL NL #rFire: NL Increase Fire by 3. NL NL #yNeither: NL Gain 3 Ice or Fire."));
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

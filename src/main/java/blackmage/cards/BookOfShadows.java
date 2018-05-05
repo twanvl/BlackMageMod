@@ -14,8 +14,7 @@ public class BookOfShadows extends AbstractCustomCardWithType {
 	public static final String ID = "BookOfShadows";
 	private static final String NAME = "Book of Shadows";
 	private static final String IMG = "img/cards/icons/badbook.png";
-	private static final String DESCRIPTION = "Draw !M! cards.";
-	private static final String UPDATE_DESC = "Draw !M! cards. If any of them are dark type, deal 5 dark damage to a random enemy.";
+	private static final String DESCRIPTION = "Draw !M! cards. If any of them are dark type, put 1 Shackle in your discard pile.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
@@ -49,19 +48,16 @@ public class BookOfShadows extends AbstractCustomCardWithType {
 		if(!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(1);
-			this.rawDescription = UPDATE_DESC;
-			this.initializeDescription();
 		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new BookOfShadowsAction(p, magicNumber));
-		if(this.upgraded) {
-			AbstractDungeon.actionManager.addToBottom(new BookOfShadowsFollowUpAction());
-		} else {
-			BookOfShadowsAction.checkedCards.clear();
-		}
+		
+		AbstractDungeon.actionManager.addToBottom(new BookOfShadowsFollowUpAction());
+	
+		
 	}
 
 }

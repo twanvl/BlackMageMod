@@ -80,9 +80,9 @@ public class BlackMageCharacter extends CustomPlayer {
 		
 		this.atlas = new TextureAtlas();
 		
-		initializeClass(null, BlackMageMod.BLACK_MAGE_SHOULDER_2, 
-				BlackMageMod.BLACK_MAGE_SHOULDER_1, BlackMageMod.BLACK_MAGE_CORPSE, 
-				getLoadout(), 0.0f, -20f, 240.0f, 240.0f, new EnergyManager(ENERGY_PER_TURN));
+//		initializeClass(null, BlackMageMod.BLACK_MAGE_SHOULDER_2, 
+//				BlackMageMod.BLACK_MAGE_SHOULDER_1, BlackMageMod.BLACK_MAGE_CORPSE, 
+//				getLoadout(), 0.0f, -20f, 240.0f, 240.0f, new EnergyManager(ENERGY_PER_TURN));
 		
 		System.out.println("blackmage ctor : finish");
 	}
@@ -145,7 +145,7 @@ public class BlackMageCharacter extends CustomPlayer {
 				"Use the power of fire and ice to clear the tower.",
 				START_HP,
 				START_HP,
-				2, //Possibly have 1 orb to represent type
+				0, //Possibly have 1 orb to represent type
 				99,
 				5, 
 				EnumPatch.BLACK_MAGE_CLASS,
