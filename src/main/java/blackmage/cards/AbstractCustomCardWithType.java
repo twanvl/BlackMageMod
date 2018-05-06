@@ -16,23 +16,17 @@ public abstract class AbstractCustomCardWithType extends CustomCard{
 	public CardColorType colorType;
 	private boolean willApplyPowers;
 	
-	public AbstractCustomCardWithType(String id, String name, String img, 
-			int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target,
-			int cardPool, CardColorType damageType) {
-		this(id, name, img, cost, rawDescription, type, color, rarity, target, cardPool, damageType, true);
-	}
-	
-	
-
-	public AbstractCustomCardWithType(String id, String name, String img,
-			int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target,
-			int cardPool, CardColorType damageType, boolean willApplyPowers) {
-		super(id, name, img, cost, rawDescription, type, color, rarity, target, cardPool);
+	public AbstractCustomCardWithType(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, CardColorType damageType, boolean willApplyPowers) {
+		super(id, name, img, cost, rawDescription, type, color, rarity, target);
 		colorType = damageType;
-		this.willApplyPowers = willApplyPowers;
+		
 		assignOrbTexture();
 		assignBGTexture();
 		assignBannerTexture();
+	}
+	
+	public AbstractCustomCardWithType(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, CardColorType damageType) {
+		this(id, name, img, cost, rawDescription, type, color, rarity, target, damageType, true);
 	}
 	
 	private void assignBannerTexture() {

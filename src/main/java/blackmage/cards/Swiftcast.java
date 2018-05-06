@@ -26,7 +26,7 @@ public class Swiftcast extends CustomCard {
 	private static final int CARDS = 1;
 	
 	public Swiftcast() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.magicNumber = CARDS;
 		this.baseMagicNumber = CARDS;
 	}

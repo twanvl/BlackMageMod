@@ -28,7 +28,7 @@ public class Stasis extends CustomCard {
 	private static final int MAGIC = 1;
 	
 	public Stasis() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = MAGIC;

@@ -26,10 +26,9 @@ public class EnchantedRobes extends CustomCard {
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 	
 	private static final int COST = 1;
-	private static final int POOL = 1;
 	
 	public EnchantedRobes() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, POOL);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.isInnate = true;
 		this.setBannerTexture("img/cards/small/banner_megarare.png", "img/cards/portrait/banner_megarare.png");
 	}

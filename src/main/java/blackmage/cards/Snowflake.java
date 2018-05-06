@@ -28,7 +28,7 @@ public class Snowflake extends AbstractCustomCardWithType {
 	private static final int BLOCK = 4;
 	
 	public Snowflake() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE, false);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE, false);
 		
 		this.baseBlock = BLOCK;
 		this.magicNumber = MAGIC;

@@ -33,7 +33,7 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 	private static final int BLOCK = 8;
 	
 	public TabletOfKnowledge() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		tips = new ArrayList<TooltipInfo>();
 		

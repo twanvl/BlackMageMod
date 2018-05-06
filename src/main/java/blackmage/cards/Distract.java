@@ -27,7 +27,7 @@ public class Distract extends CustomCard{
 	private static final int MAGIC = 1;
 	
 	public Distract() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

@@ -28,7 +28,7 @@ public class Frostbite extends AbstractCustomCardWithType {
 	private static final int MAGIC = 4;
 
 	public Frostbite() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE, false);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE, false);
 		
 		this.baseBlock = BLOCK;
 		this.baseMagicNumber = MAGIC;

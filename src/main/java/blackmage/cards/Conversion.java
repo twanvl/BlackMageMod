@@ -29,7 +29,7 @@ public class Conversion extends CustomCard {
 	private static final int MAGIC = 0;
 	
 	public Conversion() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

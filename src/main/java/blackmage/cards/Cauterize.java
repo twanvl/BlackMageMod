@@ -32,10 +32,9 @@ public class Cauterize extends AbstractMulitTypeCard {
 	private List<TooltipInfo> tips;
 	
 	private static final int COST = 1;
-	private static final int POOL = 1;
 	
 	public Cauterize() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, POOL);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		tips = new ArrayList<TooltipInfo>();
 		

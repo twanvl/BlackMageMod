@@ -29,7 +29,7 @@ public class Destiny extends CustomCard {
 	private static final int MAGIC = 2;
 
 	public Destiny() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.exhaust = true;
 		this.magicNumber = MAGIC;

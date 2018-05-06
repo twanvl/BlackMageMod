@@ -26,7 +26,7 @@ public class SnowWall extends AbstractCustomCardWithType {
 	private static final int BLOCK = 7;
 	
 	public SnowWall() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 
 		this.baseBlock = BLOCK;
 	}

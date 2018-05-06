@@ -29,7 +29,7 @@ public class FireStrike extends AbstractCustomCardWithType {
 	private static final int ATTACK_DMG = 6;
 	
 	public FireStrike() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.baseDamage = ATTACK_DMG;
 	}

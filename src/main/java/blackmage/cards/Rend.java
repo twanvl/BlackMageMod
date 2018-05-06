@@ -31,7 +31,7 @@ public class Rend extends AbstractCustomCardWithType {
 	private static final int DAMAGE = 12;
 
 	public Rend() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.baseDamage = DAMAGE;
 		this.magicNumber = MAGIC;

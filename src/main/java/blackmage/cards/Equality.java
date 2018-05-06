@@ -31,7 +31,7 @@ public class Equality extends CustomCard{
 	private static final int MAGIC = 1;
 	
 	public Equality() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.baseBlock = DEFEND;
 		this.magicNumber = MAGIC;

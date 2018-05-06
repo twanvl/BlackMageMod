@@ -26,7 +26,7 @@ public class Freeze extends AbstractCustomCardWithType {
 	private static final int MAGIC = 1;
 	
 	public Freeze() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

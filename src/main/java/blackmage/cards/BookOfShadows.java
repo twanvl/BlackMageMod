@@ -27,7 +27,7 @@ public class BookOfShadows extends AbstractCustomCardWithType {
 	private static final int MAGIC = 3;
 	
 	public BookOfShadows() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

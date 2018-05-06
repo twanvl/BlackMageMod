@@ -33,7 +33,7 @@ public class AncientScroll extends AbstractMulitTypeCard {
 	private static final int MAGIC = 3;
 
 	public AncientScroll() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		tips = new ArrayList<TooltipInfo>();
 		

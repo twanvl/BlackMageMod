@@ -24,7 +24,7 @@ public class Defend_BlackMage extends CustomCard {
 	private static final int MAGIC = 5;
 	
 	public Defend_BlackMage() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseBlock = MAGIC;
 	}
 

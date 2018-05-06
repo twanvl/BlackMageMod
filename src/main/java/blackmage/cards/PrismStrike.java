@@ -36,7 +36,7 @@ public class PrismStrike extends AbstractMulitTypeCard {
 	private static final int MAGIC = 5;
 	
 	public PrismStrike() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		tips = new ArrayList<TooltipInfo>();
 		
