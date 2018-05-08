@@ -32,7 +32,7 @@ public class TemperatureShock extends CustomCard {
 	private static final int ATK_DMG = 8;
 	
 	public TemperatureShock() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.baseDamage = ATK_DMG;
 		this.baseMagicNumber = MAGIC;

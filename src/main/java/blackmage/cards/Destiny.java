@@ -16,7 +16,7 @@ public class Destiny extends CustomCard {
 	
 	public static final String ID = "Destiny";
 	private static final String NAME = "Destiny";
-	private static final String IMG = "img/cards/icons/defend-normal.png";
+	private static final String IMG = "img/cards/icons/destiny.png";
 	private static final String DESCRIPTION = "Gain [B] [B] . Remove Ice and Fire. Exhaust.";
 	private static final String DESCRIPTION2 = "Gain [B] [B] . Remove Ice and Fire.";
 	
@@ -29,7 +29,7 @@ public class Destiny extends CustomCard {
 	private static final int MAGIC = 2;
 
 	public Destiny() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.exhaust = true;
 		this.magicNumber = MAGIC;

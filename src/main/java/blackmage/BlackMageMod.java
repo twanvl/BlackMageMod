@@ -92,12 +92,12 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		"img/cards/small/skill_normal.png",
 		"img/cards/small/skill_ice.png",		
 		"img/cards/small/skill_fire.png",
-		"img/cards/small/skill_shadow.png"
+		"img/cards/small/skill_dark.png"
 	};
 	public static final String[] POWER_BG = {
 		"img/cards/small/power_normal.png",
-		"img/cards/small/power_dark.png",
-		"img/cards/small/power_dark.png",
+		"img/cards/small/power_ice.png",
+		"img/cards/small/power_fire.png",
 		"img/cards/small/power_dark.png"
 	};
 	
@@ -116,8 +116,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	};
 	public static final String[] POWER_BG_P = {
 		"img/cards/portrait/power_normal.png",
-		"img/cards/portrait/power_dark.png",
-		"img/cards/portrait/power_dark.png",
+		"img/cards/portrait/power_ice.png",
+		"img/cards/portrait/power_fire.png",
 		"img/cards/portrait/power_dark.png"
 	};
 	
@@ -160,13 +160,13 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		imgMap.put(textureString, new Texture(textureString));
 	}
 	
-	
 	@SuppressWarnings("deprecation")
 	public BlackMageMod() {
-		BaseMod.subscribeToPostInitialize(this);
+		BaseMod.subscribe(this);
 		BaseMod.subscribeToEditCharacters(this);
 		BaseMod.subscribeToEditCards(this);
 		BaseMod.subscribeToEditKeywords(this);
+		BaseMod.subscribeToPostInitialize(this);
 	}
 	
 	public static void initialize() {
@@ -255,7 +255,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Firestorm()); //Attack
 		BaseMod.addCard(new Frostbite()); //Skill
 		BaseMod.addCard(new WyldFire()); //Skill
-		BaseMod.addCard(new Distract());
+		BaseMod.addCard(new Distract()); //Skill
 		
 		//UNCOMMON
 		BaseMod.addCard(new TemperatureShock()); //Attack
@@ -272,6 +272,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new SnowFortress()); //Skill
 		BaseMod.addCard(new Cauterize()); //Skill
 		BaseMod.addCard(new PrismStrike()); //Attack
+		BaseMod.addCard(new Scorch()); //Power
+		BaseMod.addCard(new Freeze()); //Power
 		
 		//SHADOW PACK
 		BaseMod.addCard(new ShadowStrike()); //Attack
@@ -279,6 +281,8 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new CursedIce()); //Attack
 		BaseMod.addCard(new BlackFire()); //Attack
 		BaseMod.addCard(new DarkArmor()); //Power
+		BaseMod.addCard(new BookOfShadows()); //Skill
+		BaseMod.addCard(new Rend()); //Attack
 		//THUNDER PACK
 			//
 		
@@ -287,7 +291,7 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Unleash()); //Power
 		BaseMod.addCard(new Doublecast()); //Skill
 		BaseMod.addCard(new Incinerate()); //Attack
-		BaseMod.addCard(new Destiny());
+		BaseMod.addCard(new Destiny()); //Skill
 	}
 	
 	public static void setOrbColor(AbstractPower power, CustomPlayer player, boolean isUpdated) {

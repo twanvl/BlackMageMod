@@ -18,18 +18,18 @@ public class Ash extends AbstractCustomCardWithType {
 	public static final String ID = "bm_Ash";
 	private static final String NAME = "Ashes";
 	private static final String IMG = "img/cards/icons/ash.png";
-	private static final String DESCRIPTION = "Deal !D! damage. NL Gain 1 Fire. NL Exhaust.";
+	private static final String DESCRIPTION = "Deal !D! fire damage. NL Gain 1 Fire. NL Exhaust.";
 	
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = EnumPatch.BLACK_MAGE;
-	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.SPECIAL;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
 
 	private static final int COST = 0;
 	private static final int ATK_DMG = 3;
 	
 	public Ash() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0, AbstractCustomCardWithType.CardColorType.FIRE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, AbstractCustomCardWithType.CardColorType.FIRE);
 		
 		this.baseDamage = ATK_DMG;
 		this.exhaust = true;

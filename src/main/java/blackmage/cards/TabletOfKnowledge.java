@@ -33,7 +33,7 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 	private static final int BLOCK = 8;
 	
 	public TabletOfKnowledge() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		tips = new ArrayList<TooltipInfo>();
 		
@@ -43,18 +43,16 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 	}
 	
 	@Override
-	public boolean canUpgrade() {
-		return false;
-	}
-
-	@Override
 	public AbstractCard makeCopy() {
 		return new TabletOfKnowledge();
 	}
 
 	@Override
 	public void upgrade() {
-		//NOP
+		if(!this.upgraded) {
+			this.upgradeName();
+			this.upgradeBlock(3);
+		}
 	}
 
 	@Override
@@ -72,7 +70,7 @@ public class TabletOfKnowledge extends AbstractMulitTypeCard {
 		} else if(AbstractDungeon.player.hasPower("bm_fire_power")) {
 			AbstractDungeon.actionManager.addToTop(new DiscardAction(p, p, 1, false));
 		} else {
-			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
+			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 5));
 		}
 	}
 

@@ -29,7 +29,7 @@ public class BlackFire extends AbstractCustomCardWithType {
 	private static final int ATK_DMG = 9;
 
 	public BlackFire() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.baseDamage = ATK_DMG;
 		this.setBackgroundTexture(BlackMageMod.ATTACK_BG[3], BlackMageMod.ATTACK_BG_P[3]);

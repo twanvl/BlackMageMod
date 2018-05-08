@@ -44,8 +44,8 @@ public class Particle {
 
 	public void render(SpriteBatch sb) {
 		float scale = 2.0f * (1.0f * ((float) lifeSpan / (float) maxLifeSpan)) * Settings.scale;
-		float x = pos.x * Settings.scale;
-		float y = pos.y * Settings.scale;
+		float x = pos.x /* * Settings.scale*/;
+		float y = pos.y /* * Settings.scale*/;
 		
 		Vector2 angleVect = new Vector2(velocity);
 		angleVect.x *= -1;

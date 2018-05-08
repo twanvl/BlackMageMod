@@ -23,10 +23,10 @@ public class SnowWall extends AbstractCustomCardWithType {
 	private static final AbstractCustomCardWithType.CardColorType COLOR_TYPE = AbstractCustomCardWithType.CardColorType.ICE;
 
 	private static final int COST = 1;
-	private static final int BLOCK = 5;
+	private static final int BLOCK = 7;
 	
 	public SnowWall() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 
 		this.baseBlock = BLOCK;
 	}

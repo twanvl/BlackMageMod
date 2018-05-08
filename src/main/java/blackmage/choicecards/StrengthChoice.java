@@ -25,7 +25,7 @@ public class StrengthChoice extends CustomCard {
 	private static final int COST = -2;
 	
 	public StrengthChoice() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 0);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		dontTriggerOnUseCard = true;
 	    purgeOnUse = true;
 	}

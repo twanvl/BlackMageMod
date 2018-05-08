@@ -31,7 +31,7 @@ public class WarmingFlame extends AbstractCustomCardWithType {
 	private static final int MAGIC = 3;
 	
 	public WarmingFlame() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1, COLOR_TYPE);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.baseDamage = ATK_DMG;
 		this.magicNumber = MAGIC;

@@ -24,11 +24,11 @@ public class Stasis extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 	
-	private static final int COST = 1;
+	private static final int COST = 0;
 	private static final int MAGIC = 1;
 	
 	public Stasis() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = MAGIC;

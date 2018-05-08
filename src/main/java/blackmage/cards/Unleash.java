@@ -25,7 +25,7 @@ public class Unleash extends CustomCard {
 	private static final int COST = 2;
 
 	public Unleash() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 	}
 	
 	@Override

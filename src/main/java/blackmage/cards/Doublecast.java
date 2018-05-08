@@ -26,7 +26,7 @@ public class Doublecast extends CustomCard {
 	private static final int MAGIC = 3;
 	
 	public Doublecast() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = MAGIC;
 	}

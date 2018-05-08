@@ -15,7 +15,7 @@ public class AncientScroll extends AbstractMulitTypeCard {
 	
 	public static final String ID = "AncientScroll";
 	private static final String NAME = "Ancient Scroll";
-	private static final String IMG = "img/cards/icons/magesong.png";
+	private static final String IMG = "img/cards/icons/scroll.png";
 	private static final String[] DESCRIPTIONS = {
 			"Gain either !M! Ice or !M! Fire.", 
 			"Increase Ice by !M!.",
@@ -33,11 +33,11 @@ public class AncientScroll extends AbstractMulitTypeCard {
 	private static final int MAGIC = 3;
 
 	public AncientScroll() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		
 		tips = new ArrayList<TooltipInfo>();
 		
-		tips.add(new TooltipInfo("Effects", "#bIce: NL Increase Ice. NL NL #rFire: NL Increase Fire. NL NL #yNeither: NL Gain Ice or Fire."));
+		tips.add(new TooltipInfo("Effects", "#bIce: NL Increase Ice by 3. NL NL #rFire: NL Increase Fire by 3. NL NL #yNeither: NL Gain 3 Ice or Fire."));
 		
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;

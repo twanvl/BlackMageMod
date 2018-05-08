@@ -23,7 +23,7 @@ public class MagesSong extends CustomCard {
 	private static final int COST = 1;
 	
 	public MagesSong() {
-		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, 1);
+		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		//this.isExhausted = true;
 	}
 
