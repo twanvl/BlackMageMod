@@ -18,7 +18,9 @@ public abstract class AbstractCustomCardWithType extends CustomCard{
 	
 	public AbstractCustomCardWithType(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, CardColorType damageType, boolean willApplyPowers) {
 		super(id, name, img, cost, rawDescription, type, color, rarity, target);
-		colorType = damageType;
+		
+		this.willApplyPowers = willApplyPowers;
+		this.colorType = damageType;
 		
 		assignOrbTexture();
 		assignBGTexture();
