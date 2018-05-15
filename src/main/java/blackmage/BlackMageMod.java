@@ -29,7 +29,6 @@ import blackmage.cards.*;
 import blackmage.character.player.BlackMageCharacter;
 import blackmage.effects.ColorFadeEffect;
 import blackmage.patches.EnumPatch;
-import blackmage.powers.DeathstrokePower;
 import blackmage.powers.FirePower;
 import blackmage.powers.IcePower;
 import blackmage.relics.SpellBook;
@@ -203,7 +202,9 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		
 		RelicLibrary.add(new SpellBook());
 		
-		BaseMod.addPower(DeathstrokePower.class, "bm_deathstroke_power");
+		//BaseMod.addPotion(UnleashPotion.class, Color.BLUE, Color.CYAN, Color.GRAY, UnleashPotion.ID);
+		
+		//BaseMod.addPower(DeathstrokePower.class, "bm_deathstroke_power");
 	}
 	
 	public void receiveEditKeywords() {

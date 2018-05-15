@@ -40,20 +40,16 @@ public class BlackMageCharacter extends CustomPlayer {
 	};
 	
 	public static final String orbVfx = "img/character/orb/vfx.png";
-	
-	// 410  320    410  320
-	// 370  310    425  430
-	// 040  010   -015 -110
-	
 	private double counter = 0.0f;
 	
 	private ParticleEffect effectFront = new ParticleEffect(
 			new Rectangle(370, 310, 200f * Settings.scale, 5 * Settings.scale), 
 			0.8f,                            
 			4,                              
-			new Vector2(-0.002f, 0.135f),    
+			new Vector2(-0.004f, 0.25f),    
 			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
 			);
+	
 	private ParticleEffect effectHand = new ParticleEffect(
 			new Rectangle(425, 430, 5 * Settings.scale, 5 * Settings.scale),
 			0.75f,
@@ -61,11 +57,8 @@ public class BlackMageCharacter extends CustomPlayer {
 			new Vector2(0.0f, 0.05f),
 			new Particle(40, BlackMageMod.MULTI, BlackMageMod.getTexture("img/particles/particle.png"))
 			);
-
+	
 	public BlackMageCharacter(String name, PlayerClass setClass) {
-		
-		
-		
 		super(name, setClass, orbTextures, orbVfx, (String)null, (String)null);
 		
 		System.out.println("blackmage ctor : start");
@@ -79,10 +72,6 @@ public class BlackMageCharacter extends CustomPlayer {
 		this.dialogY = (this.drawY + 170.0F * Settings.scale);
 		
 		this.atlas = new TextureAtlas();
-		
-//		initializeClass(null, BlackMageMod.BLACK_MAGE_SHOULDER_2, 
-//				BlackMageMod.BLACK_MAGE_SHOULDER_1, BlackMageMod.BLACK_MAGE_CORPSE, 
-//				getLoadout(), 0.0f, -20f, 240.0f, 240.0f, new EnergyManager(ENERGY_PER_TURN));
 		
 		System.out.println("blackmage ctor : finish");
 	}

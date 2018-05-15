@@ -3,6 +3,7 @@ package blackmage.particles;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,9 +20,10 @@ public class ParticleEffect {
 	
 	private ArrayList<Particle> particles = new ArrayList<Particle>();
 
+	
 	public ParticleEffect(Rectangle spawnRegion, float spawnRate, int spawnAmount, Vector2 particleAcc, Particle baseParticle) {
 		this.spawnRegion = spawnRegion;
-		this.spawnRate = spawnRate;
+		this.spawnRate =  spawnRate;
 		this.spawnAmount = spawnAmount;
 		this.initAcc = particleAcc;
 		this.baseParticle = baseParticle;
@@ -30,7 +32,7 @@ public class ParticleEffect {
 
 	public void update() {
 		Random rand = new Random();
-		if (rand.nextFloat() <= spawnRate) {
+		if (rand.nextFloat() <= (spawnRate * (Gdx.graphics.getDeltaTime() * 60))) {
 			for (int i = 0; i < spawnAmount; i++) {
 				spawnParticle();
 			}
@@ -52,7 +54,7 @@ public class ParticleEffect {
 
 		Vector2 startPos = new Vector2(startX, startY);
 		Vector2 startVel = new Vector2((rand.nextFloat() - 0.5f) * 2.0f, (rand.nextFloat() - 0.5f) * 2.0f);
-
+		
 		Particle particle = baseParticle.getCopy(startPos, startVel);
 
 		particle.setAcc(this.initAcc);

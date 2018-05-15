@@ -3,7 +3,7 @@
 		"NAME": "Spell Book",
 		"FLAVOR": "Blank",
 		"DESCRIPTIONS": [
-		"Gain a random elemental focus at the start of your turn. #bIce. #rFire.",
+		"If you have no #rFire or #bIce, gain either #rFire or #bIce. If you already have #rFire or #bIce, gain 1 extra stack.",
 		"Choose 3 cards for "
 		]
 	}

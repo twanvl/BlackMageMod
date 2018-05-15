@@ -1,5 +1,6 @@
 package blackmage.particles;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,7 +10,7 @@ import com.megacrit.cardcrawl.random.Random;
 
 public class Particle {
 
-	private final int maxLifeSpan;
+	private int maxLifeSpan;
 	private int lifeSpan;
 	private Vector2 pos;
 	private Vector2 velocity;
@@ -20,25 +21,30 @@ public class Particle {
 
 	public Particle(Vector2 pos, Vector2 vel, int lifeSpan, Color particleColor, Texture texture) {
 		this.pos = pos;
-		this.velocity = vel;
+		this.velocity = new Vector2(vel.x * getScaledTime(), vel.y * getScaledTime());
 		this.maxLifeSpan = lifeSpan;
 		this.lifeSpan = new Random().random(lifeSpan / 2, lifeSpan);
 		this.color = new Color(particleColor);
 		this.texture = texture;
-		
 	}
 	
-	public Particle(int lifeSpan, Color particleColor, Texture texture) {
-		this(new Vector2(0,0), new Vector2(0,0), lifeSpan, particleColor, texture);
+	public Particle(int maxlifeSpan, Color particleColor, Texture texture) {
+		this(new Vector2(0,0), new Vector2(0,0), Math.round(maxlifeSpan * (1.0f / getScaledTime())), particleColor, texture);
 	}
 	
 	public Particle getCopy(Vector2 pos, Vector2 vel) {
-		return new Particle(pos, vel, maxLifeSpan, color, texture);
+		Particle copy = new Particle(pos, vel, maxLifeSpan, color, texture);		
+		
+		copy.setVelocity(this.mult(vel, getScaledTime()));
+		
+		System.out.println(copy.velocity.x + ":" + copy.velocity.y + " | " + copy.maxLifeSpan);
+		
+		return copy;
 	}
 
 	public void update() {
-		this.velocity.add(acceleration);
-		this.pos.add(velocity);
+		velocity.add(acceleration);
+		pos.add(velocity);
 		lifeSpan--;
 	}
 
@@ -59,7 +65,7 @@ public class Particle {
 	}
 
 	public void setAcc(Vector2 newAcc) {
-		this.acceleration = newAcc;
+		this.acceleration = new Vector2(newAcc.x * getScaledTime(), newAcc.y * getScaledTime());
 	}
 	
 	public int getLifeSpan() {
@@ -77,6 +83,10 @@ public class Particle {
 	public void setLifeSpan(int lifeSpan) {
 		this.lifeSpan = lifeSpan;
 	}
+	
+	public void resetMaxLifeSpan() {
+		this.maxLifeSpan = lifeSpan;
+	}
 
 	public void setTexture(Texture texture) {
 		this.texture = texture;
@@ -85,8 +95,29 @@ public class Particle {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+	
+	public void setVelocity(Vector2 newVel){
+		this.velocity = newVel;
+	}
 
 	public boolean isDead() {
 		return lifeSpan <= 0;
+	}
+	
+	public Vector2 mult(Vector2 vect, float mult) {
+		Vector2 result = new Vector2(vect.x, vect.y);
+		
+		result.x *= mult;
+		result.y *= mult;
+		
+		return result;
+	}
+	
+	private static float getScaledTime() {
+		float result = 60 * Gdx.graphics.getDeltaTime();
+		
+		result = Math.round(result * 100.0f) / 100.0f;
+		
+		return result;
 	}
 }
