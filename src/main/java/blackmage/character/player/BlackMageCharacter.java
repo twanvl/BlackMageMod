@@ -17,9 +17,14 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomPlayer;
 import blackmage.BlackMageMod;
+import blackmage.cards.Conversion;
+import blackmage.cards.Defend_BlackMage;
+import blackmage.cards.FireStrike;
+import blackmage.cards.IceStrike;
 import blackmage.particles.Particle;
 import blackmage.particles.ParticleEffect;
 import blackmage.patches.EnumPatch;
+import blackmage.relics.SpellBook;
 
 public class BlackMageCharacter extends CustomPlayer {
 	
@@ -147,25 +152,25 @@ public class BlackMageCharacter extends CustomPlayer {
 	public static ArrayList<String> getStartingDeck(){
 		ArrayList<String> startingDeck = new ArrayList<String>();
 		
-		startingDeck.add("strike_ice");
-		startingDeck.add("strike_ice");
-		startingDeck.add("strike_ice");
-		startingDeck.add("strike_fire");
-		startingDeck.add("strike_fire");
-		startingDeck.add("strike_fire");
-		startingDeck.add("defend_bm");
-		startingDeck.add("defend_bm");
-		startingDeck.add("defend_bm");
-		startingDeck.add("defend_bm");
-		startingDeck.add("defend_bm");
-		startingDeck.add("Conversion");
+		startingDeck.add(IceStrike.ID);
+		startingDeck.add(IceStrike.ID);
+		startingDeck.add(IceStrike.ID);
+		startingDeck.add(FireStrike.ID);
+		startingDeck.add(FireStrike.ID);
+		startingDeck.add(FireStrike.ID);
+		startingDeck.add(Defend_BlackMage.ID);
+		startingDeck.add(Defend_BlackMage.ID);
+		startingDeck.add(Defend_BlackMage.ID);
+		startingDeck.add(Defend_BlackMage.ID);
+		startingDeck.add(Defend_BlackMage.ID);
+		startingDeck.add(Conversion.ID);
 		return startingDeck;
 	}
 	
 	public static ArrayList<String> getStartingRelics(){
 		ArrayList<String> relics = new ArrayList<String>();
 		
-		relics.add("SpellBook");
+		relics.add(SpellBook.ID);
 		
 		return relics;
 	}
