@@ -37,7 +37,7 @@ public class Particle {
 		
 		copy.setVelocity(this.mult(vel, getScaledTime()));
 		
-		System.out.println(copy.velocity.x + ":" + copy.velocity.y + " | " + copy.maxLifeSpan);
+		//System.out.println(copy.velocity.x + ":" + copy.velocity.y + " | " + copy.maxLifeSpan);
 		
 		return copy;
 	}
