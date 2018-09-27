@@ -11,7 +11,7 @@ import basemod.ReflectionHacks;
 import basemod.helpers.SuperclassFinder;
 import blackmage.cards.AbstractCustomCardWithType;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.screens.select.GridCardSelectScreen", method="update")
+@SpirePatch(clz=com.megacrit.cardcrawl.screens.select.GridCardSelectScreen.class, method="update")
 public class GridSelectScreenPatch {
 	
 	public static boolean renderAsExchange = false;

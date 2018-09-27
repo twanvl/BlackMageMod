@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 
 import blackmage.BlackMageMod;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.core.CardCrawlGame", method="update")
+@SpirePatch(clz=com.megacrit.cardcrawl.core.CardCrawlGame.class, method="update")
 public class CardCrawlGamePatch {
 	
 	@SpireInsertPatch(

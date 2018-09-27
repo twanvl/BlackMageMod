@@ -3,7 +3,7 @@
   "name": "Black Mage",
   "author_list": ["Blank The Evil"],
   "description": "Adds a new character to the game based on the FFXIV Black Mage, which stacks damage based on what element is being used.",
-  "version": "0.6.0",
-  "sts_version": "04-28-2018",
-  "mts_version": "2.6.0"
+  "version": "0.6.1",
+  "sts_version": "09-06-2018",
+  "mts_version": "3.0.0"
 }

@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.scenes.AbstractScene;
 
 import basemod.helpers.SuperclassFinder;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.scenes.AbstractScene", method="ctor")
+@SpirePatch(clz=com.megacrit.cardcrawl.scenes.AbstractScene.class, method=SpirePatch.CONSTRUCTOR)
 public class BottomScenePatch {
 	
 	@SpireInsertPatch(

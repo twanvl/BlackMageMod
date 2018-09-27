@@ -12,7 +12,7 @@ import basemod.ReflectionHacks;
 import blackmage.character.player.BlackMageCharacter;
 import blackmage.ui.ExchangeOption;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.rooms.CampfireUI", method="initializeButtons")
+@SpirePatch(clz=com.megacrit.cardcrawl.rooms.CampfireUI.class, method="initializeButtons")
 public class CampfireUIPatch {
 	public static void Postfix(Object meObj) {
 		CampfireUI campfire = (CampfireUI)meObj;

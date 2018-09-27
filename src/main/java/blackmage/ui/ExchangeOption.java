@@ -13,7 +13,7 @@ public class ExchangeOption extends AbstractCampfireOption {
 	
 	public ExchangeOption(boolean active) {
 		this.label = "Exchange";
-		this.useable = active;
+		this.usable = active;
 		if (active) {
 			this.description = DESCRIPTION;
 			this.img = BlackMageMod.getTexture("img/ui/exchange_button.png");
@@ -25,7 +25,7 @@ public class ExchangeOption extends AbstractCampfireOption {
 	
 	@Override
 	public void useOption() {
-		if(this.useable) {
+		if(this.usable) {
 			AbstractDungeon.effectList.add(new CampfireExchangeEffect());
 		}
 	}

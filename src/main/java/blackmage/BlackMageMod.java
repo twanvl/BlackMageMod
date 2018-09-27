@@ -159,19 +159,14 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 		imgMap.put(textureString, new Texture(textureString));
 	}
 	
-	@SuppressWarnings("deprecation")
 	public BlackMageMod() {
 		BaseMod.subscribe(this);
-		BaseMod.subscribeToEditCharacters(this);
-		BaseMod.subscribeToEditCards(this);
-		BaseMod.subscribeToEditKeywords(this);
-		BaseMod.subscribeToPostInitialize(this);
 	}
 	
 	public static void initialize() {
 		
 		BaseMod.addColor(
-				EnumPatch.BLACK_MAGE.toString(), 
+				EnumPatch.BLACK_MAGE, 
 				MULTI, 
 				MULTI,
 				MULTI, 
@@ -231,9 +226,9 @@ public class BlackMageMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public void receiveEditCharacters() {
 		BaseMod.addCharacter(BlackMageCharacter.class, "Black Mage", 
-				"Black Mage class string", EnumPatch.BLACK_MAGE.toString(), 
+				"Black Mage class string", EnumPatch.BLACK_MAGE, 
 				"Black Mage", BLACK_MAGE_ICON, BLACK_MAGE_PORTRAIT, 
-				EnumPatch.BLACK_MAGE_CLASS.toString());
+				EnumPatch.BLACK_MAGE_CLASS);
 	}
 
 	public void receiveEditCards() {
