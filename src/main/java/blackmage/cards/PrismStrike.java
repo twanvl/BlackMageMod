@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import basemod.helpers.TooltipInfo;
 import blackmage.actions.DealDamageMultiTimesAction;
 import blackmage.patches.EnumPatch;
@@ -46,6 +48,7 @@ public class PrismStrike extends AbstractMulitTypeCard {
 		this.baseDamage = DAMAGE;
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;
+        CardTags.addTags(this, BaseModTags.STRIKE);
 	}
 	
 	@Override

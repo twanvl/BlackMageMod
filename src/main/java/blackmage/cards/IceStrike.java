@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import blackmage.patches.EnumPatch;
 import blackmage.powers.IcePower;
 
@@ -32,6 +34,7 @@ public class IceStrike extends AbstractCustomCardWithType {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, COLOR_TYPE);
 		
 		this.baseDamage = ATTACK_DMG;
+        CardTags.addTags(this, BaseModTags.BASIC_STRIKE, BaseModTags.STRIKE);
 	}
 
 	@Override

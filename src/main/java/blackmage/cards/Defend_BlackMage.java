@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import basemod.abstracts.CustomCard;
 import blackmage.patches.EnumPatch;
 
@@ -26,6 +28,7 @@ public class Defend_BlackMage extends CustomCard {
 	public Defend_BlackMage() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseBlock = MAGIC;
+        CardTags.addTags(this, BaseModTags.BASIC_DEFEND);
 	}
 
 	@Override
